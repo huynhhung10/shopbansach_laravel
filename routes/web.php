@@ -60,6 +60,10 @@ Route::get('/signInSignUp',[ClientSigningController::class, 'index']);
 //Thông báo thanh toán thành công
 Route::get('/successpayment',[ClientPaymentController::class, 'success']);
 
+//Đổi mật khẩu
+Route::get('/accountPasswordChange',[ClientAccountController::class, 'passwordChange']);
+
+
 
 
 

@@ -82,7 +82,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div><div class="col-3">
+                            </div>
+                            <div class="col-3">
                                 <!-- 1 sản phẩm (trong div classify__product) -->
                                 <a href="productDetail.html" class="classify__linkproduct">
                                     <div class="classify__product">
@@ -101,7 +102,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div><div class="col-3">
+                            </div>
+                            <div class="col-3">
                                 <!-- 1 sản phẩm (trong div classify__product) -->
                                 <a href="productDetail.html" class="classify__linkproduct">
                                     <div class="classify__product">
