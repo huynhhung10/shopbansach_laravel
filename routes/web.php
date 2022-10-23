@@ -1,4 +1,13 @@
 <?php
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClientSellingController;
+use App\Http\Controllers\ClientProductDetailController;
+use App\Http\Controllers\ClientCartController;
+use App\Http\Controllers\ClientPaymentController;
+use App\Http\Controllers\ClientSigningController;
+use App\Http\Controllers\ClientAccountController;
+
+
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -20,12 +29,36 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+//frontend
+Route::get('/',[ClientController::class, 'index']);
 
+//Chi tiết sản phẩm
+Route::get('/pDetail',[ClientProductDetailController::class, 'index']);
 
+//Hiển thị những sản phẩm theo danh mục
+Route::get('/selling',[ClientSellingController::class, 'index']);
+
+//Thông tin cá nhân
+Route::get('/accountInfo',[ClientAccountController::class, 'index']);
+
+//Giỏ hàng
+Route::get('/cart',[ClientCartController::class, 'index']);
+
+//Thanh toán
+Route::get('/payment',[ClientPaymentController::class, 'index']);
+
+//Lịch sử thanh toán
+Route::get('/historyPayment',[ClientPaymentController::class, 'history']);
+
+//Đăng nhập / đăng ký
+Route::get('/signInSignUp',[ClientSigningController::class, 'index']);
+
+//Thông báo thanh toán thành công
+Route::get('/successpayment',[ClientPaymentController::class, 'success']);
 
 
 
