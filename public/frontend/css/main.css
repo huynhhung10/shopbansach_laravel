@@ -76,6 +76,10 @@
     display: flex;
 }
 
+.header-mid__search-group{
+    position: relative;
+}
+
 .header-mid__search-box__input{
     height: 48px;
     outline: none;
@@ -112,6 +116,38 @@
 
 .header-mid__button{
     padding: 0 14px;
+    cursor: pointer;
+}
+
+.header-mid__button:hover{
+    filter: brightness(0.98);
+}
+
+.header-mid-search__drop{
+    position: absolute;
+    list-style: none;
+    padding-left: 0;
+    z-index: 1000;
+    background-color: white;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 3px 4px 10px rgb(242, 242, 242);
+    display: none;
+}
+
+.header-mid__search-group:focus-within .header-mid-search__drop{
+    display: block;
+
+}
+
+.header-mid-drop__item{
+    padding: 8px 14px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.header-mid-drop__item:hover{
+    background-color: rgba(236, 236, 236, 0.437);
 }
 
 .header-mid__functions{
@@ -130,7 +166,7 @@
 .header-mid__info i{
     font-size: 2.4rem;
     line-height: 2.4rem;
-    margin-top: 2px;
+    margin-top: 6px;
     margin-right: 12px;
     color: var(--primary-gray);
     
@@ -164,6 +200,10 @@
     color: var(--text-color);
     display: flex;
     align-items: center;
+}
+
+.header-mid__cart:hover .header-mid__cart-logo{
+    color: var(--primary-yellow-hover);
 }
 
 .header-mid__cart-logo{
@@ -237,8 +277,8 @@
 .header-dropdown__item:hover .header-dropdown__link-box__title{
     color: var(--primary-yellow);
 }
-.header-dropdown__item:hover .header-dropdown__link-icon{
-    color: var(--primary-purple);
+.header-dropdown__item:hover .header-dropdown__link-box__icon{
+    color: var(--primary-yellow);
 }
 
 .header-dropdown__link{
@@ -336,6 +376,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    z-index: -1;
 }
 
 .app-container__slider a{
@@ -358,9 +399,6 @@
     margin: 50px 0;
 }
 
-.footer__intro{
-
-}
 
 .footer-intro__title{
     font-size: 1.6rem;
@@ -458,4 +496,19 @@
     color: white;
     transition: 0.1s;
     
+}
+
+
+/* ========== RANDOM CSS =))) ==============*/
+
+.form-invalid input{
+    border: 1px solid var(--primary-red);
+}
+
+.form-invalid span{
+    color: var(--primary-red);
+}
+
+.form-invalid input:focus{
+    outline: none;
 }

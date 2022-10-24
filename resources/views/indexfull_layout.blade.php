@@ -45,7 +45,6 @@
                     </ul>
     
                     <ul class="navbar__list">
-                        <li class="navbar__item"><a href="#" class="navbar__link">Ưu đãi & tiện ích</a></li>
                         <li class="navbar__item"><a href="paymentHistory.html" class="navbar__link">Kiểm tra đơn hàng</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">HoangLong</a></li>
                         <li class="navbar__item"><a href="#" class="navbar__link">Đăng xuất</a></li>
@@ -65,6 +64,7 @@
 
                     <!-- search -->
                     <div class="header-mid__search-box">
+                        
                         <select class="header-mid__select header-mid__search-box__input" name="searchSelect" id="searchSelect">
                             <option value="1" class="header-mid__option">Tất cả</option>
                             <option value="2" class="header-mid__option">Sách - Truyện tranh</option>
@@ -72,10 +72,18 @@
                             <option value="4" class="header-mid__option">Quà tặng</option>
                             <option value="5" class="header-mid__option">Dụng cụ vẽ - VPP</option>
                             <option value="6" class="header-mid__option">Vật dụng gia đình</option>
-
                         </select>
-                        <input type="text" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
-                        <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <div class="header-mid__search-group">
+                            <input type="text" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
+                            <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <ul class="header-mid-search__drop">
+                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- Div chứa thông tin, nút -->
@@ -399,6 +407,8 @@
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/js/view.js')}}"></script>
+
     <!-- <script src="./frontend/css/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script> -->
    
 </body>

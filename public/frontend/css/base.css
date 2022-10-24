@@ -1,9 +1,11 @@
 :root{
     --text-color: #333;
-    --primary-yellow: #f0a123;
+    --primary-yellow: #e49620;
+    --primary-yellow-hover: #bd8834;
     --primary-purple: #5B435D;
     --primary-gray: #938592;
     --primary-green: #1abd71;
+    --primary-red:rgb(255, 36, 36);
 }
 
 *{

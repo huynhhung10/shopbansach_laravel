@@ -8,9 +8,28 @@
 }
 
 .classify__title{
+    display: flex;
+    justify-content: space-between;
     padding: 12px 20px;
     text-transform: uppercase;
     border-bottom: 1px solid #eeeeee;
+}
+
+.classify__title p{
+    margin: 0;
+}
+
+.classify__title a{
+    color: var(--primary-yellow);
+    text-transform: none;
+    text-decoration: none;
+}
+
+.classify__title a:hover{
+    color: var(--primary-yellow-hover);
+
+    text-decoration: none;
+
 }
 
 .classify__products{

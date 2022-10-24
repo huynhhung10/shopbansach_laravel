@@ -33,10 +33,10 @@
 
                         <div class="detail-info__quantitybox">
                             <span>Số lượng:</span>
-                            <div class="detail-info__quantify">
-                                <button class="quantify__down quantify__btn">-</button>
-                                <p class="quantify__num">1</p>
-                                <button class="quantify__up quantify__btn">+</button>
+                            <div class="detail-info__quantify quantity">
+                                <button class="quantify-down quantify__down quantify__btn">-</button>
+                                <p class="quantify-num quantify__num">1</p>
+                                <button class="quantify-up quantify__up quantify__btn">+</button>
                             </div>
                         </div>
 
@@ -45,6 +45,15 @@
                         <div class="detail-info__btns">
                             <a href="{{URL::to('/cart')}}" class="detail-info__btnlink"><button class="detail-info__btn">Thêm vào giỏ hàng</button></a>
                             <a href="{{URL::to('/payment')}}" class="detail-info__btnlink"><button class="detail-info__btn detail-info__btn--green">Thanh toán ngay</button></a>
+                        </div>
+
+                        <div class="detail-info__desc">
+                            <span>Mô tả:</span>
+                            <p class="detail-info-desc__content">
+                                Có rất là nhiều chữ ở đây nha, Có rất là nhiều chữ ở đây nha, 
+                                Có rất là nhiều chữ ở đây nha, Có rất là nhiều chữ ở đây nha, 
+                                rất là nhiều chữ ở đây nha, rất là nhiều chữ ở đây nha, rất là nhiều chữ ở đây nha
+                            </p>
                         </div>
 
                     </div>
@@ -73,5 +82,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

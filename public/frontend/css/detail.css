@@ -166,6 +166,23 @@
     border: 1px solid var(--primary-green);
 }
 
+.detail-info__desc{
+    margin-top: 30px;
+    padding-right: 60px;
+    color: var(--text-color);
+
+}
+.detail-info__desc span{
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.detail-info-desc__content{
+    display: block;
+    font-size: 1.5rem;
+}
+
 
 /* detail more */
 
@@ -208,4 +225,9 @@
     margin: 0; padding: 0;
     flex: 1;
 
+}
+
+.red{
+    color: red;
+    background-color: red;
 }

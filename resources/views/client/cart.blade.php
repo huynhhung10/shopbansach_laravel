@@ -39,10 +39,10 @@
                                             <p class="cart-item__lastprice">102,000 đ</p>
                                             <p class="cart-item__originprice">120,000 đ</p>
                                         </div>
-                                        <div class="cart-item__quantity cart--flex2">
-                                            <button class="cart-item__down cart-item__btn">-</button>
-                                            <p class="cart-item__num">1</p>
-                                            <button class="cart-item__up cart-item__btn">+</button>
+                                        <div class="cart-item__quantity cart--flex2 quantity">
+                                            <button class="quantify-down cart-item__down cart-item__btn">-</button>
+                                            <p class="quantify-num cart-item__num">1</p>
+                                            <button class="quantify-up cart-item__up cart-item__btn">+</button>
                                         </div>
                                         <p class="cart-item__total cart--flex2">102,000 đ</p>
                                         <i class="cart-item__icon fa-regular fa-trash"></i>

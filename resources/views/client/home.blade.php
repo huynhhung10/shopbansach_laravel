@@ -37,7 +37,10 @@
         <div class="row">
             <div class="col">
                 <div class="classify">
-                    <h2 class="classify__title">Sách mới</h2>
+                    <h2 class="classify__title">
+                        <p>Sách mới</p>
+                        <a href="">Xem thêm >></a>
+                    </h2>
                     <div class="classify__products">
                         <div class="row">
                             <!-- dùng bootstrap để tự nó chia đề layout ra
