@@ -93,6 +93,7 @@
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{URL::asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/js/form.js')}}"></script>
     <script src="{{asset('frontend/js/checkInput.js')}}"></script>
 
     <!-- <script src="./frontend/css/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script> -->
