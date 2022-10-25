@@ -1,12 +1,13 @@
 @extends('index_small_layout')
 @section('client_content')
+<script src="{{asset('frontend/js/Validator.js')}}"></script>
 
         <div class="app__container">  
             <div class="form__container">
 
                 <div class="form__header">
-                    <h3 id="btn_signup" class="sign__heading">Đăng ký</h3>
-                    <h3 id="btn_signin" class="sign__heading">Đăng nhập</h3> 
+                    <h3 id="header_signup" class="sign__heading">Đăng ký</h3>
+                    <h3 id="header_signin" class="sign__heading">Đăng nhập</h3> 
                     <div class="form-header__underline"></div>   
                 </div>  
                 <div class="form__group">
@@ -79,5 +80,37 @@
                 </div>        
             </div>
         </div>
+
+        <script>
+            Validator({
+                form: '#form_signup',
+                errorMes: '.sign-group__message',
+                rules: [
+                    Validator.isRequired('#fullname', 'Trường này không được để trống'),  
+                    Validator.isRequired('#username'),
+                    Validator.isRequired('#email'),
+                    Validator.isEmail('#email'),
+                    Validator.isRequired('#phone'),
+                    Validator.isPhone('#phone'),
+                    Validator.isRequired('#password'),
+                    Validator.minLength('#password', 8, 'Phải là 8 ký tự nhoa'),
+                    Validator.isRequired('#password_confirm'),
+                    Validator.isConfirmed('#password_confirm', function(){
+                        return document.querySelector('#form_signup #password').value;
+                    }),
+                ]
+            })
+
+            Validator({
+                form: '#form_signin',
+                errorMes: '.sign-group__message',
+                rules: [
+                    Validator.isRequired('#username'),
+                    Validator.isRequired('#password'),
+                ]
+            })
+        </script>
+    <script src="{{asset('frontend/js/viewForm.js')}}"></script>
+
         
 @endsection

@@ -1,5 +1,6 @@
 @extends('index_small_layout')
 @section('client_content')
+<script src="{{asset('frontend/js/Validator.js')}}"></script>
 
         <div class="app__container">            
         
@@ -37,4 +38,18 @@
 
             </form>
         </div>
+        <script>
+            Validator({
+                form: '#form_payment',
+                errorMes: '.pay-group__message',
+                rules: [
+                    Validator.isRequired('#fullname', 'Trường này không được để trống'),  
+                    Validator.isRequired('#email'),
+                    Validator.isRequired('#address'),
+                    Validator.isEmail('#email'),
+                    Validator.isRequired('#phone'),
+                    Validator.isPhone('#phone'),
+                ]
+            })
+        </script>
 @endsection
