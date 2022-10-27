@@ -82,6 +82,7 @@
         </div>
     </div>
 </div>
+<script src="{{asset('frontend/js/view.js')}}"></script>
 
 
 @endsection
