@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateTblProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->double('product_price');
             $table->string('product_author');
             $table->string('product_img');
-            $table->string('product_quantity');
+            $table->integer('product_quantity');
             $table->boolean('status');
             //$table->boolean('product_featured');
             $table->timestamps();
