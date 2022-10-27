@@ -175,6 +175,11 @@
 .cart-item__icon{
     font-size: 1.4rem;
     line-height: 1.4rem;
+    cursor: pointer;
+}
+
+.cart-item__icon:hover{
+    color: var(--primary-red);
 }
 
 .cart__payment{

@@ -24,6 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script src="{{asset('frontend/js/Validator.js')}}"></script>
+
     <!-- thẻ để chứa nguyên cái page -->
     <div class="app">
 
@@ -45,7 +47,7 @@
                     </ul>
     
                     <ul class="navbar__list">
-                        <li class="navbar__item"><a href="paymentHistory.html" class="navbar__link">Kiểm tra đơn hàng</a></li>
+                        <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">HoangLong</a></li>
                         <li class="navbar__item"><a href="#" class="navbar__link">Đăng xuất</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng nhập</a></li>
@@ -407,7 +409,6 @@
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/js/view.js')}}"></script>
 
     <!-- <script src="./frontend/css/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script> -->
    

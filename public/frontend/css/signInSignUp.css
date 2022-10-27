@@ -1,7 +1,7 @@
-.header__sign{
-    /* height: 78px; */
-    background-color: #f8f8f8f8;
-    box-shadow: 1px 0 10px rgba(0, 0, 0, 0.144);
+.form__container{
+    background-color: white;
+    box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.096);
+    overflow: hidden;
 }
 
 .app__container{
@@ -14,19 +14,44 @@
 .form__sign{
     min-width: 380px;
     min-height: 200px;
-    background-color: white;
     border-radius: 3px;
-    box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.096);
     color: var(--text-color);
-    padding: 28px 28px;
+    padding: 0 28px;
     padding-bottom: 32px;
+    transition: 0.5s;
+}
 
+.form__header{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form__group{
+    display: flex;
+    max-width: 380px;
 }
 
 .sign__heading{
-    font-size: 2.6rem;
+    font-size: 2.2rem;
+    cursor: pointer;
     /* color: var(--text-color); */
 }
+
+.form-header__underline{
+    position: absolute;
+    display: block;
+    height: 3px;
+    width: 100px;
+    background-color: rgb(100, 226, 197);
+    left: 40px;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+
 
 .sign__desc{
     font-size: 1.4rem;
@@ -55,7 +80,8 @@
 }
 
 .sign-group__input:focus{
-    outline: 1px solid var(--primary-yellow);
+    border: 1px solid var(--primary-green);
+    outline: 0;
 }
 
 .sign-group__message{
@@ -114,3 +140,12 @@
 #form_signin{
     /* display: none; */
 }
+
+.transform-left-380px{
+    transform:translateX(-380px);
+}
+
+.transform-right-184px{
+    transform: translateX(184px);
+}
+
