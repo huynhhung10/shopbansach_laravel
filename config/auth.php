@@ -13,9 +13,20 @@ return [
     |
     */
 
+
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'tbl_user',
+
+    ],
+
+    'admin' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class,
+    ],
+    'user' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
     ],
 
     /*
@@ -38,8 +49,23 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'tbl_user',
         ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'tbl_user',
+            'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'tbl_admin',
+        ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'tbl_user',
+        ],
+
     ],
 
     /*
@@ -60,15 +86,24 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'tbl_admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'tbl_user' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
     ],
 
     /*
@@ -87,11 +122,23 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'tbl_user' => [
+            'provider' => 'tbl_user',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'tbl_user' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+
+        ],
+
+        'tbl_admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+
         ],
     ],
 
