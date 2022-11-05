@@ -136,73 +136,7 @@
                                                 </div>
                                                 <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
                                             </a>
-                                            <!-- dropdown (level 2: ngang) -->
-                                            <div class="header-category__dropdown second">
-                                                <div class="header-drop__second">
-                                                    <ul class="header-drop-second__list">
-                                                        <!-- 1 loại của mỗi loại danh mục nằm trong thẻ li -->
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-    
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-    
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- end dropdown level 2 -->
+                                           
                                         </li>    
                                         <li class="header-dropdown__item">
                                             <a href="productDetail.html" class="header-dropdown__link">
@@ -226,7 +160,7 @@
                                                 <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
                                             </a>
                                             <!-- dropdown level 2 -->
-                                            <div class="header-category__dropdown second">
+                                            {{-- <div class="header-category__dropdown second">
                                                 <div class="header-drop__second">
                                                     <ul class="header-drop-second__list">
                                                         <li class="header-drop-second__item">
@@ -243,7 +177,7 @@
                                                     
                                                 </div>
                                                 
-                                            </div>
+                                            </div> --}}
                                             <!-- end dropdown level 2 -->
                                         </li> 
                                                         
