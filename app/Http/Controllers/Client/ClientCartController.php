@@ -5,10 +5,17 @@ namespace App\Http\Controllers\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Category;
+use App\Models\Product;
 class ClientCartController extends Controller
 {
     public function index(){
-        return view('client.cart');
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+
+
+        return view('client.cart')->with(compact(
+            'categoryASC',
+        ));;
     }
     
 }

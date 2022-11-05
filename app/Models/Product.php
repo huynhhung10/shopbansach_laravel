@@ -3,7 +3,7 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Factories\Model;
+    use Illuminate\Database\Eloquent\Model;
 
     class Product extends Model{
         use HasFactory;
@@ -13,6 +13,7 @@
             'product_content',
             'product_price',
             'product_author',
+            'product_img',
             'product_quantity',
             'status',
             'product_name'

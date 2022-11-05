@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Category;
+use App\Models\Product;
+
 class ClientPaymentController extends Controller
 {
     public function index(){
@@ -16,7 +19,10 @@ class ClientPaymentController extends Controller
     }
 
     public function history(){
-        return view('client.paymentHistory');
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        return view('client.paymentHistory')->with(compact(
+            'categoryASC'
+        ));
     }
     
 }

@@ -69,11 +69,10 @@
                         
                         <select class="header-mid__select header-mid__search-box__input" name="searchSelect" id="searchSelect">
                             <option value="1" class="header-mid__option">Tất cả</option>
-                            <option value="2" class="header-mid__option">Sách - Truyện tranh</option>
-                            <option value="3" class="header-mid__option">CD - DVD</option>
-                            <option value="4" class="header-mid__option">Quà tặng</option>
-                            <option value="5" class="header-mid__option">Dụng cụ vẽ - VPP</option>
-                            <option value="6" class="header-mid__option">Vật dụng gia đình</option>
+                            @foreach ($categoryASC as $key => $value) 
+                                <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
+                            @endforeach
+                            
                         </select>
                         <div class="header-mid__search-group">
                             <input type="text" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
@@ -126,61 +125,42 @@
                                 <div class="header-category__dropdown">
                                     <ul class="header-dropdown__list">
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
-                                        <li class="header-dropdown__item">
-                                            <a href="{{URL::to('/selling')}}" class="header-dropdown__link">
-                                                <div class="header-dropdown__link-box">
-                                                    <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
-                                                    <span class="header-dropdown__link-box__title">
-                                                        Sách nè
-                                                    </span>
-                                                </div>
-                                                <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
-                                            </a>
-                                           
-                                        </li>    
-                                        <li class="header-dropdown__item">
-                                            <a href="productDetail.html" class="header-dropdown__link">
-                                                <div class="header-dropdown__link-box">
-                                                    <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
-                                                    <span class="header-dropdown__link-box__title">
-                                                        Truyện nè
-                                                    </span>
-                                                </div>
-                                                <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
-                                            </a>
-                                        </li>   
-                                        <li class="header-dropdown__item">
-                                            <a href="" class="header-dropdown__link">
-                                                <div class="header-dropdown__link-box">
-                                                    <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
-                                                    <span class="header-dropdown__link-box__title">
-                                                        Cái gì đó nè
-                                                    </span>
-                                                </div>
-                                                <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
-                                            </a>
-                                            <!-- dropdown level 2 -->
-                                            {{-- <div class="header-category__dropdown second">
-                                                <div class="header-drop__second">
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-    
-                                                    </ul>
-                                                    
-                                                </div>
+                                        @foreach ($categoryASC as $key => $value)
+                                            <li class="header-dropdown__item">
+                                                <a href="{{URL::to('/selling')}}" class="header-dropdown__link">
+                                                    <div class="header-dropdown__link-box">
+                                                        <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
+                                                        <span class="header-dropdown__link-box__title">
+                                                            {{$value->category_name}}
+                                                        </span>
+                                                    </div>
+                                                    <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
+                                                </a>
+                                               
+                                            </li>   
+                                        @endforeach 
+                                        
+                                        
+                                        <!-- dropdown level 2 -->
+                                        {{-- <div class="header-category__dropdown second">
+                                            <div class="header-drop__second">
+                                                <ul class="header-drop-second__list">
+                                                    <li class="header-drop-second__item">
+                                                        <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
+                                                    </li>
+                                                    <li class="header-drop-second__item">
+                                                        <a href="#" class="header-drop-second__link">alo alo</a>
+                                                    </li>
+                                                    <li class="header-drop-second__item">
+                                                        <a href="#" class="header-drop-second__link">alo alo</a>
+                                                    </li>
+
+                                                </ul>
                                                 
-                                            </div> --}}
-                                            <!-- end dropdown level 2 -->
-                                        </li> 
-                                                        
+                                            </div>
+                                            
+                                        </div> --}}
+                                        <!-- end dropdown level 2 -->
                                     </ul>
                                 </div>
                             </div>

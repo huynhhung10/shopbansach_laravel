@@ -6,6 +6,27 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    public function store(Request $request){
+        $data = $request->validate(
+            [
+                'category_name' => 'required|unique:category_name|max:255',
+                'status' => 'required',
+            ],
+            [
+                'category_name.required' => 'Tên danh mục phải có nhé',
+                'status.required' => 'Mô tả danh mục phải có nhé',
+            ]
+        );
+
+        $category = new Category();
+        $category->categoryName = $data['category_name'];
+        $category->categoryStatus = $data['status'];
+        $category->save();
+
+        return redirect()->back();
+    }
+
     public function index(){
         return view('admin.all_category');
     }
