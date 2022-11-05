@@ -5,14 +5,16 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Factories\Model;
 
-    class Category extends Model{
+    class Brand extends Model{
         use HasFactory;
         public $timestamps = false;
         protected $fillable = [
-            'category_name',
-            'status'
+            'brand_name',
+            'brand_content',
+            'brand_logo',
+            'brand_status'
         ];
-        protected $primaryKey = 'category_id  ';
-        protected $table = 'tbl_category';
+        protected $primaryKey = 'brand_id ';
+        protected $table = 'tbl_brand';
     }
 ?>
