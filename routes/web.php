@@ -41,10 +41,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [ClientController::class, 'index']);
 
 //Chi tiết sản phẩm
-Route::get('/pDetail', [ClientProductDetailController::class, 'index']);
+Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
 
 //Hiển thị những sản phẩm theo danh mục
-Route::get('/selling', [ClientSellingController::class, 'index']);
+Route::get('/category/{category_id}', [ClientController::class, 'viewOnCategory']);
+// Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân
 Route::get('/accountInfo', [ClientAccountController::class, 'index']);

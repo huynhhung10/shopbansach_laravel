@@ -17,16 +17,35 @@ class ClientController extends Controller
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
 
         //home
-        $productASC4 = Product::orderBy('product_id', 'ASC')->limit(4)->get();
-        $productDESC4 = Product::orderBy('product_id', 'DESC')->limit(4)->get();
-        $productASC8 = Product::orderBy('product_id', 'ASC')->limit(8)->get();
-
+        $productASC4 = Product::with('category')->orderBy('product_id', 'ASC')->limit(4)->get();
+        $productDESC4 = Product::with('category')->orderBy('product_id', 'DESC')->limit(4)->get();
+        $productASC8 = Product::with('category')->orderBy('product_id', 'ASC')->limit(8)->get();
 
         return view('client.home')->with(compact(
             'categoryASC',
             'productASC4', 
             'productDESC4',
-            'productASC8'
+            'productASC8',
+        ));
+    }
+
+    public function viewOnCategory($category_id){
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $productASC6 = Product::orderBy('product_id', 'ASC')->where('category_id', $category_id)->limit(6)->get();
+
+        return view('client.selling')->with(compact(
+            'categoryASC',
+            'productASC6',
+        ));
+    }
+
+    public function viewProduct($product_id){
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $product = Product::orderBy('product_id', 'ASC')->where('product_id', $product_id)->first();
+
+        return view('client.productDetail')->with(compact(
+            'categoryASC',
+            'product',
         ));
     }
     

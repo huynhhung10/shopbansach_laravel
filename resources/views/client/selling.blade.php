@@ -11,7 +11,7 @@
                                 <ul class="sidebar__list">
                                     @foreach ($categoryASC as $key => $value) 
                                         <li class="sidebar__item">
-                                            <a href="{{URL::to('/selling')}}" class="sidebar__link">{{$value->category_name}}</a>
+                                            <a href="{{url('category/' . $value->category_id)}}" class="sidebar__link">{{$value->category_name}}</a>
                                         </li>
                                     @endforeach
                                     
@@ -32,10 +32,10 @@
                                     @foreach ($productASC6 as $key => $value) 
                                         <div class="col-4">
                                             <!-- 1 sản phẩm (trong div classify__product) -->
-                                            <a href="{{URL::to('/pDetail')}}" class="classify__linkproduct">
+                                            <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                                 <div class="classify__product">
                                                     <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                                        <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                                        <img src="{{asset($value->product_img)}}" alt="" class="classify-product__img">
                                                         <div class="classify-product__discount">-15%</div>
                                                     </div>
                                                     <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->

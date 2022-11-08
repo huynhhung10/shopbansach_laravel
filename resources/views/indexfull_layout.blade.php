@@ -7,15 +7,15 @@
     <title>BookGarden | Mua sách Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="{{('frontend/css/base.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/main.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/sell.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/detail.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/historyPayment.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/payment.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/cart.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/signInSignUp.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/accountInfo.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/base.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/sell.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/detail.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/historyPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/payment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/cart.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/signInSignUp.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/accountInfo.css')}}">
     
     <link rel="stylesheet" href="{{ asset('frontend/css/all.css') }}">
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />   --}}
@@ -61,7 +61,7 @@
                 <div class="grid">
                     <!-- logo -->
                     <a href="{{URL::to('/')}}" class="header-mid__logo-link">
-                        <img src="{{('frontend/img/logo1.png')}}" alt="" class="header-mid__logo">
+                        <img src="{{asset('frontend/img/logo1.png')}}" alt="" class="header-mid__logo">
                     </a>
 
                     <!-- search -->
@@ -127,7 +127,7 @@
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
                                         @foreach ($categoryASC as $key => $value)
                                             <li class="header-dropdown__item">
-                                                <a href="{{URL::to('/selling')}}" class="header-dropdown__link">
+                                                <a href="{{url('category/' . $value->category_id)}}" class="header-dropdown__link">
                                                     <div class="header-dropdown__link-box">
                                                         <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
                                                         <span class="header-dropdown__link-box__title">

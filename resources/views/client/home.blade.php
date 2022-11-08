@@ -51,7 +51,7 @@
                             @foreach ($productASC4 as $key => $value) 
                                 <div class="col-3">
                                     <!-- 1 sản phẩm (trong div classify__product) -->
-                                    <a href="{{URL::to('/pDetail')}}" class="classify__linkproduct">
+                                    <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
                                                 <img src="{{$value->product_img}}" alt="" class="classify-product__img">
@@ -95,7 +95,7 @@
                             @foreach ($productDESC4 as $key => $value) 
                                 <div class="col-3">
                                     <!-- 1 sản phẩm (trong div classify__product) -->
-                                    <a href="{{URL::to('/pDetail')}}" class="classify__linkproduct">
+                                    <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
                                                 <img src="{{$value->product_img}}" alt="" class="classify-product__img">
@@ -139,7 +139,7 @@
                             @foreach ($productASC8 as $key => $value) 
                                 <div class="col-3">
                                     <!-- 1 sản phẩm (trong div classify__product) -->
-                                    <a href="{{URL::to('/pDetail')}}" class="classify__linkproduct">
+                                    <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
                                                 <img src="{{$value->product_img}}" alt="" class="classify-product__img">

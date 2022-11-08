@@ -15,5 +15,9 @@
         ];
         protected $primaryKey = 'category_id';
         protected $table = 'tbl_category';
+
+        public function product(){
+            return $this->hasMany('App\Models\Product');
+        }
     }
 ?>
