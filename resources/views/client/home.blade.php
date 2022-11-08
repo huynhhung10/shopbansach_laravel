@@ -9,13 +9,13 @@
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{('./frontend/img/logo.png')}}" class="d-block w-100" alt="...">
+                            <img src="{{('./frontend/img/slider/alo3.jpg')}}" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="{{('./frontend/img/logo.png')}}" class="d-block w-100" alt="...">
+                            <img src="{{('./frontend/img/slider/alo4.jpg')}}" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="{{('./frontend/img/logo.png')}}" class="d-block w-100" alt="...">
+                            <img src="{{('./frontend/img/slider/sach-moi-tu-nguyen.jpg')}}" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -55,15 +55,12 @@
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
                                                 <img src="{{$value->product_img}}" alt="" class="classify-product__img">
-                                                <div class="classify-product__discount">-15%</div>
                                             </div>
                                             <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
                                                 <p class="classify-product__title">{{$value->product_name}}</p>
                                                 <p class="classify-product__author">{{$value->product_author}}</p>
                                                 <div class="classify-product__pricebox">
-                                                    <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                    <span class="classify-pricebox__originprice">{{$value->product_price}}đ</span>
-                                                    <span class="classify-pricebox__discount">-15%</span>
+                                                    <span class="classify-pricebox__lastprice">{{$value->product_price}}đ</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,26 +90,23 @@
                                 mỗi div col-3 chứa 1 sản phẩm
                                 muốn có nhiều sản phẩm thì copy col-3 -->
                             @foreach ($productDESC4 as $key => $value) 
-                                <div class="col-3">
-                                    <!-- 1 sản phẩm (trong div classify__product) -->
-                                    <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
-                                        <div class="classify__product">
-                                            <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                                <img src="{{$value->product_img}}" alt="" class="classify-product__img">
-                                                <div class="classify-product__discount">-15%</div>
-                                            </div>
-                                            <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
-                                                <p class="classify-product__title">{{$value->product_name}}</p>
-                                                <p class="classify-product__author">{{$value->product_author}}</p>
-                                                <div class="classify-product__pricebox">
-                                                    <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                    <span class="classify-pricebox__originprice">{{$value->product_price}}đ</span>
-                                                    <span class="classify-pricebox__discount">-15%</span>
-                                                </div>
+                            <div class="col-3">
+                                <!-- 1 sản phẩm (trong div classify__product) -->
+                                <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
+                                    <div class="classify__product">
+                                        <div class="classify-product__box"> <!-- chứa các thẻ hình -->
+                                            <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                        </div>
+                                        <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
+                                            <p class="classify-product__title">{{$value->product_name}}</p>
+                                            <p class="classify-product__author">{{$value->product_author}}</p>
+                                            <div class="classify-product__pricebox">
+                                                <span class="classify-pricebox__lastprice">{{$value->product_price}}đ</span>
                                             </div>
                                         </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
+                            </div>
                             @endforeach
                             
                             
@@ -129,7 +123,7 @@
                 <div class="classify">
                     <h2 class="classify__title">
                         <p>Tất cả</p>
-                        <a href="" class="">Xem thêm >></a>
+                        <a href="{{url('/category/')}}" class="">Xem thêm >></a>
                     </h2>
                     <div class="classify__products">
                         <div class="row">
@@ -143,15 +137,12 @@
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
                                                 <img src="{{$value->product_img}}" alt="" class="classify-product__img">
-                                                <div class="classify-product__discount">-15%</div>
                                             </div>
                                             <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
                                                 <p class="classify-product__title">{{$value->product_name}}</p>
                                                 <p class="classify-product__author">{{$value->product_author}}</p>
                                                 <div class="classify-product__pricebox">
-                                                    <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                    <span class="classify-pricebox__originprice">{{$value->product_price}}đ</span>
-                                                    <span class="classify-pricebox__discount">-15%</span>
+                                                    <span class="classify-pricebox__lastprice">{{$value->product_price}}đ</span>
                                                 </div>
                                             </div>
                                         </div>

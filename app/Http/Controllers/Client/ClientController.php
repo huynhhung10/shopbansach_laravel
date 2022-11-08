@@ -29,9 +29,18 @@ class ClientController extends Controller
         ));
     }
 
+    public function viewAllProduct(){
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $productASC6 = Product::orderBy('product_id', 'ASC')->paginate(6);
+        return view('client.selling')->with(compact(
+            'categoryASC',
+            'productASC6',
+        ));
+    }
+
     public function viewOnCategory($category_id){
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
-        $productASC6 = Product::orderBy('product_id', 'ASC')->where('category_id', $category_id)->limit(6)->get();
+        $productASC6 = Product::orderBy('product_id', 'ASC')->where('category_id', $category_id)->paginate(6);
 
         return view('client.selling')->with(compact(
             'categoryASC',
