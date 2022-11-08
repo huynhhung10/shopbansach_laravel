@@ -75,15 +75,17 @@
                             
                         </select>
                         <div class="header-mid__search-group">
-                            <input type="text" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
-                            <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <ul class="header-mid-search__drop">
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                            </ul>
+                            <form action="search" method="GET">
+                                <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
+                                <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <ul class="header-mid-search__drop">
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
 

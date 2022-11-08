@@ -47,6 +47,7 @@ Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
 Route::get('/category/{category_id}', [ClientController::class, 'viewOnCategory']);
 
 Route::get('/category', [ClientController::class, 'viewAllProduct']);
+Route::get('/search', [ClientController::class, 'search']);
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân

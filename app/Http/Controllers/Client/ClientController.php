@@ -32,19 +32,24 @@ class ClientController extends Controller
     public function viewAllProduct(){
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $productASC6 = Product::orderBy('product_id', 'ASC')->paginate(6);
+        $cateName = 'Tất cả';
         return view('client.selling')->with(compact(
             'categoryASC',
             'productASC6',
+            'cateName'
         ));
     }
 
     public function viewOnCategory($category_id){
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $productASC6 = Product::orderBy('product_id', 'ASC')->where('category_id', $category_id)->paginate(6);
-
+        if($category_id != null){
+            $cateName = $categoryASC->where('category_id', $category_id)->first()->category_name;
+        }
         return view('client.selling')->with(compact(
             'categoryASC',
             'productASC6',
+            'cateName'
         ));
     }
 
@@ -55,6 +60,18 @@ class ClientController extends Controller
         return view('client.productDetail')->with(compact(
             'categoryASC',
             'product',
+        ));
+    }
+
+    public function search(){
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $tukhoa = $_GET['tukhoa'];
+        $productASC6 = Product::with('category')->orderBy('product_id', 'DESC')->orderBy('product_id', 'ASC')->where('product_name', 'LIKE', '%'.$tukhoa.'%')->paginate(6);
+        $cateName = $tukhoa;
+        return view('client.selling')->with(compact(
+            'categoryASC',
+            'productASC6',
+            'tukhoa'
         ));
     }
     
