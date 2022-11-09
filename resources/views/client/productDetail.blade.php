@@ -7,17 +7,17 @@
             <div class="row">
                 <div class="col-5">
                     <div class="detail__imgbox">
-                        <img class="detail__img" src="{{('frontend/img/products/bia-sach-hoc-vien-thiet-ke-viettamduc02.jpg')}}" alt="">
+                        <img class="detail__img" src="{{asset($product->product_img)}}" alt="">
                     </div>
                 </div>
                 <div class="col">
                     <div class="detail__info">
-                        <h2 class="detail-info__title">Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long</h2>
+                        <h2 class="detail-info__title">{{$product->product_name}}</h2>
                         <div class="detail-info__box">
                             <span>Tác giả:</span>
-                            <p class="detail-info__author">Hoàng Long</p>
+                            <p class="detail-info__author">{{$product->product_author}}</p>
                         </div>
-                        <h2 class="detail-info__lastprice">102,000 đ</h2>
+                        <h2 class="detail-info__lastprice">{{$product->product_price}} đ</h2>
                         <div class="detail-info__box">
                             <span>Tiết kiệm:</span>
                             <p class="detail-info__discount">18.000 đ (15%)</p>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="detail-info__box">
                             <span>Tình trạng:</span>
-                            <p class="detail-info__status">Sắp có hàng</p>
+                            <p class="detail-info__status">{{$product->product_status}}</p>
                         </div>
 
                         <div class="detail-info__quantitybox">
@@ -50,9 +50,7 @@
                         <div class="detail-info__desc">
                             <span>Mô tả:</span>
                             <p class="detail-info-desc__content">
-                                Có rất là nhiều chữ ở đây nha, Có rất là nhiều chữ ở đây nha, 
-                                Có rất là nhiều chữ ở đây nha, Có rất là nhiều chữ ở đây nha, 
-                                rất là nhiều chữ ở đây nha, rất là nhiều chữ ở đây nha, rất là nhiều chữ ở đây nha
+                                {{$product->product_content}}
                             </p>
                         </div>
 

@@ -9,13 +9,13 @@
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{('./frontend/img/logo.png')}}" class="d-block w-100" alt="...">
+                            <img src="{{('./frontend/img/slider/alo3.jpg')}}" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="{{('./frontend/img/logo.png')}}" class="d-block w-100" alt="...">
+                            <img src="{{('./frontend/img/slider/alo4.jpg')}}" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="{{('./frontend/img/logo.png')}}" class="d-block w-100" alt="...">
+                            <img src="{{('./frontend/img/slider/sach-moi-tu-nguyen.jpg')}}" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -34,98 +34,40 @@
             phân mục (mới nhất, bán chạy)
             muốn phân ra nhiều phân mục thì copy nguyên div row ra nhiều cái
          -->
+
+       
+
         <div class="row">
             <div class="col">
                 <div class="classify">
                     <h2 class="classify__title">
                         <p>Sách mới</p>
-                        <a href="">Xem thêm >></a>
                     </h2>
                     <div class="classify__products">
                         <div class="row">
                             <!-- dùng bootstrap để tự nó chia đề layout ra
                                 mỗi div col-3 chứa 1 sản phẩm
                                 muốn có nhiều sản phẩm thì copy col-3 -->
-                            <div class="col-3">
-                                <!-- 1 sản phẩm (trong div classify__product) -->
-                                <a href="{{URL::to('/pDetail')}}" class="classify__linkproduct">
-                                    <div class="classify__product">
-                                        <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                            <img src="{{('./frontend/img/products/1 (3).jpg')}}" alt="" class="classify-product__img">
-                                            <div class="classify-product__discount">-15%</div>
-                                        </div>
-                                        <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
-                                            <p class="classify-product__title">Sự tích bánh chưng bánh dày</p>
-                                            <p class="classify-product__author">Hoàng Long</p>
-                                            <div class="classify-product__pricebox">
-                                                <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                <span class="classify-pricebox__originprice">100.000đ</span>
-                                                <span class="classify-pricebox__discount">-15%</span>
+                            @foreach ($productASC4 as $key => $value) 
+                                <div class="col-3">
+                                    <!-- 1 sản phẩm (trong div classify__product) -->
+                                    <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
+                                        <div class="classify__product">
+                                            <div class="classify-product__box"> <!-- chứa các thẻ hình -->
+                                                <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                            </div>
+                                            <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
+                                                <p class="classify-product__title">{{$value->product_name}}</p>
+                                                <p class="classify-product__author">{{$value->product_author}}</p>
+                                                <div class="classify-product__pricebox">
+                                                    <span class="classify-pricebox__lastprice">{{$value->product_price}}đ</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-3">
-                                <!-- 1 sản phẩm (trong div classify__product) -->
-                                <a href="{{URL::to('/pDetail')}}" class="classify__linkproduct">
-                                    <div class="classify__product">
-                                        <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                            <img src="{{('./frontend/img/products/1 (3).jpg')}}" alt="" class="classify-product__img">
-                                            <div class="classify-product__discount">-15%</div>
-                                        </div>
-                                        <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
-                                            <p class="classify-product__title">Sự tích bánh chưng bánh dày</p>
-                                            <p class="classify-product__author">Hoàng Long</p>
-                                            <div class="classify-product__pricebox">
-                                                <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                <span class="classify-pricebox__originprice">100.000đ</span>
-                                                <span class="classify-pricebox__discount">-15%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-3">
-                                <!-- 1 sản phẩm (trong div classify__product) -->
-                                <a href="productDetail.html" class="classify__linkproduct">
-                                    <div class="classify__product">
-                                        <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                            <img src="{{('./frontend/img/products/1 (3).jpg')}}" alt="" class="classify-product__img">
-                                            <div class="classify-product__discount">-15%</div>
-                                        </div>
-                                        <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
-                                            <p class="classify-product__title">Sự tích bánh chưng bánh dày</p>
-                                            <p class="classify-product__author">Hoàng Long</p>
-                                            <div class="classify-product__pricebox">
-                                                <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                <span class="classify-pricebox__originprice">100.000đ</span>
-                                                <span class="classify-pricebox__discount">-15%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-3">
-                                <!-- 1 sản phẩm (trong div classify__product) -->
-                                <a href="productDetail.html" class="classify__linkproduct">
-                                    <div class="classify__product">
-                                        <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                            <img src="{{('./frontend/img/products/1 (3).jpg')}}" alt="" class="classify-product__img">
-                                            <div class="classify-product__discount">-15%</div>
-                                        </div>
-                                        <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
-                                            <p class="classify-product__title">Sự tích bánh chưng bánh dày</p>
-                                            <p class="classify-product__author">Hoàng Long</p>
-                                            <div class="classify-product__pricebox">
-                                                <span class="classify-pricebox__lastprice">85.000đ</span>
-                                                <span class="classify-pricebox__originprice">100.000đ</span>
-                                                <span class="classify-pricebox__discount">-15%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                            
                             
                             
                         </div>
@@ -134,6 +76,87 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="classify">
+                    <h2 class="classify__title">
+                        <p>Sách nổi bật</p>
+                    </h2>
+                    <div class="classify__products">
+                        <div class="row">
+                            <!-- dùng bootstrap để tự nó chia đề layout ra
+                                mỗi div col-3 chứa 1 sản phẩm
+                                muốn có nhiều sản phẩm thì copy col-3 -->
+                            @foreach ($productDESC4 as $key => $value) 
+                            <div class="col-3">
+                                <!-- 1 sản phẩm (trong div classify__product) -->
+                                <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
+                                    <div class="classify__product">
+                                        <div class="classify-product__box"> <!-- chứa các thẻ hình -->
+                                            <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                        </div>
+                                        <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
+                                            <p class="classify-product__title">{{$value->product_name}}</p>
+                                            <p class="classify-product__author">{{$value->product_author}}</p>
+                                            <div class="classify-product__pricebox">
+                                                <span class="classify-pricebox__lastprice">{{$value->product_price}}đ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            @endforeach
+                            
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="classify">
+                    <h2 class="classify__title">
+                        <p>Tất cả</p>
+                        <a href="{{url('/category/')}}" class="">Xem thêm >></a>
+                    </h2>
+                    <div class="classify__products">
+                        <div class="row">
+                            <!-- dùng bootstrap để tự nó chia đề layout ra
+                                mỗi div col-3 chứa 1 sản phẩm
+                                muốn có nhiều sản phẩm thì copy col-3 -->
+                            @foreach ($productASC8 as $key => $value) 
+                                <div class="col-3">
+                                    <!-- 1 sản phẩm (trong div classify__product) -->
+                                    <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
+                                        <div class="classify__product">
+                                            <div class="classify-product__box"> <!-- chứa các thẻ hình -->
+                                                <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                            </div>
+                                            <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
+                                                <p class="classify-product__title">{{$value->product_name}}</p>
+                                                <p class="classify-product__author">{{$value->product_author}}</p>
+                                                <div class="classify-product__pricebox">
+                                                    <span class="classify-pricebox__lastprice">{{$value->product_price}}đ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+         
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+       
 
     </div>
 </div>

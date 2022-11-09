@@ -9,13 +9,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ClientAccountController;
-use App\Http\Controllers\ClientCartController;
-use App\Http\Controllers\ClientPaymentController;
-use App\Http\Controllers\ClientProductDetailController;
-use App\Http\Controllers\ClientSellingController;
-use App\Http\Controllers\ClientSigningController;
+
+//Client Controller
+use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\ClientAccountController;
+use App\Http\Controllers\Client\ClientCartController;
+use App\Http\Controllers\Client\ClientPaymentController;
+use App\Http\Controllers\Client\ClientProductDetailController;
+use App\Http\Controllers\Client\ClientSellingController;
+use App\Http\Controllers\Client\ClientSigningController;
 
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
@@ -39,10 +41,15 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [ClientController::class, 'index']);
 
 //Chi tiết sản phẩm
-Route::get('/pDetail', [ClientProductDetailController::class, 'index']);
+Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
 
 //Hiển thị những sản phẩm theo danh mục
-Route::get('/selling', [ClientSellingController::class, 'index']);
+Route::get('/category/{category_id}', [ClientController::class, 'viewOnCategory']);
+
+Route::get('/category', [ClientController::class, 'viewAllProduct']);
+Route::get('/search', [ClientController::class, 'search']);
+Route::get('/category/search', [ClientController::class, 'search']);
+// Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân
 Route::get('/accountInfo', [ClientAccountController::class, 'index']);
@@ -135,3 +142,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // //         })->name('logout');
 // //     });
 // });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

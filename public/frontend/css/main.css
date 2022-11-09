@@ -375,6 +375,7 @@
     border-radius: 3px;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
     z-index: -1;
 }
@@ -387,6 +388,20 @@
     padding: 20px;
     width: 50px;
     height: 50px;
+}
+#carouselExampleControls{
+    width: 100%;
+}
+.carousel-inner{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.carousel-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 
@@ -511,4 +526,51 @@
 
 .form-invalid input:focus{
     outline: none;
+}
+
+
+.paging__container{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.paging__box{
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary-yellow);
+    color: var(--text-color);
+    border-radius: 1px;
+    margin-right: 4px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.paging__box a{
+    text-decoration: none;
+    color: var(--text-color);
+    width: 100%;
+    text-align: center;
+}
+.paging__lead{
+    font-size: 2rem;
+}
+.paging__box a:hover{
+    text-decoration: none;
+    color: var(--text-color);
+}
+.paging__box.activated{
+    background-color: var(--primary-yellow);
+    color: white;
+}
+.paging__box.disabled{
+    --color: rgb(226, 226, 226);
+    background-color: var(--color);
+    border: 1px solid var(--color);
+    color: rgb(99, 99, 99);
 }

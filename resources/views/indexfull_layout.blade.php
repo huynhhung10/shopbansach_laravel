@@ -7,15 +7,15 @@
     <title>BookGarden | Mua sách Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="{{('frontend/css/base.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/main.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/sell.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/detail.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/historyPayment.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/payment.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/cart.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/signInSignUp.css')}}">
-    <link rel="stylesheet" href="{{('frontend/css/accountInfo.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/base.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/sell.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/detail.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/historyPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/payment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/cart.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/signInSignUp.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/accountInfo.css')}}">
     
     <link rel="stylesheet" href="{{ asset('frontend/css/all.css') }}">
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />   --}}
@@ -86,7 +86,7 @@
                 <div class="grid">
                     <!-- logo -->
                     <a href="{{URL::to('/')}}" class="header-mid__logo-link">
-                        <img src="{{('frontend/img/logo1.png')}}" alt="" class="header-mid__logo">
+                        <img src="{{asset('frontend/img/logo1.png')}}" alt="" class="header-mid__logo">
                     </a>
 
                     <!-- search -->
@@ -94,22 +94,23 @@
                         
                         <select class="header-mid__select header-mid__search-box__input" name="searchSelect" id="searchSelect">
                             <option value="1" class="header-mid__option">Tất cả</option>
-                            <option value="2" class="header-mid__option">Sách - Truyện tranh</option>
-                            <option value="3" class="header-mid__option">CD - DVD</option>
-                            <option value="4" class="header-mid__option">Quà tặng</option>
-                            <option value="5" class="header-mid__option">Dụng cụ vẽ - VPP</option>
-                            <option value="6" class="header-mid__option">Vật dụng gia đình</option>
+                            @foreach ($categoryASC as $key => $value) 
+                                <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
+                            @endforeach
+                            
                         </select>
                         <div class="header-mid__search-group">
-                            <input type="text" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
-                            <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <ul class="header-mid-search__drop">
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                            </ul>
+                            <form action="search" method="GET">
+                                <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
+                                <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <ul class="header-mid-search__drop">
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
 
@@ -151,127 +152,42 @@
                                 <div class="header-category__dropdown">
                                     <ul class="header-dropdown__list">
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
-                                        <li class="header-dropdown__item">
-                                            <a href="{{URL::to('/selling')}}" class="header-dropdown__link">
-                                                <div class="header-dropdown__link-box">
-                                                    <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
-                                                    <span class="header-dropdown__link-box__title">
-                                                        Sách nè
-                                                    </span>
-                                                </div>
-                                                <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
-                                            </a>
-                                            <!-- dropdown (level 2: ngang) -->
-                                            <div class="header-category__dropdown second">
-                                                <div class="header-drop__second">
-                                                    <ul class="header-drop-second__list">
-                                                        <!-- 1 loại của mỗi loại danh mục nằm trong thẻ li -->
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-    
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-    
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- end dropdown level 2 -->
-                                        </li>    
-                                        <li class="header-dropdown__item">
-                                            <a href="productDetail.html" class="header-dropdown__link">
-                                                <div class="header-dropdown__link-box">
-                                                    <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
-                                                    <span class="header-dropdown__link-box__title">
-                                                        Truyện nè
-                                                    </span>
-                                                </div>
-                                                <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
-                                            </a>
-                                        </li>   
-                                        <li class="header-dropdown__item">
-                                            <a href="" class="header-dropdown__link">
-                                                <div class="header-dropdown__link-box">
-                                                    <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
-                                                    <span class="header-dropdown__link-box__title">
-                                                        Cái gì đó nè
-                                                    </span>
-                                                </div>
-                                                <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
-                                            </a>
-                                            <!-- dropdown level 2 -->
-                                            <div class="header-category__dropdown second">
-                                                <div class="header-drop__second">
-                                                    <ul class="header-drop-second__list">
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-                                                        <li class="header-drop-second__item">
-                                                            <a href="#" class="header-drop-second__link">alo alo</a>
-                                                        </li>
-    
-                                                    </ul>
-                                                    
-                                                </div>
+                                        @foreach ($categoryASC as $key => $value)
+                                            <li class="header-dropdown__item">
+                                                <a href="{{url('category/' . $value->category_id)}}" class="header-dropdown__link">
+                                                    <div class="header-dropdown__link-box">
+                                                        <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
+                                                        <span class="header-dropdown__link-box__title">
+                                                            {{$value->category_name}}
+                                                        </span>
+                                                    </div>
+                                                    <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
+                                                </a>
+                                               
+                                            </li>   
+                                        @endforeach 
+                                        
+                                        
+                                        <!-- dropdown level 2 -->
+                                        {{-- <div class="header-category__dropdown second">
+                                            <div class="header-drop__second">
+                                                <ul class="header-drop-second__list">
+                                                    <li class="header-drop-second__item">
+                                                        <a href="#" class="header-drop-second__link">alo 123123123213123alo</a>
+                                                    </li>
+                                                    <li class="header-drop-second__item">
+                                                        <a href="#" class="header-drop-second__link">alo alo</a>
+                                                    </li>
+                                                    <li class="header-drop-second__item">
+                                                        <a href="#" class="header-drop-second__link">alo alo</a>
+                                                    </li>
+
+                                                </ul>
                                                 
                                             </div>
-                                            <!-- end dropdown level 2 -->
-                                        </li> 
-                                                        
+                                            
+                                        </div> --}}
+                                        <!-- end dropdown level 2 -->
                                     </ul>
                                 </div>
                             </div>

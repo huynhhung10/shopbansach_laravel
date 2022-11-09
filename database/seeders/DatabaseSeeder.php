@@ -32,15 +32,15 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        DB::table('tbl_user')->insert([
-            [
-                'user_name' => 'User',
-                'email' => 'user@gmail.com',
-                'password' => bcrypt('1234'),
-                'user_phone' => '070123456',
-            ]
-        ]);
-        // =================================== TẠO DỮ LIỆU CHO BRAND ============================================== 
+        // DB::table('tbl_user')->insert([
+        //     [
+        //         'user_name' => 'User',
+        //         'email' => 'user@gmail.com',
+        //         'password' => bcrypt('1234'),
+        //         'user_phone' => '070123456',
+        //     ]
+        // ]);
+        // // =================================== TẠO DỮ LIỆU CHO BRAND ============================================== 
 
         // DB::table('tbl_brand')->insert([
         //     [
