@@ -84,5 +84,22 @@ class ClientController extends Controller
             'cateName'
         ));
     }
+
+
+    public function viewOnBrand($brand_id){
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('category_id', $brand_id)->paginate(6);
+        $cateName = 'search';
+        if($brand_id != 'search'){
+            $cateName = $categoryASC->where('category_id', $brand_id)->first()->category_name;
+            return view('client.selling')->with(compact(
+                'categoryASC',
+                'productASC6',
+                'cateName'
+            ));
+        }
+        return $this->search();
+        
+    }
     
 }

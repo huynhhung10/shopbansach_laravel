@@ -51,6 +51,10 @@ Route::get('/search', [ClientController::class, 'search']);
 Route::get('/category/search', [ClientController::class, 'search']);
 Route::get('/category/{category_id}/search', [ClientController::class, 'search']);
 
+Route::get('/brand', [ClientController::class, 'viewAllProduct']);
+Route::get('/brand/search', [ClientController::class, 'search']);
+Route::get('/brand/{category_id}/search', [ClientController::class, 'search']);
+
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân

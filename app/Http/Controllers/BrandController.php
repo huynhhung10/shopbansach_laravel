@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Brand;
+use App\Models\Product;
 
 class BrandController extends Controller
 {
@@ -23,7 +25,7 @@ class BrandController extends Controller
             ]
         );
 
-        $brand = new Category();
+        $brand = new Brand();
         $brand->brandName = $data['brand_name'];
         $brand->brandContent = $data['brand_content'];
         $brand->brandLogo = $data['brand_logo'];

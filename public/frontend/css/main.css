@@ -226,6 +226,10 @@
     background-color: white;
 }
 
+.header-bottom__container{
+    display: flex;
+}
+
 .header__category{
     position: relative;
     width: 100%;

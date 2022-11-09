@@ -140,7 +140,7 @@
                 <div class="grid">
                     <!-- Xài bootstrap chắc biết =)) -->
                     <div class="row">
-                        <div class="col-3">
+                        <div class="header-bottom__container col-5">
                             <!-- danh mục header -->
                             <div class="header__category">
                                 <i class="header-category__icon fa-solid fa-bars"></i>
@@ -189,6 +189,38 @@
                                         </div> --}}
                                         <!-- end dropdown level 2 -->
                                     </ul>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="header__category">
+                                <i class="header-category__icon fa-solid fa-bars"></i>
+                                <span class="header-category__title">
+                                    Nhà xuất bản
+                                </span>
+                                <i class="header-category__icon fa-sharp fa-solid fa-caret-down"></i>
+                                <!-- phần drop xuống của danh mục (level 1: dọc) -->
+                                <div class="header-category__dropdown">
+                                    <ul class="header-dropdown__list">
+                                        <!-- 1 loại danh mục nằm trong thẻ li -->
+                                        @foreach ($categoryASC as $key => $value)
+                                            <li class="header-dropdown__item">
+                                                <a href="{{url('category/' . $value->category_id)}}" class="header-dropdown__link">
+                                                    <div class="header-dropdown__link-box">
+                                                        <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
+                                                        <span class="header-dropdown__link-box__title">
+                                                            {{$value->category_name}}
+                                                        </span>
+                                                    </div>
+                                                    <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
+                                                </a>
+                                               
+                                            </li>   
+                                        @endforeach 
+                                        
+                                        
+                                    </ul>
+                                    
                                 </div>
                             </div>
                         </div>
