@@ -24,7 +24,8 @@
 
                     <div class="col-9">
                         <div class="classify">
-                            <h2 class="classify__title">Sách mới</h2>
+                            
+                            <h2 class="classify__title">{{$cateName}}</h2>
                             <div class="classify__products">
                                 <div class="row">
                                     @php

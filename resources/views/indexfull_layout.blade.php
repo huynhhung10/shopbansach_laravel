@@ -48,10 +48,35 @@
     
                     <ul class="navbar__list">
                         <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
-                        <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">HoangLong</a></li>
-                        <li class="navbar__item"><a href="#" class="navbar__link">Đăng xuất</a></li>
+                        
+
+
+
+                        
+                        
+
+
+                        <?php
+                        $customer_id = Session::get('customer_id');
+                        if($customer_id!=NULL){ 
+                      ?>
+                       {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
+                       <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
+                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">profile</a></li>
+                     
+                     <?php
+                        }else{
+                      ?>
+                        {{-- <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li> --}}
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng nhập</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng ký</a></li>
+                      <?php 
+                        }
+                      ?>
+
+
+                      
+                        
                     </ul>
                 </div>
             </nav>
@@ -75,15 +100,17 @@
                             
                         </select>
                         <div class="header-mid__search-group">
-                            <input type="text" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
-                            <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <ul class="header-mid-search__drop">
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                            </ul>
+                            <form action="search" method="GET">
+                                <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
+                                <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <ul class="header-mid-search__drop">
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
 

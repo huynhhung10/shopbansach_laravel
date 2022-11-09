@@ -47,6 +47,8 @@ Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
 Route::get('/category/{category_id}', [ClientController::class, 'viewOnCategory']);
 
 Route::get('/category', [ClientController::class, 'viewAllProduct']);
+Route::get('/search', [ClientController::class, 'search']);
+Route::get('/category/search', [ClientController::class, 'search']);
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân
@@ -63,6 +65,9 @@ Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 
 //Đăng nhập / đăng ký
 Route::get('/signInSignUp', [ClientSigningController::class, 'index']);
+Route::post('/registercustomer', [ClientSigningController::class, 'registercustomer'])->name('checkregis');
+Route::post('/login-customer', [ClientSigningController::class, 'logincustomer']);
+Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
 
 //Thông báo thanh toán thành công
 Route::get('/successpayment', [ClientPaymentController::class, 'success']);
@@ -100,6 +105,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         //QL khách hàng
         Route::get('/all-customer', [CustomerController::class, 'index']);
         Route::get('/add-customer', [CustomerController::class, 'add_customer']);
+        Route::post('/addcustomer', [CustomerController::class, 'add_customer_button'])->name('checkaddcustomer');
+        // Route::get('/edit-customer', [CustomerController::class, 'edit_customer']);
+        Route::get('/edit-customer/{customer_id}', [CustomerController::class, 'geteditcustomer']);
+        Route::post('posteditcustomer', [CustomerController::class, 'posteditcustomer']);
+        Route::get('/delete-customer/{customer_id}', [CustomerController::class, 'deletecustomer']);
+        Route::get('/change-status-customer/customer_id={customer_id}&status={status}', [CustomerController::class, 'changeStatus']);
 
         //QL user
         Route::get('/all-user', [UserController::class, 'index']);
