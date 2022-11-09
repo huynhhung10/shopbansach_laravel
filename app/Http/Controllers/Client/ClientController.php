@@ -43,7 +43,8 @@ class ClientController extends Controller
     public function viewOnCategory($category_id){
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $productASC6 = Product::orderBy('product_id', 'ASC')->where('category_id', $category_id)->paginate(6);
-        if($category_id != null){
+        $cateName = 'search';
+        if($category_id != 'search'){
             $cateName = $categoryASC->where('category_id', $category_id)->first()->category_name;
         }
         return view('client.selling')->with(compact(
@@ -71,7 +72,8 @@ class ClientController extends Controller
         return view('client.selling')->with(compact(
             'categoryASC',
             'productASC6',
-            'tukhoa'
+            'tukhoa',
+            'cateName'
         ));
     }
     
