@@ -48,10 +48,35 @@
     
                     <ul class="navbar__list">
                         <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
-                        <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">HoangLong</a></li>
-                        <li class="navbar__item"><a href="#" class="navbar__link">Đăng xuất</a></li>
+                        
+
+
+
+                        
+                        
+
+
+                        <?php
+                        $customer_id = Session::get('customer_id');
+                        if($customer_id!=NULL){ 
+                      ?>
+                       {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
+                       <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
+                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">profile</a></li>
+                     
+                     <?php
+                        }else{
+                      ?>
+                        {{-- <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li> --}}
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng nhập</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng ký</a></li>
+                      <?php 
+                        }
+                      ?>
+
+
+                      
+                        
                     </ul>
                 </div>
             </nav>

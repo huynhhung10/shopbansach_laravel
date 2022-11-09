@@ -35,8 +35,12 @@
     <meta name="msapplication-TileImage" content="{{asset('backend/assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendors styles-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('backend/vendors/simplebar/css/simplebar.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/vendors/simplebar.css')}}">
+    <link href="{{asset('backend/css/toastr.css')}}" rel="stylesheet">
+    <script src="{{asset('backend/js/toastr.min.js')}}"></script>
+
     <!-- Main styles for this application-->
     <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
     <!-- We use those styles to show code examples, you should remove them in your application.-->

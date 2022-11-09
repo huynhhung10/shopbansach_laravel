@@ -15,10 +15,11 @@ class CreateTblCustomerTable extends Migration
     {
         Schema::create('tbl_customer', function (Blueprint $table) {
             $table->Increments('customer_id');
+            $table->string('customer_avatar');
             $table->string('customer_name');
             $table->string('customer_username');
-            $table->string('customer_email');
-            $table->string('customer_password');
+            $table->string('email');
+            $table->string('password');
             $table->string('customer_phone');
             $table->boolean('status')->default(false);
             $table->rememberToken();
