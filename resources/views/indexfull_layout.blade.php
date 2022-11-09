@@ -67,26 +67,26 @@
                     <!-- search -->
                     <div class="header-mid__search-box">
                         
-                        <select class="header-mid__select header-mid__search-box__input" name="searchSelect" id="searchSelect">
-                            <option value="1" class="header-mid__option">Tất cả</option>
-                            @foreach ($categoryASC as $key => $value) 
-                                <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
-                            @endforeach
-                            
-                        </select>
-                        <div class="header-mid__search-group">
-                            <form action="search" method="GET">
-                                <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
-                                <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                <ul class="header-mid-search__drop">
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                </ul>
-                            </form>
-                        </div>
+                        <form class="header-mid__search-box" action="search" method="GET">
+                            <select class="header-mid__select header-mid__search-box__input" name="search-option" id="searchSelect">
+                                <option value="0" class="header-mid__option">Tất cả</option>
+                                @foreach ($categoryASC as $key => $value) 
+                                    <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
+                                @endforeach      
+                            </select>
+                            <div class="header-mid__search-group">
+                                    <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
+                                    <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    {{-- <ul class="header-mid-search__drop">
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    </ul> --}}
+                            </div>
+                        </form>
+
                     </div>
 
                     <!-- Div chứa thông tin, nút -->
