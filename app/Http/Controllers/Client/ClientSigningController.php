@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
+
 use Illuminate\Http\Request;
 
 session_start();
