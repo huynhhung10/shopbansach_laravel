@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
+use DB;
+use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
 
