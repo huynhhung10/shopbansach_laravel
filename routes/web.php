@@ -52,10 +52,21 @@ Route::get('/category/search', [ClientController::class, 'search']);
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân
-Route::get('/accountInfo', [ClientAccountController::class, 'index']);
+Route::get('/accountInfo/{customer_id}', [ClientAccountController::class, 'index']);
+Route::get('/savechange', [ClientAccountController::class, 'savechange']);
+
 
 //Giỏ hàng
 Route::get('/cart', [ClientCartController::class, 'index']);
+Route::post('/update-cart-quantity', [ClientCartController::class, 'update_cart_quantity']);
+// Route::post('/update-cart', [ClientCartController::class], 'update_cart');
+Route::post('/save-cart', [ClientCartController::class, 'save_cart']);
+// Route::post('/add-cart-ajax', [ClientCartController::class], 'add_cart_ajax');
+Route::get('/show-cart', [ClientCartController::class, 'show_cart']);
+// Route::get('/gio-hang', [ClientCartController::class], 'gio_hang');
+Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_cart']);
+// Route::get('/del-product/{session_id}', [ClientCartController::class], 'delete_product');
+// Route::get('/del-all-product', [ClientCartController::class], 'delete_all_product');
 
 //Thanh toán
 Route::get('/payment', [ClientPaymentController::class, 'index']);
@@ -73,7 +84,7 @@ Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer'
 Route::get('/successpayment', [ClientPaymentController::class, 'success']);
 
 //Đổi mật khẩu
-Route::get('/accountPasswordChange', [ClientAccountController::class, 'passwordChange']);
+Route::get('/accountPasswordChange/{customer_id}', [ClientAccountController::class, 'passwordChange']);
 
 
 // BackEnd
@@ -111,6 +122,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('posteditcustomer', [CustomerController::class, 'posteditcustomer']);
         Route::get('/delete-customer/{customer_id}', [CustomerController::class, 'deletecustomer']);
         Route::get('/change-status-customer/customer_id={customer_id}&status={status}', [CustomerController::class, 'changeStatus']);
+        Route::get('/findcustomer', [CustomerController::class, 'findcustomer'])->name('web.findcustomer');
 
         //QL user
         Route::get('/all-user', [UserController::class, 'index']);

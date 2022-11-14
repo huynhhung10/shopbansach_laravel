@@ -37,7 +37,7 @@ class ClientSigningController extends Controller
             'customer_name' => $request->customer_name,
             'customer_username' => $request->customer_username,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'customer_phone' => $request->customer_phone
 
 
@@ -73,6 +73,7 @@ class ClientSigningController extends Controller
         if ($result) {
 
             Session::put('customer_id', $result->customer_id);
+            Session::put('customer_name', $result->customer_name);
             return Redirect::to('/');
         } else {
             return back()->with('error', 'email hoặc password sai');

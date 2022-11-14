@@ -12,6 +12,7 @@
             </div>
             @endif
 
+            
             <div class="toast" data-autohide="false">
               <div class="toast-header">
                   <strong class="mr-auto text-primary">Success</strong>
@@ -31,10 +32,18 @@
             <div class="card-header"><strong>Danh sách</strong><span class="small ms-1">Khách hàng</span></div>
             <div class="card-body">
             <a href="{{URL::to('/admin/add-customer')}}" class="btn btn-primary active" aria-pressed="true" style="background-color: green; float:right; border: black">Thêm khách hàng</a>
-            <div class="col-md-4">  
-                <input type="search" name="search"  class="form-control" id="inputZip" placeholder="Tìm kiếm">
+            <form action="{{ route('admin.web.findcustomer') }}" method="GET">
+              {{ csrf_field() }}
+            {{-- <div class="col-md-4">   --}}
+                {{-- <input type="search" name="search_query"  class="form-control" id="inputZip" placeholder="Tìm kiếm" value="{{ request()->input('search_query') }}"><button type="submit" class="btn btn-primary">Search</button> --}}
+            {{-- </div> --}}
+            <div class="input-group mb-3" style="width: 450px">
+              <input type="search" name="search_query" class="form-control" placeholder="Tìm kiếm" >
+              <button class="btn btn-outline-secondary" type = "submit" style="background-color:#5DADE2;color:black" id="button-addon2">Search</button>
             </div>
             {{-- value="{{$search}}" --}}
+            
+            </form>
               <div class="example">
              
                 <div class="tab-content rounded-bottom">
@@ -76,7 +85,7 @@
                           <td>
                             <a href="{{URL::to('/admin/edit-customer')}}/{{$customer->customer_id}}" class="btn btn-primary active"  aria-pressed="true" style="background-color: #5DADE2;border: black ">sửa</a>
                             |
-                            <a href="{{URL::to('/admin/delete-customer')}}/{{$customer->customer_id}}" class="btn btn-primary active" role="button"  aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
+                            <a href="{{URL::to('/admin/delete-customer')}}/{{$customer->customer_id}}" data-toggle="tooltip"class="btn btn-danger" role="button"  aria-pressed="true" style="; border: black">xóa</a>
                           </td>
                         </tr>
                         @endforeach
@@ -95,13 +104,15 @@
           </div>
           <nav aria-label="Page navigation example" style="float:right">
             <div>
-                {{$customers->links('pagination::bootstrap-4')}}
+                {{$customers->links()}}
             </div>
         </nav>
           
         </div>
         
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
 
       function changeStatus(customer_id){
@@ -130,6 +141,24 @@
               }
           });
       }
-  </script>
-    
+
+
+
+  $('.btn-danger').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+  
+</script>
+   
 @endsection

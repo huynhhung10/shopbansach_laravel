@@ -58,11 +58,13 @@
 
                         <?php
                         $customer_id = Session::get('customer_id');
-                        if($customer_id!=NULL){ 
+                        $customer_name = Session::get('customer_name');
+                        $customer_username = Session::get('customer_username');
+                        if($customer_id!=NULL&&$customer_name!=NULL){ 
                       ?>
                        {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
                        <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
-                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">profile</a></li>
+                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}/<?php echo $customer_id?>" class="navbar__link"><?php echo $customer_name?></a></li>
                      
                      <?php
                         }else{
