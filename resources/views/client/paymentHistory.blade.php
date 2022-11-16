@@ -1,6 +1,11 @@
 @extends('indexfull_layout')
 @section('client_content')
-
+<?php
+                        $customer_id = Session::get('customer_id');
+                        $customer_name = Session::get('customer_name');
+                        $customer_username = Session::get('customer_username');
+                        
+                      ?>
         <div class="app__container">
             <div class="grid">
                 <div class="row">
@@ -10,7 +15,7 @@
                             <ul class="profile-sidebar__list">
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-solid fa-user"></i>
-                                    <a href="{{URL::to('/accountInfo')}}" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="profile-sidebar__link">
                                         Thông tin tài khoản
                                     </a>
                                 </li>

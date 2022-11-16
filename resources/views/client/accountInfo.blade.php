@@ -2,6 +2,12 @@
 @section('client_content')
 
         <div class="app__container">
+            <?php
+                        $customer_id = Session::get('customer_id');
+                        $customer_name = Session::get('customer_name');
+                        $customer_username = Session::get('customer_username');
+                        
+                      ?>
             <div class="grid">
                 <div class="row">
                     <div class="col-3">
@@ -10,7 +16,7 @@
                             <ul class="profile-sidebar__list">
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-solid fa-user"></i>
-                                    <a href="{{URL::to('/accountInfo')}}" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="profile-sidebar__link">
                                         Thông tin tài khoản
                                     </a>
                                 </li>
@@ -27,27 +33,31 @@
                     <div class="col-9">
                         <div class="container__account">
                             <h2 class="account__title">Hồ sơ của tôi</h2>
-                            <form action="" class="account__form">
+                            
+
+                            <form action="{{URL::to('/savechange')}}" class="account__form">
+                                @csrf
                                 <div class="account__info">
+                                    <input type="hidden" value="{{$customer->customer_id}}" name="customer_id">
                                     <div class="account-info__group">
                                         <label for="username" class="account-info__label">Tên đăng nhập</label>
-                                        <input id="username" name="username" type="text" class="account-info__input" value="hoanglong1234">
+                                        <input id="username" name="customer_username" type="text" class="account-info__input" value="{{$customer->customer_username}}">
                                     </div>
                                     <div class="account-info__group">
                                         <label for="fullname" class="account-info__label">Tên</label>
-                                        <input id="fullname" name="fullname" type="text" class="account-info__input" value="Châu Hoàng Long">
+                                        <input id="fullname" name="customer_name" type="text" class="account-info__input" value="{{$customer->customer_name}}">
                                     </div>
                                     <div class="account-info__group">
                                         <label for="email" class="account-info__label">Email</label>
-                                        <input id="email" name="email" type="email" class="account-info__input" value="hoanglong1234@gmail.com">
+                                        <input id="email" name="email" type="email" class="account-info__input" value="{{$customer->email}}">
                                     </div>
                                     <div class="account-info__group">
                                         <label for="phone" class="account-info__label">Số điện thoại</label>
-                                        <input id="phone" name="phone" type="text" class="account-info__input" value="*********12">
+                                        <input id="phone" name="customer_phone" type="text" class="account-info__input" value="{{$customer->customer_phone}}">
                                     </div>
 
                                     <div class="account-info__group">
-                                        <label for="phone" class="account-info__label"><a href="{{URL::to('/accountPasswordChange')}}" class="account-info__link">Đổi mật khẩu</a></label>
+                                        <label for="phone" class="account-info__label"><a href="{{URL::to('/accountPasswordChange')}}/<?php echo $customer_id?>" class="account-info__link">Đổi mật khẩu</a></label>
                                         
                                     </div>
                                     <div class="account-info__group">
@@ -59,10 +69,9 @@
                                 </div>
                                 <div class="account__avatar">
                                     <div class="account-avatar__avtbox">
-                                        <img src="{{('frontend/img/account/avt.jpg')}}" alt="" class="account-avatar__img">
-                                        <input type="file" aria-label="File browser example" class="account-avatar__input" >
-                                        <p class="account-avatar__p">Dung lượng file tối đa 1 MB</p>
-                                        <p class="account-avatar__p">Đinh dạng JPEG, PNG</p>
+                                        <img class = "avatar" style="vertical-align: middle;width: 160px;height: 160px; border-radius: 50%;"src="{{asset('/backend/assets/img/avatars/')}}/{{$customer->customer_avatar}}" alt="{{$customer->customer_avatar}}">
+                                        
+                                        <input type="file" name="avatar" value="{{$customer->customer_avatar}}" aria-label="File browser example" class="account-avatar__input" >   
 
                                     </div>
                                 </div>
@@ -74,3 +83,23 @@
             </div>
         </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+
+  $('.btn-danger').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Bạn có muốn lưu thay đổi?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+  
+</script>

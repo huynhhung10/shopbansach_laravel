@@ -35,6 +35,7 @@
     <meta name="msapplication-TileImage" content="{{asset('backend/assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendors styles-->
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('backend/vendors/simplebar/css/simplebar.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/vendors/simplebar.css')}}">
