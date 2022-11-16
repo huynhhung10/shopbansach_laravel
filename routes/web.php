@@ -65,7 +65,7 @@ Route::get('/cart', [ClientCartController::class, 'index']);
 
 //Thanh toán
 Route::get('/payment', [ClientPaymentController::class, 'index']);
-
+Route::get('/checkpayment', [ClientPaymentController::class, 'check']);
 //Lịch sử thanh toán
 Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 

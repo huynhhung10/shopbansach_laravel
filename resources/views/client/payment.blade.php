@@ -4,7 +4,7 @@
 
         <div class="app__container">            
         
-            <form id="form_payment" action="successpayment" method="POST" class="form__pay">
+            <form id="form_payment" action="checkpayment" method="GET" class="form__pay">
                 <h3 class="pay__heading">Thông tin giao hàng</h3>
 
                 <div class="pay__group">
@@ -32,9 +32,9 @@
                     <span class="pay-group__message"></span>
                 </div>
 
-                <a href="{{URL::to('/successpayment')}}" class="pay__buttonlink">
+                {{-- <a href="{{URL::to('/successpayment')}}" class="pay__buttonlink"> --}}
                     <button class="pay__button">Giao đến địa chỉ này</button>
-                </a>
+                {{-- </a> --}}
 
             </form>
         </div>

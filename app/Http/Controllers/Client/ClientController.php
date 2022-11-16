@@ -71,11 +71,12 @@ class ClientController extends Controller
         $tukhoa = $_GET['tukhoa'];
         $option = $_GET['search-option'];
         if($option == 0){
-            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('product_name', 'LIKE', '%'.$tukhoa.'%')->paginate(6);
+            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('product_name', 'LIKE', '%'.$tukhoa.'%')->take(6)->get();
         }else{
-            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('category_id', $option)->where('product_name', 'LIKE', '%'.$tukhoa.'%')->paginate(6);
+            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('category_id', $option)->where('product_name', 'LIKE', '%'.$tukhoa.'%')->take(6)->get();
         }
         $cateName = $tukhoa;
+
 
         return view('client.selling')->with(compact(
             'categoryASC',
