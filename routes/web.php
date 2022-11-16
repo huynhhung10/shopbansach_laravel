@@ -36,9 +36,10 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Auth::routes();
 
 //frontend
-Route::get('/', [ClientController::class, 'index']);
+
 
 //Chi tiết sản phẩm
 Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
@@ -58,10 +59,9 @@ Route::get('/brand/{category_id}/search', [ClientController::class, 'search']);
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân
-Route::get('/accountInfo/{customer_id}', [ClientAccountController::class, 'index']);
-Route::get('/savechange', [ClientAccountController::class, 'savechange']);
 
 
+Route::get('/', [ClientController::class, 'index'])->name('/');
 //Giỏ hàng
 Route::get('/cart', [ClientCartController::class, 'index']);
 Route::post('/update-cart-quantity', [ClientCartController::class, 'update_cart_quantity']);
@@ -81,21 +81,32 @@ Route::get('/payment', [ClientPaymentController::class, 'index']);
 Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 
 //Đăng nhập / đăng ký
-Route::get('/signInSignUp', [ClientSigningController::class, 'index']);
-Route::post('/registercustomer', [ClientSigningController::class, 'registercustomer'])->name('checkregis');
-Route::post('/login-customer', [ClientSigningController::class, 'logincustomer']);
-Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
+
+
 
 //Thông báo thanh toán thành công
 Route::get('/successpayment', [ClientPaymentController::class, 'success']);
 
 //Đổi mật khẩu
-Route::get('/accountPasswordChange/{customer_id}', [ClientAccountController::class, 'passwordChange']);
+
+
+Route::middleware(['guest:customer'])->group(function () {
+
+    Route::get('/signInSignUp', [ClientSigningController::class, 'index'])->name('loginregis');
+    Route::post('/registercustomer', [ClientSigningController::class, 'registercustomer'])->name('checkregis');
+    Route::post('/login-customer', [ClientSigningController::class, 'logincustomer']);
+});
+Route::middleware(['auth:customer'])->group(function () {
+
+    Route::get('/accountPasswordChange/{customer_id}', [ClientAccountController::class, 'passwordChange']);
+    Route::get('/accountInfo/{customer_id}', [ClientAccountController::class, 'index']);
+    Route::get('/savechange', [ClientAccountController::class, 'savechange']);
+    Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
+});
 
 
 // BackEnd
 
-Auth::routes();
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['guest:admin'])->group(function () {

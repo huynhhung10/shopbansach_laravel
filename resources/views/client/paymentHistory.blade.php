@@ -15,7 +15,7 @@
                             <ul class="profile-sidebar__list">
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-solid fa-user"></i>
-                                    <a href="{{URL::to('/accountInfo')}}/<?php echo $customer_id?>" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="profile-sidebar__link">
                                         Thông tin tài khoản
                                     </a>
                                 </li>

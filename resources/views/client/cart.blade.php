@@ -108,10 +108,21 @@
                                     <p class="cart-prices__after">{{Cart::total().' '.'vnđ'}}</p>
                                 </div>
                             </div>
-
+                            <?php
+                            if(Session::get('cart')!=NULL){
+                            ?>
                             <div class="cart__box">
                                 <a href="{{URL::to('/payment')}}"><button class="cart__button">Mua hàng</button></a>
                             </div>
+                            <?php
+                            }else{
+                            ?>
+                            <div class="cart__box">
+                               
+                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,10 @@ return [
         'driver' => 'eloquent',
         'model' => App\Models\Admin::class,
     ],
+    'customer' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Customer::class,
+    ],
     'user' => [
         'driver' => 'eloquent',
         'model' => App\Models\User::class,
@@ -65,6 +69,10 @@ return [
             'driver' => 'session',
             'provider' => 'tbl_user',
         ],
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'tbl_customer',
+        ],
 
     ],
 
@@ -104,6 +112,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'tbl_customer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
+
+        ],
     ],
 
     /*
@@ -138,6 +151,11 @@ return [
         'tbl_admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+
+        ],
+        'tbl_customer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
 
         ],
     ],

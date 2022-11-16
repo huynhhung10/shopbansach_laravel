@@ -21,6 +21,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        DB::table('tbl_customer')->insert([
+            [
+                'customer_avatar' => '197091314_1057977058290130_1264272207967432925_n.jpg',
+                'customer_name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'customer_username' => 'hunghg42',
+
+                'password' => bcrypt('1234'),
+                'customer_phone' => '0123456789',
+                'status' => '0',
+            ]
+        ]);
 
         DB::table('tbl_admin')->insert([
             [

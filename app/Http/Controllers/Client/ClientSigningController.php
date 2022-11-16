@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -57,34 +58,59 @@ class ClientSigningController extends Controller
         }
     }
 
+    // public function __construct()
+    // {
 
+    //     $this->middleware('guest:customer')->except('logout');
+    // }
     public function logincustomer(Request $request)
     {
-        // $request->validate([
-        //     'customer_username' => 'required',
-        //     'password' => 'required|min:1',
+        // // $request->validate([
+        // //     'customer_username' => 'required',
+        // //     'password' => 'required|min:1',
 
-        // ]);
-        $username = $request->account_username;
-        $password = $request->account_password;
-        $result = DB::table('tbl_customer')->where('customer_username', $username)->where('password', $password)->first();
+        // // ]);
+        // $username = $request->account_username;
+        // $password = $request->account_password;
+        // $result = DB::table('tbl_customer')->where('customer_username', $username)->where('password', $password)->first();
 
 
-        if ($result) {
+        // if ($result) {
 
-            Session::put('customer_id', $result->customer_id);
-            Session::put('customer_name', $result->customer_name);
+        //     Session::put('customer_id', $result->customer_id);
+        //     Session::put('customer_name', $result->customer_name);
+        //     return Redirect::to('/');
+        // } else {
+        //     return back()->with('error', 'email hoặc password sai');
+        //     // echo '123';
+        // }
+        // Session::save();
+
+
+
+
+        $request->validate([
+            'email' => 'required|email|exists:tbl_customer,email',
+            'password' => 'required|min:1|max:30'
+        ], [
+            'email.exists' => 'This email is not exists in admins table'
+        ]);
+
+        $creds = $request->only('email', 'password');
+
+
+        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 0])) {
             return Redirect::to('/');
         } else {
-            return back()->with('error', 'email hoặc password sai');
-            // echo '123';
+
+            return flash('error', 'email hoặc password sai');
         }
-        Session::save();
     }
+
 
     public function logoutcustomer()
     {
-        Session::forget('customer_id');
+        Auth::guard('customer')->logout();
         return Redirect::to('/');
     }
 }
