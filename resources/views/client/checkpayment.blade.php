@@ -6,21 +6,13 @@
                 <div class="row">
                     <div class="col-9">
                         <div class="container__cart">
-                            {{-- <div class="cart__attributes cart__box">
-                                <div class="cart__showing">
-                                    <h3 class="cart__attribute cart--flex4">Thông tin thanh toán</h3>
-                                    <p class="cart__attribute cart--flex3">Đơn giá</p>
-                                    <p class="cart__attribute cart--flex2">Số lượng</p>
-                                    <p class="cart__attribute cart--flex2">Thành tiền</p>
-                                    <i class="cart__attribute fa-regular fa-trash"></i>
-                                </div>
-                            </div> --}}
+                            
                             <div class="cart__items cart__box payment-check__container">
                                 @php
-                                    $fullname = $_GET['fullname'];
-                                    $email = $_GET['email'];
-                                    $addr = $_GET['address'];
-                                    $phone = $_GET['phone'];
+                                    $fullname = $_GET['shipping_name'];
+                                    $email = $_GET['shipping_email'];
+                                    $addr = $_GET['shipping_address'];
+                                    $phone = $_GET['shipping_phone'];
                                 @endphp
                                 <h3 class="pay__heading payment-check__heading">Thông tin giao hàng</h3>
                 

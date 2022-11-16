@@ -4,12 +4,7 @@
 
         <div class="app__container">            
         
-<<<<<<< HEAD
             <form id="form_payment" action="checkpayment" method="GET" class="form__pay">
-=======
-            <form id="form_payment" action="" method="POST" class="form__pay">
-                @csrf
->>>>>>> c0c4e162a240daaa924f91c00bc3c994cefd8f8d
                 <h3 class="pay__heading">Thông tin giao hàng</h3>
 
                 <div class="pay__group">
@@ -43,7 +38,7 @@
 
             </form>
         </div>
-        {{-- <script>
+        <script>
             Validator({
                 form: '#form_payment',
                 errorMes: '.pay-group__message',
@@ -56,5 +51,5 @@
                     Validator.isPhone('#phone'),
                 ]
             })
-        </script> --}}
+        </script>
 @endsection
