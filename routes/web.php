@@ -75,8 +75,8 @@ Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_c
 // Route::get('/del-all-product', [ClientCartController::class], 'delete_all_product');
 
 //Thanh toán
+Route::get('/payment', [ClientPaymentController::class, 'index']);
 
-Route::get('/payment', [ClientPaymentController::class, 'index'])->name('payment');
 //Lịch sử thanh toán
 Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 
@@ -180,3 +180,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::resource('/category', App\Http\Controllers\CategoryController::class);
+
+Auth::routes();
+
+Route::resource('/product', App\Http\Controllers\ProductController::class);

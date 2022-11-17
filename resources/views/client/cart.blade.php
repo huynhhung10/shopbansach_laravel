@@ -85,7 +85,7 @@
                    
                     <div class="col-3">
                         <div class="cart__payment">
-                            <div class="cart__promotion cart__box">
+                            {{-- <div class="cart__promotion cart__box">
                                 <h2 class="cart-promotion__title">BookGarden Khuyến mãi</h2>
                                 <div class="cart-promotion__selection">
                                     <select name="" id="" class="cart-promotion__select">
@@ -96,7 +96,7 @@
                                     </select>
                                 </div>
                                 
-                            </div>
+                            </div> --}}
                             <div class="cart__prices cart__box">
                                 <div class="cart-prices__box">
                                     <span>Thue</span>

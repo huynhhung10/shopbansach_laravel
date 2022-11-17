@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
-
+    public function add_product(){
+        $category = Category::latest()->get();
+        return view('admin.add_product', ['category'=>$category]);
+    }
     public function store(Request $request){
         $data = $request->validate(
             [
@@ -46,7 +50,7 @@ class ProductController extends Controller
         return view('admin.all_product');
     }
 
-    public function add_product(){
-        return view('admin.add_product');
-    }
+    // public function add_product(){
+    //     return view('admin.add_product');
+    // }
 }

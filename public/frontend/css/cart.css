@@ -279,3 +279,95 @@
 .cart__button:focus{
     outline: 0;
 }
+
+/* ==========  cart check payment ===============*/
+
+.cart__attribute{
+    font-size: 1.5rem;
+}
+
+.payment-check__container{
+}
+
+.payment-check__heading{
+    font-size: 1.6rem;
+    padding: 10px 20px;
+    background-color: var(--text-color);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.payment-check__group{
+    margin: 0;
+    padding: 0 20px;
+}
+
+.payment-check__group p{
+    border: 0;
+}
+
+.payment-check__group label{
+    font-size: 1.5rem;
+}
+
+
+.cart__payment-method{
+}
+
+.payment-method__title{
+    color: white;
+    margin-bottom: 4px;
+    background-color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.cart-promotion__box{
+    padding: 0 20px;
+    padding-bottom: 10px;
+}
+
+.promotion__group{
+    display: flex;
+    align-items: center;
+}
+
+.promotion__group input{
+    margin-right: 10px;
+    display: none;
+}
+
+.promotion__group label{
+    display: block;
+    margin-bottom: 0;
+    font-size: 1.4rem;
+    padding: 6px 10px;
+    border: 2px solid transparent;
+    margin: 2px 0;
+    color: var(--text-color);
+    cursor: pointer;
+}
+.promotion__group label:hover{
+    color: var(--primary-green);
+}
+
+.promotion__group input[type="radio"]:checked + label{
+    --color: var(--primary-green);
+    border: 2px solid var(--color);
+    color: var(--color);
+    font-weight: 500;
+}
+
+.method__button{
+    background-color: white;
+    border: 1px solid var(--primary-green);
+    color: var(--primary-green);
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.method__button:hover{
+    background-color: var(--primary-green);
+    color: white;
+    transition: 0.08s;
+}

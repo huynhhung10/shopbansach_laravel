@@ -63,6 +63,9 @@
     </script>
     <link href="{{asset('backend/vendors/@coreui/chartjs/css/coreui-chartjs.css')}}" rel="stylesheet">
   </head>
+
+
+
   <body>
     <!-- thuong hieu -->
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">

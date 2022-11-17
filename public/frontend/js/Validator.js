@@ -30,7 +30,7 @@ var selectorRules = {};
      if(formEle){
 
         formEle.onsubmit = function(e){
-            e.preventDefault();
+            // e.preventDefault();
             options.rules.forEach(function(rule){
                 let inputEle = formEle.querySelector(rule.selector);
                 validate(inputEle, rule);

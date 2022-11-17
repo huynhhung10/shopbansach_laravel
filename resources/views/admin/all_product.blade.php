@@ -7,7 +7,7 @@
           <div class="card mb-4">
             <div class="card-header"><strong>Danh sách</strong><span class="small ms-1">Sản phẩm</span></div>
             <div class="card-body">
-            <a href="{{URL::to('/add-product')}}" class="btn btn-primary active"  aria-pressed="true" style="background-color: green; float:right">Thêm sản phẩm</a>
+            <a href="{{URL::to('/admin/add-product')}}" class="btn btn-primary active"  aria-pressed="true" style="background-color: green; float:right">Thêm sản phẩm</a>
             <div class="col-md-4">  
                 <input type="text" class="form-control" id="inputZip" placeholder="Tìm kiếm">
             </div>

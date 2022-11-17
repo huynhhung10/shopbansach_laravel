@@ -63,7 +63,10 @@
                                 </div>
                                 
                             </div>
-                            {{$productASC6->links('client.partials.paginating')}}
+                            
+                            @if ($productASC6 instanceof \Illuminate\Pagination\LengthAwarePaginator) 
+                                {{$productASC6->links('client.partials.paginating')}}
+                            @endif
 
                             {{-- <div class="paging__container">
                                 <p class="paging__box">1</p>
