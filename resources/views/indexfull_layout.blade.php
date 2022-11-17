@@ -45,39 +45,34 @@
                         <li class="navbar__item"><a href="#" class="navbar__link">Tin tức</a></li>
                         <li class="navbar__item"><a href="#" class="navbar__link">Khuyến mãi</a></li>
                     </ul>
-    
+                    @guest('customer')
+                    @if (Route::has('loginregis'))
                     <ul class="navbar__list">
-                        <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
-                        
-
-
-
-                        
-                        
-
-
-                        <?php
-                        $customer_id = Session::get('customer_id');
-                        if($customer_id!=NULL){ 
-                      ?>
-                       {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
-                       <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
-                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}" class="navbar__link">profile</a></li>
-                     
-                     <?php
-                        }else{
-                      ?>
-                        {{-- <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li> --}}
+                      
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng nhập</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/signInSignUp')}}" class="navbar__link">Đăng ký</a></li>
-                      <?php 
-                        }
-                      ?>
 
-
-                      
-                        
                     </ul>
+                        @endif
+                        @else
+                        
+                        
+
+                  
+    
+                        <ul class="navbar__list">
+                       {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
+                       <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
+                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="navbar__link">{{ auth('customer')->user()->customer_name }}</a></li>
+                        <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
+
+    
+                        {{-- <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li> --}}
+                       
+                    </ul>
+                      
+                      @endguest   
+                   
                 </div>
             </nav>
 
@@ -92,26 +87,26 @@
                     <!-- search -->
                     <div class="header-mid__search-box">
                         
-                        <select class="header-mid__select header-mid__search-box__input" name="searchSelect" id="searchSelect">
-                            <option value="1" class="header-mid__option">Tất cả</option>
-                            @foreach ($categoryASC as $key => $value) 
-                                <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
-                            @endforeach
-                            
-                        </select>
-                        <div class="header-mid__search-group">
-                            <form action="search" method="GET">
-                                <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
-                                <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                <ul class="header-mid-search__drop">
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                    <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
-                                </ul>
-                            </form>
-                        </div>
+                        <form class="header-mid__search-box" action="search" method="GET">
+                            <select class="header-mid__select header-mid__search-box__input" name="search-option" id="searchSelect">
+                                <option value="0" class="header-mid__option">Tất cả</option>
+                                @foreach ($categoryASC as $key => $value) 
+                                    <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
+                                @endforeach      
+                            </select>
+                            <div class="header-mid__search-group">
+                                    <input type="search" name="tukhoa" class="header-mid__search header-mid__search-box__input" placeholder="Bạn cần tìm gì?">
+                                    <button class="header-mid__button header-mid__search-box__input"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    {{-- <ul class="header-mid-search__drop">
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                        <li class="header-mid-drop__item">Login Form in HTML & CSS</li>
+                                    </ul> --}}
+                            </div>
+                        </form>
+
                     </div>
 
                     <!-- Div chứa thông tin, nút -->
@@ -140,7 +135,7 @@
                 <div class="grid">
                     <!-- Xài bootstrap chắc biết =)) -->
                     <div class="row">
-                        <div class="col-3">
+                        <div class="header-bottom__container col-5">
                             <!-- danh mục header -->
                             <div class="header__category">
                                 <i class="header-category__icon fa-solid fa-bars"></i>
@@ -189,6 +184,38 @@
                                         </div> --}}
                                         <!-- end dropdown level 2 -->
                                     </ul>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="header__category">
+                                <i class="header-category__icon fa-solid fa-bars"></i>
+                                <span class="header-category__title">
+                                    Nhà xuất bản
+                                </span>
+                                <i class="header-category__icon fa-sharp fa-solid fa-caret-down"></i>
+                                <!-- phần drop xuống của danh mục (level 1: dọc) -->
+                                <div class="header-category__dropdown">
+                                    <ul class="header-dropdown__list">
+                                        <!-- 1 loại danh mục nằm trong thẻ li -->
+                                        @foreach ($categoryASC as $key => $value)
+                                            <li class="header-dropdown__item">
+                                                <a href="{{url('category/' . $value->category_id)}}" class="header-dropdown__link">
+                                                    <div class="header-dropdown__link-box">
+                                                        <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
+                                                        <span class="header-dropdown__link-box__title">
+                                                            {{$value->category_name}}
+                                                        </span>
+                                                    </div>
+                                                    <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
+                                                </a>
+                                               
+                                            </li>   
+                                        @endforeach 
+                                        
+                                        
+                                    </ul>
+                                    
                                 </div>
                             </div>
                         </div>

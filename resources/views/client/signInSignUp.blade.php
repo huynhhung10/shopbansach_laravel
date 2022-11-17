@@ -79,15 +79,15 @@
                         @csrf
                         <div class="sign__group">
                             <label for="username" class="sign-group__label">Tên tài khoản</label>
-                            <input id="username" name="account_username" type="text" class="sign-group__input" placeholder="VD: hoanglong1234">
-                            {!! $errors->first('customer_username', '<small class="text-danger">:message</small>') !!}
+                            <input id="username" name="email" type="text" class="sign-group__input" placeholder="VD: hoanglong1234">
+                            {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
                             <span class="sign-group__message"></span>
                         </div>
         
                                         
                         <div class="sign__group">
                             <label for="password" class="sign-group__label">Mật khẩu</label>
-                            <input id="password" name="account_password" type="password" class="sign-group__input" placeholder="VD: Long1234">
+                            <input id="password" name="password" type="password" class="sign-group__input" placeholder="VD: Long1234">
                             {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
                             <span class="sign-group__message"></span>
                         </div>

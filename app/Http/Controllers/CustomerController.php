@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class CustomerController extends Controller
 {
@@ -57,7 +58,7 @@ class CustomerController extends Controller
             $file = $request->file('avatar');
             $filename = $file->getClientOriginalName('avatar');
             $file->move('backend/assets/img/avatars', $filename);
-            $cus->Avatar = $filename;
+            $cus->customer_avatar = $filename;
         }
 
         $cus->customer_name = $request->customer_name;
@@ -138,5 +139,32 @@ class CustomerController extends Controller
         $cus->status = $status;
         $cus->save();
         return response()->json(['status' => 'success', 'trangthai' => $cus->status]);
+    }
+
+    function findcustomer(Request $request)
+    {
+        // $request->validate([
+        //     'search_query' => 'required|min:1'
+        // ]);
+
+        // $search_text = $request->input('search_query');
+
+        // $customers = DB::table('tbl_customer')
+        //     ->where('customer_username', 'LIKE', '%' . $search_text . '%')
+        //     //   ->orWhere('SurfaceArea','<', 10)
+        //     ->orWhere('email', 'like', '%' . $search_text . '%')
+        //     ->paginate(2);
+        // // return view('search', ['countries' => $countries]);
+        // return view('admin.all_customer')->with('customers', $customers);
+        $search = $request->get('search_query');
+        if ($search != '') {
+            $customers = Customer::where(function ($query) use ($search) {
+                $query->where('customer_username', 'like', '%' . $search . '%');
+            })->paginate(2);
+            $customers->appends(['search_query' => $search]);
+        } else {
+            $customers = Customer::paginate(2);
+        }
+        return view('admin.all_customer')->with('customers', $customers);
     }
 }

@@ -36,9 +36,10 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Auth::routes();
 
 //frontend
-Route::get('/', [ClientController::class, 'index']);
+
 
 //Chi tiết sản phẩm
 Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
@@ -49,36 +50,63 @@ Route::get('/category/{category_id}', [ClientController::class, 'viewOnCategory'
 Route::get('/category', [ClientController::class, 'viewAllProduct']);
 Route::get('/search', [ClientController::class, 'search']);
 Route::get('/category/search', [ClientController::class, 'search']);
+Route::get('/category/{category_id}/search', [ClientController::class, 'search']);
+
+Route::get('/brand', [ClientController::class, 'viewAllProduct']);
+Route::get('/brand/search', [ClientController::class, 'search']);
+Route::get('/brand/{category_id}/search', [ClientController::class, 'search']);
+
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
 //Thông tin cá nhân
-Route::get('/accountInfo', [ClientAccountController::class, 'index']);
 
+
+Route::get('/', [ClientController::class, 'index'])->name('/');
 //Giỏ hàng
 Route::get('/cart', [ClientCartController::class, 'index']);
+Route::post('/update-cart-quantity', [ClientCartController::class, 'update_cart_quantity']);
+// Route::post('/update-cart', [ClientCartController::class], 'update_cart');
+Route::post('/save-cart', [ClientCartController::class, 'save_cart']);
+// Route::post('/add-cart-ajax', [ClientCartController::class], 'add_cart_ajax');
+Route::get('/show-cart', [ClientCartController::class, 'show_cart']);
+// Route::get('/gio-hang', [ClientCartController::class], 'gio_hang');
+Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_cart']);
+// Route::get('/del-product/{session_id}', [ClientCartController::class], 'delete_product');
+// Route::get('/del-all-product', [ClientCartController::class], 'delete_all_product');
 
 //Thanh toán
 Route::get('/payment', [ClientPaymentController::class, 'index']);
-
+Route::get('/checkpayment', [ClientPaymentController::class, 'check']);
 //Lịch sử thanh toán
 Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 
 //Đăng nhập / đăng ký
-Route::get('/signInSignUp', [ClientSigningController::class, 'index']);
-Route::post('/registercustomer', [ClientSigningController::class, 'registercustomer'])->name('checkregis');
-Route::post('/login-customer', [ClientSigningController::class, 'logincustomer']);
-Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
+
+
 
 //Thông báo thanh toán thành công
 Route::get('/successpayment', [ClientPaymentController::class, 'success']);
 
 //Đổi mật khẩu
-Route::get('/accountPasswordChange', [ClientAccountController::class, 'passwordChange']);
+
+
+Route::middleware(['guest:customer'])->group(function () {
+
+    Route::get('/signInSignUp', [ClientSigningController::class, 'index'])->name('loginregis');
+    Route::post('/registercustomer', [ClientSigningController::class, 'registercustomer'])->name('checkregis');
+    Route::post('/login-customer', [ClientSigningController::class, 'logincustomer']);
+});
+Route::middleware(['auth:customer'])->group(function () {
+
+    Route::get('/accountPasswordChange/{customer_id}', [ClientAccountController::class, 'passwordChange']);
+    Route::get('/accountInfo/{customer_id}', [ClientAccountController::class, 'index']);
+    Route::get('/savechange', [ClientAccountController::class, 'savechange']);
+    Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
+});
 
 
 // BackEnd
 
-Auth::routes();
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['guest:admin'])->group(function () {
@@ -111,6 +139,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('posteditcustomer', [CustomerController::class, 'posteditcustomer']);
         Route::get('/delete-customer/{customer_id}', [CustomerController::class, 'deletecustomer']);
         Route::get('/change-status-customer/customer_id={customer_id}&status={status}', [CustomerController::class, 'changeStatus']);
+        Route::get('/findcustomer', [CustomerController::class, 'findcustomer'])->name('web.findcustomer');
 
         //QL user
         Route::get('/all-user', [UserController::class, 'index']);
