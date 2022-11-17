@@ -78,14 +78,14 @@ class CustomerController extends Controller
     }
     public function add_customer_button(Request $request)
     {
-        // $request->validate([
-        //     'customer_name' => 'required',
-        //     'customer_username' => 'required',
-        //     'customer_email' => 'required|email',
-        //     'customer_password' => 'required|min:1',
-        //     'confirm_password' => 'required|same:customer_password',
-        //     'customer_phone' => 'required|max:10'
-        // ]);
+        $request->validate([
+            'customer_name' => 'required',
+            'customer_username' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:1',
+            'confirm_password' => 'required|same:customer_password',
+            'customer_phone' => 'required|max:10'
+        ]);
 
         // $input = $request->all();
 

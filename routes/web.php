@@ -75,8 +75,8 @@ Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_c
 // Route::get('/del-all-product', [ClientCartController::class], 'delete_all_product');
 
 //Thanh toán
-Route::get('/payment', [ClientPaymentController::class, 'index']);
 
+Route::get('/payment', [ClientPaymentController::class, 'index'])->name('payment');
 //Lịch sử thanh toán
 Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 
@@ -88,6 +88,7 @@ Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 Route::get('/successpayment', [ClientPaymentController::class, 'success']);
 
 //Đổi mật khẩu
+
 
 
 Route::middleware(['guest:customer'])->group(function () {

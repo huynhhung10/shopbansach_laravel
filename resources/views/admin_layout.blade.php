@@ -36,10 +36,10 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Vendors styles-->
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('backend/vendors/simplebar/css/simplebar.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/vendors/simplebar.css')}}">
-    <link href="{{asset('backend/css/toastr.css')}}" rel="stylesheet">
+    <link href= "{{asset('backend/css/toastr.css')}}" rel="stylesheet">
     <script src="{{asset('backend/js/toastr.min.js')}}"></script>
 
     <!-- Main styles for this application-->
@@ -88,7 +88,7 @@
         <!-- Quản lý sản phẩm -->
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-puzzle')}}"></use>
+              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-book')}}"></use>
             </svg> Quản lý sản phẩm</a>
           <ul class="nav-group-items">
 
@@ -101,11 +101,11 @@
         <!-- Quản lý NXB -->
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-tags')}}"></use>
             </svg>Quản lý NXB</a>
           <ul class="nav-group-items">
             
-            <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/admin/all-brand')}}"><span class="nav-icon"></span>Danh sách NXB</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/all-brand')}}"><span class="nav-icon"></span>Danh sách NXB</a></li>
             <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/add-brand')}}"><span class="nav-icon"></span>Thêm NXB</a></li>
             
           </ul>
@@ -128,7 +128,7 @@
             <!--Quản lý khách hàng -->
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-notes')}}"></use>
+              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-user')}}"></use>
             </svg>Quản lý khách hàng</a>
           <ul class="nav-group-items">
             
@@ -139,7 +139,7 @@
         </li>
 
         <!-- Quản lý user -->
-        <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
+        {{-- <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
               <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-star')}}"></use>
             </svg>Quản lý user</a>
@@ -149,12 +149,12 @@
             <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/add-user')}}"><span class="nav-icon"></span>Thêm user</a></li>
             
           </ul>
-        </li>
+        </li> --}}
 
         <!-- Quản lý đơn hàng -->
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-bell')}}"></use>
+              <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-cart')}}"></use>
             </svg>Quản lý đơn hàng</a>
           <ul class="nav-group-items"> 
             <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/all-order')}}"><span class="nav-icon"></span>Danh sách đơn hàng</a></li>     
@@ -162,10 +162,10 @@
         </li>
 
         <!-- Thống kê -->
-        <li class="nav-item"><a class="nav-link" href="#">
+        {{-- <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/logout') }}">
             <svg class="nav-icon">
               <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-account-logout')}}"></use>
-            </svg>Đăng xuất</a></li>
+            </svg>Đăng xuất</a></li> --}}
 
 
 {{-- <!--         
@@ -178,7 +178,7 @@
        
 
 
-        <li class="nav-item mt-auto"><a class="nav-link" href="https://coreui.io/docs/templates/installation/" target="_blank">
+        {{-- <li class="nav-item mt-auto"><a class="nav-link" href="https://coreui.io/docs/templates/installation/" target="_blank">
             <svg class="nav-icon">
               <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-description')}}"></use>
             </svg> Docs</a></li>
@@ -187,7 +187,7 @@
               <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-layers')}}"></use>
             </svg> Try CoreUI
             <div class="fw-semibold">PRO</div>
-          </a></li>
+          </a></li> --}}
       </ul>
       
     </div>
@@ -257,6 +257,8 @@
     <script src="{{asset('backend/vendors/@coreui/chartjs/js/coreui-chartjs.js')}}"></script>
     <script src="{{asset('backend/vendors/@coreui/utils/js/coreui-utils.js')}}"></script>
     <script src="{{asset('backend/js/main.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
     </script>
 

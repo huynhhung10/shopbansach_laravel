@@ -62,8 +62,8 @@
     
                         <ul class="navbar__list">
                        {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
-                       <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
-                       <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="navbar__link">{{ auth('customer')->user()->customer_name }}</a></li>
+                        <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
+                        <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="navbar__link">{{ auth('customer')->user()->customer_name }}</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
 
     
@@ -123,7 +123,7 @@
                             <div class="header-mid__cart">
                                 <i class="header-mid__cart-logo fa-regular fa-cart-shopping"></i>
                                 <span class="header-mid__cart-title">Giỏ hàng</span>
-                                <span class="header-mid__cart-quantity">(0)</span>
+                                <span class="header-mid__cart-quantity">(<?php echo Cart::count() ?>)</span>
                             </div>
                         </a>
                     </div>
