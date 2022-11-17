@@ -107,7 +107,7 @@
             </svg>Quản lý NXB</a>
           <ul class="nav-group-items">
             
-            <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/admin/all-brand')}}"><span class="nav-icon"></span>Danh sách NXB</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/all-brand')}}"><span class="nav-icon"></span>Danh sách NXB</a></li>
             <li class="nav-item"><a class="nav-link" href="{{URL::to('/admin/add-brand')}}"><span class="nav-icon"></span>Thêm NXB</a></li>
             
           </ul>

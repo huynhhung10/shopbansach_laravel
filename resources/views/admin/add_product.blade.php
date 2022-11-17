@@ -6,7 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header"><strong>Thêm</strong><span class="small ms-1">sản phẩm</span></div>
                     <div class="card-body">
-                        <form class="row g-3" style="padding:20px 20px;">
+                        <form class="row g-3" style="padding:20px 20px;" action="{{route('product.store')}}">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Tên sản phảm</label>
                                 <input type="text" class="form-control" id="inputAddress">
@@ -23,7 +23,7 @@
                             <div class="input-group mb-3">
                                 
                                 <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                                <input type="file" class="form-control" id="inputGroupFile01">
+                                <input type="file" class="form-control-file" name="image" id="inputGroupFile01">
                             </div>
                         
                             <div class="col-md-4">
@@ -37,8 +37,12 @@
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label">Thể loại</label>
                                 <select id="inputState" class="form-select">
+
+                                @foreach ($category as $key => $cate)                                    
                                 <option selected>Choose...</option>
-                                <option>...</option>
+                                <option  value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                                @endforeach
+                                
                                 </select>
                             </div>
 
