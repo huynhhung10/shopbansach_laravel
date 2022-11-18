@@ -9,7 +9,7 @@
                             <div class="sidebar__box">
                                 <h2 class="sidebar__title classify__title">Side bar</h2>
                                 <ul class="sidebar__list">
-                                    <a href="{{url('category/')}}" class="sidebar__link">Tất cả</a>
+                                    <a href="{{url('categorySelling/')}}" class="sidebar__link">Tất cả</a>
                                     @foreach ($categoryASC as $key => $value) 
                                         <li class="sidebar__item">
                                             <a href="{{url('category/' . $value->category_id)}}" class="sidebar__link">{{$value->category_name}}</a>

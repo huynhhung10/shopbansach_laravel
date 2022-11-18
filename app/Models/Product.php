@@ -32,7 +32,6 @@ class Product extends Model
 
     public function brand()
     {
-        //category_id thứ nhất là khóa ngoại của Product, cái thứ là khóa chính của Category
         return $this->belongsTo('App\Models\Brand', 'brand_id', 'brand_id');
     }
 }

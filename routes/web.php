@@ -47,7 +47,7 @@ Route::get('/pDetail/{product_id}', [ClientController::class, 'viewProduct']);
 //Hiển thị những sản phẩm theo danh mục
 Route::get('/category/{category_id}', [ClientController::class, 'viewOnCategory']);
 
-Route::get('/category', [ClientController::class, 'viewAllProduct']);
+Route::get('/categorySelling', [ClientController::class, 'viewAllProduct']);
 Route::get('/search', [ClientController::class, 'search']);
 Route::get('/category/search', [ClientController::class, 'search']);
 Route::get('/category/{category_id}/search', [ClientController::class, 'search']);

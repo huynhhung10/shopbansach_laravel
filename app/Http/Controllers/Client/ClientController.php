@@ -46,7 +46,8 @@ class ClientController extends Controller
         return view('client.selling')->with(compact(
             'categoryASC',
             'productASC6',
-            'cateName'
+            'cateName',
+            'brandASC',
         ));
     }
 
