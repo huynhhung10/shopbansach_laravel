@@ -19,11 +19,13 @@ class ClientCartController extends Controller
 {
     public function index()
     {
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
-
+        $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         return view('client.cart')->with(compact(
             'categoryASC',
+            'brandASC',
         ));;
     }
 
@@ -166,11 +168,11 @@ class ClientCartController extends Controller
     public function show_cart()
     {
         //seo 
-
-
         $cate_product = DB::table('tbl_category')->where('status', '0')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
-        return view('client.cart')->with('categoryASC', $cate_product)->with('brand', $brand_product);
+        return view('client.cart')->with('categoryASC', $cate_product)
+        ->with('brand', $brand_product)
+        ->with('brandASC', $brand_product);
     }
     public function delete_to_cart($rowId)
     {

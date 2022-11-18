@@ -72,8 +72,6 @@
                                                 ?></p>
                                             <a href="{{URL::to('/delete-to-cart/'.$v_content->rowId)}}"><i class="cart-item__icon fa-regular fa-trash"></i></a>
                                        
-                                       
-
                                     </div>
                                    
                                 <!-- </div> -->

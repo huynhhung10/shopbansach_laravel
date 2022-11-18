@@ -9,8 +9,7 @@ use Session;
 use Cart;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\Shipping;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Brand;
 
 session_start();
 class ClientPaymentController extends Controller
@@ -22,9 +21,13 @@ class ClientPaymentController extends Controller
 
     public function check()
     {
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+
         return view('client.checkpayment')->with(compact(
-            'categoryASC'
+            'categoryASC',
+            'brandASC'
         ));
     }
 
@@ -35,9 +38,13 @@ class ClientPaymentController extends Controller
 
     public function history()
     {
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+
         return view('client.paymentHistory')->with(compact(
-            'categoryASC'
+            'categoryASC',
+            'brandASC'
         ));
     }
     public function save_checkout_customer(Request $request)

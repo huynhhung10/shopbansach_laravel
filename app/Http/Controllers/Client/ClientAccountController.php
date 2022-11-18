@@ -7,24 +7,35 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Brand;
 use App\Models\Customer;
 
 class ClientAccountController extends Controller
 {
     public function index(Request $request)
     {
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+
         $cus = Customer::find($request->customer_id);
-        return view('client.accountInfo', ['customer' => $cus])->with(compact('categoryASC',));
+        return view('client.accountInfo', ['customer' => $cus])->with(compact(
+            'categoryASC',
+            'brandASC'
+        ));
     }
 
     public function passwordChange(Request $request)
     {
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+        
         $cus = Customer::find($request->customer_id);
 
         return view('client.accountPasswordChange', ['customer' => $cus])->with(compact(
-            'categoryASC'
+            'categoryASC',
+            'brandASC',
         ));
     }
     public function savechange(Request $request)

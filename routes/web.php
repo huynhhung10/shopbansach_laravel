@@ -53,8 +53,7 @@ Route::get('/category/search', [ClientController::class, 'search']);
 Route::get('/category/{category_id}/search', [ClientController::class, 'search']);
 
 Route::get('/brand', [ClientController::class, 'viewAllProduct']);
-Route::get('/brand/search', [ClientController::class, 'search']);
-Route::get('/brand/{category_id}/search', [ClientController::class, 'search']);
+Route::get('/brand/{category_id}', [ClientController::class, 'viewOnBrand']);
 
 // Route::get('/category', [ClientSellingController::class, 'index']);
 
@@ -90,6 +89,7 @@ Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
 
 //Thông báo thanh toán thành công
 Route::get('/successpayment', [ClientPaymentController::class, 'success']);
+Route::get('/checkpayment', [ClientPaymentController::class, 'check']);
 
 //Đổi mật khẩu
 
