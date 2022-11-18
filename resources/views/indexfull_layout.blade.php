@@ -198,13 +198,13 @@
                                 <div class="header-category__dropdown">
                                     <ul class="header-dropdown__list">
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
-                                        @foreach ($categoryASC as $key => $value)
+                                        @foreach ($brandASC as $key => $value)
                                             <li class="header-dropdown__item">
-                                                <a href="{{url('category/' . $value->category_id)}}" class="header-dropdown__link">
+                                                <a href="{{url('brand/' . $value->brand_id)}}" class="header-dropdown__link">
                                                     <div class="header-dropdown__link-box">
                                                         <i class="header-dropdown__link-box__icon fa-solid fa-bars"></i>
                                                         <span class="header-dropdown__link-box__title">
-                                                            {{$value->category_name}}
+                                                            {{$value->brand_name}}
                                                         </span>
                                                     </div>
                                                     <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>

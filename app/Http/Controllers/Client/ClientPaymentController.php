@@ -15,7 +15,9 @@ class ClientPaymentController extends Controller
     }
 
     public function check(){
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+
         return view('client.checkpayment')->with(compact(
             'categoryASC'
         ));
@@ -26,7 +28,9 @@ class ClientPaymentController extends Controller
     }
 
     public function history(){
+        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+
         return view('client.paymentHistory')->with(compact(
             'categoryASC'
         ));

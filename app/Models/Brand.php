@@ -16,5 +16,9 @@
         ];
         protected $primaryKey = 'brand_id ';
         protected $table = 'tbl_brand';
+
+        public function product(){
+            return $this->hasMany('App\Models\Product');
+        }
     }
 ?>

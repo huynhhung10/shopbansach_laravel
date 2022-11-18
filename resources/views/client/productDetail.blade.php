@@ -47,7 +47,7 @@
                                 <input type="hidden" value="{{$product->product_quantity}}">
                                 <div class="detail-info__quantify quantity">
                                     {{-- <button class="quantify-down quantify__down quantify__btn">-</button> --}}
-                                    <input name="qty" type="number" min="1" class="cart_product_qty_{{$product->product_id}}"  value="1" />
+                                    <input name="qty" type="number" min="1" class="quantify__num cart_product_qty_{{$product->product_id}}"  value="1" />
                                     {{-- <button class="quantify-up quantify__up quantify__btn">+</button> --}}
                                 </div>
                             </div>
