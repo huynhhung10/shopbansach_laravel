@@ -49,22 +49,21 @@
                                             </div>
                                         </div>
 
-                                     
+                                        
                                             <div class="cart-item__price cart--flex3">
                                                 <p class="cart-item__lastprice">{{number_format($v_content->price).' '.'vnđ'}}</p>
                                                 {{-- <p class="cart-item__lastprice">102,000 đ</p>
                                                 <p class="cart-item__originprice">120,000 đ</p> --}}
                                             </div>
-                                        <form action="{{URL::to('/update-cart-quantity')}}" method="POST">
+                                        <form class="cart-item__quantity cart--flex2 quantity"  action="{{URL::to('/update-cart-quantity')}}" method="POST">
                                             @csrf
-                                            <div class="cart-item__quantity cart--flex2 quantity">
+                                            {{-- <div class="cart-item__quantity cart--flex2 quantity"> --}}
                                                 <input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
-                                            
                                                 {{-- <button class="quantify-down cart-item__down cart-item__btn">-</button> --}}
-                                                <input class="cart_quantity_input" type="number" max="5" min="1" name="cart_quantity" value="{{$v_content->qty}}"  >
+                                                <input class="cart_quantity_input" type="number" max="5" min="1" name="cart_quantity" value="{{$v_content->qty}}">
                                                 {{-- <button class="quantify-up cart-item__up cart-item__btn">cập nhật</button> --}}
-                                                <input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
-                                            </div> 
+                                                <input type="submit" value="Cập nhật" name="update_qty" class="cart-item__update">
+                                            {{-- </div>  --}}
                                         </form>
                                             <p class="cart-item__total cart--flex2"><?php
                                                 $subtotal = $v_content->price * $v_content->qty;

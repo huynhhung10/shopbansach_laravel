@@ -21,7 +21,7 @@
                                 </li>
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-sharp fa-solid fa-rectangle-vertical-history"></i>
-                                    <a href="{{URL::to('/historyPayment')}}" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/historyOrder')}}" class="profile-sidebar__link">
                                         Lịch sử mua hàng
                                     </a>
                                 </li>

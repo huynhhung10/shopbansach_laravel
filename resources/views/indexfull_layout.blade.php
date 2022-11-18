@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/sell.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/detail.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/css/historyPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/detailPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/historyOrder.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/payment.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/cart.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/signInSignUp.css')}}">

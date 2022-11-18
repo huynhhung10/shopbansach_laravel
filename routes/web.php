@@ -81,7 +81,8 @@ Route::get('/checkpayment', [ClientPaymentController::class, 'checkpayment']);
 Route::post('/order_save', [ClientPaymentController::class, 'order_save']);
 
 //Lịch sử thanh toán
-Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
+Route::get('/historyOrder', [ClientPaymentController::class, 'history']);
+Route::get('/detailPayment', [ClientPaymentController::class, 'detail']);
 
 //Đăng nhập / đăng ký
 

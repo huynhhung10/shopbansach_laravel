@@ -42,11 +42,24 @@ class ClientPaymentController extends Controller
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
-        return view('client.paymentHistory')->with(compact(
+        return view('client.orderHistory')->with(compact(
             'categoryASC',
             'brandASC'
         ));
     }
+
+    public function detail()
+    {
+        //header, home
+        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+
+        return view('client.paymentDetail')->with(compact(
+            'categoryASC',
+            'brandASC'
+        ));
+    }
+
     public function save_checkout_customer(Request $request)
     {
         $data = array();

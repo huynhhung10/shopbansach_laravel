@@ -82,6 +82,7 @@
     font-size: 1.3rem;
     color: var(--text-color);
     font-weight: 400;
+    padding-right: 20px;
 }
 
 .cart-item__box{
@@ -114,8 +115,9 @@
 }
 
 .cart-item__lastprice{
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.6rem;
+    color: var(--text-color);
 }
 
 .cart-item__originprice{
@@ -126,7 +128,7 @@
 }
 
 .cart-item__quantity{
-    display: flex;
+    /* display: flex; */
     /* margin-left: 10px; */
 }
 
@@ -162,6 +164,40 @@
     border-bottom: 1px solid rgb(228, 228, 228);
     border-top: 1px solid rgb(228, 228, 228);
 }
+
+.cart_quantity_input{
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* line-height: 2rem; */
+    height: 28px;
+    padding: 2px 4px 2px 10px;
+    border: 1px solid rgb(228, 228, 228);
+    outline: 0;
+
+}
+
+.cart_quantity_input:hover{
+    outline: 0;
+}
+
+.cart-item__update{
+    font-size: 1.2rem;
+    background-color: rgb(98, 158, 255);
+    color: white;
+    margin-top: 4px;
+    border-radius: 2px;
+    outline: 0;
+    border: 0;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+
+.cart-item__update:hover{
+    background-color: rgb(64, 125, 224);
+}
+
 .cart-item__up{
     
 }
@@ -176,6 +212,7 @@
     font-size: 1.4rem;
     line-height: 1.4rem;
     cursor: pointer;
+    padding: 6px;
 }
 
 .cart-item__icon:hover{
@@ -264,6 +301,12 @@
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.cart__button:hover{
+    background-color: var(--primary-green);
+    filter:contrast(1.4); 
+    color: white;
 }
 
 .cart__button a{

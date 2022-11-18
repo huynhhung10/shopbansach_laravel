@@ -168,8 +168,8 @@ class ClientCartController extends Controller
     public function show_cart()
     {
         //seo 
-        $cate_product = DB::table('tbl_category')->where('status', '0')->orderby('category_id', 'desc')->get();
-        $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
+        $cate_product = DB::table('tbl_category')->where('status', '1')->orderby('category_id', 'desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
         return view('client.cart')->with('categoryASC', $cate_product)
         ->with('brand', $brand_product)
         ->with('brandASC', $brand_product);
