@@ -48,8 +48,8 @@
              
                 <div class="tab-content rounded-bottom">
                   <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-387">
-                  <table class="table">
-                      <thead style="background-color: #C9C4C3 ">
+                  <table class="table table-striped">
+                      <thead>
                         <tr>
                           <th>#</th>
                           <th>Avatar</th>
@@ -61,7 +61,7 @@
                         </tr>
                       </thead>
                       
-                      <tbody>
+                      <tbody >
                         @php
                           $id = 1;
                         @endphp

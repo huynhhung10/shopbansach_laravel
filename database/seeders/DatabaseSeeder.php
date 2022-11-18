@@ -24,10 +24,9 @@ class DatabaseSeeder extends Seeder
         DB::table('tbl_customer')->insert([
             [
                 'customer_avatar' => '197091314_1057977058290130_1264272207967432925_n.jpg',
-                'customer_name' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'customer_name' => 'hung',
+                'email' => 'hung@gmail.com',
                 'customer_username' => 'hunghg42',
-
                 'password' => bcrypt('1234'),
                 'customer_phone' => '0123456789',
                 'status' => '0',
@@ -54,37 +53,67 @@ class DatabaseSeeder extends Seeder
         // ]);
         // // =================================== TẠO DỮ LIỆU CHO BRAND ============================================== 
 
-        // DB::table('tbl_brand')->insert([
-        //     [
-        //         'product_name' => 'Starbuck',
-        //         'product_content' => 'Đây là content của Sách kinh tếshséhhhhhhhhhhhhhhhh quần áoĐây là content của Sách quản lý quần áoĐây là content của Sách quản lý quần áo',
-        //         'product_logo' => 'đây là logo cua sạđálkậbo',
-        //         'product_status' => 1,
-        //     ]
-        // ]);
+        DB::table('tbl_brand')->insert([
+            [
+                'brand_name' => 'Nha xuat ban A',
+                'brand_content' => 'Đây là nhà xuất bản tên là A Đây là nhà xuất bản tên là A',
+                'brand_logo' => './frontend/img/products/1 (3).jpg',
+                'brand_status' => 1,
+            ],
+            [
+                'brand_name' => 'Nha xuat ban B',
+                'brand_content' => 'Đây là nhà xuất bản tên là B Đây là nhà xuất bản tên là A',
+                'brand_logo' => './frontend/img/products/1 (3).jpg',
+                'brand_status' => 1,
+            ]
+        ]);
 
         // // =================================== TẠO DỮ LIỆU CHO CATEGORY ==============================================
 
-        // DB::table('tbl_category')->insert([
-        //     [
-        //         'product_name' => 'Sách kinh tế',
-        //         'product_status' => 1,
-        //     ]
-        // ]);
+        DB::table('tbl_category')->insert([
+            [
+                'category_name' => 'Loại sách X',
+                'status' => 1,
+            ],
+            [
+                'category_name' => 'Loại sách Y',
+                'status' => 1,
+            ],
+
+            [
+                'category_name' => 'Loại sách Z',
+                'status' => 1,
+            ]
+
+        ]);
 
         // // =================================== TẠO DỮ LIỆU CHO PRODUCT ==============================================
 
-        // DB::table('tbl_product')->insert([
-        //     [
-        //         'product_name' => 'Sách quản lý quần áo',
-        //         'product_content' => 'Đây là content của Sách quản lý quần áoĐây là content của Sách quản lý quần áoĐây là content của Sách quản lý quần áoĐây là content của Sách quản lý quần áo',
-        //         'product_price' => 200000,
-        //         'product_author' => 'Châu Nhựt Hưng',
-        //         'product_img' => 'Đây là đường link C:/alo/img',
-        //         'product_quantity' => 10,
-        //         'product_status' => 1,
-        //         'product_feature' => 1,
-        //     ]
-        // ]);
+        DB::table('tbl_product')->insert([
+            [
+                'product_name' => 'Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long',
+                'brand_id' => '1',
+                'category_id' => '1',
+                'product_content' => 'Đây là mô tả của Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long Đây là mô tả của Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long Đây là mô tả của Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long Đây là mô tả của Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long ',
+                'product_price' => 200000,
+                'product_author' => 'Hoàng Long',
+                'product_img' => './frontend/img/products/1 (3).jpg',
+                'product_quantity' => 10,
+                'status' => 1,
+
+            ],
+            [
+                'product_name' => 'Sự tích bánh chưng bánh giày - Nhựt khánh',
+                'brand_id' => '1',
+                'category_id' => '2',
+                'product_content' => 'Đây là mô tả của  Sự tích bánh chưng bánh giày - Nhựt khánh Đây là mô tả của  Sự tích bánh chưng bánh giày - Nhựt khánh Đây là mô tả của  Sự tích bánh chưng bánh giày - Nhựt khánh Đây là mô tả của  Sự tích bánh chưng bánh giày - Nhựt khánh',
+                'product_price' => 200000,
+                'product_author' => 'Nhựt Khánh',
+                'product_img' => './frontend/img/products/bia-sach2-9886.jpg',
+                'product_quantity' => 10,
+                'status' => 1,
+
+            ],
+        ]);
     }
 }

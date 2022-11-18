@@ -45,6 +45,9 @@
                         <li class="navbar__item"><a href="#" class="navbar__link">Tin tức</a></li>
                         <li class="navbar__item"><a href="#" class="navbar__link">Khuyến mãi</a></li>
                     </ul>
+                    <?php
+                     $shipping_id = Session::get('shipping_id');
+                    ?>
                     @guest('customer')
                     @if (Route::has('loginregis'))
                     <ul class="navbar__list">

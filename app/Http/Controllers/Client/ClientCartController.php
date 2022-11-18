@@ -156,11 +156,12 @@ class ClientCartController extends Controller
         $data['price'] = $product_info->product_price;
         $data['weight'] = $product_info->product_price;
         $data['options']['image'] = $product_info->product_img;
-        Cart::add($data);
-        // // Cart::destroy();
-        // return Redirect::to('/show-cart');
-        //Cart::destroy();
-        return Redirect::to('/show-cart')->with('categoryASC', $cate_product)->with('brand', $brand_product);;
+
+        if (Cart::count($data) < 15) {
+            Cart::add($data);
+            return Redirect::to('/show-cart')->with('categoryASC', $cate_product)->with('brand', $brand_product);;
+        }
+        return back();
     }
     public function show_cart()
     {

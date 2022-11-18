@@ -76,6 +76,10 @@ Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_c
 
 //Thanh toán
 Route::get('/payment', [ClientPaymentController::class, 'index']);
+Route::get('/show-cart/checkpayment', [ClientPaymentController::class, 'check']);
+Route::post('/save-checkout-customer', [ClientPaymentController::class, 'save_checkout_customer']);
+Route::get('/checkpayment', [ClientPaymentController::class, 'checkpayment']);
+Route::post('/order_save', [ClientPaymentController::class, 'order_save']);
 
 //Lịch sử thanh toán
 Route::get('/historyPayment', [ClientPaymentController::class, 'history']);
@@ -148,7 +152,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         //QL đơn hàng
         Route::get('/all-order', [OrderController::class, 'index']);
-        Route::get('/view-order', [OrderController::class, 'show_order']);
+        Route::get('/findorder', [OrderController::class, 'findorder'])->name('web.findorder');
+        Route::get('/detail-order/{order_id}', [OrderController::class, 'show_order']);
+        Route::post('/change-status-order/{order_id}', [OrderController::class, 'changeStatus']);
     });
 });
 

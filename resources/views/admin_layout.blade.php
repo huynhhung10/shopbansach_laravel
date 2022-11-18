@@ -30,6 +30,29 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('backend/assets/favicon/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{asset('backend/assets/favicon/favicon-96x96.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend/assets/favicon/favicon-16x16.png')}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="{{asset('frontend/css/sell.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/detail.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/historyPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/payment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/cart.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/signInSignUp.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/accountInfo.css')}}">
+    
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.css') }}">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />   --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
+
+
+
+    
     <link rel="manifest" href="{{asset('backend/assets/favicon/manifest.json')}}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{asset('backend/assets/favicon/ms-icon-144x144.png')}}">
@@ -262,6 +285,11 @@
     <script src="{{asset('backend/js/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{asset('frontend/js/Validator.js')}}"></script>
+        
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="{{('frontend/js/bootstrap.min.js')}}"></script>
+
     <script>
     </script>
 

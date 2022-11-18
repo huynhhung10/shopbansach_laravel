@@ -45,21 +45,37 @@
                             <div class="detail-info__quantitybox">
                                 <span>Số lượng:</span>
                                 <input type="hidden" value="{{$product->product_quantity}}">
+                                @if($product->product_quantity >= 5)
                                 <div class="detail-info__quantify quantity">
                                     {{-- <button class="quantify-down quantify__down quantify__btn">-</button> --}}
-                                    <input name="qty" type="number" min="1" class="cart_product_qty_{{$product->product_id}}"  value="1" />
+                                    <input name="qty" type="number" min="1" max="5"class="cart_product_qty_{{$product->product_id}}"  value="1" />
                                     {{-- <button class="quantify-up quantify__up quantify__btn">+</button> --}}
                                 </div>
+                                @else
+                                <div class="detail-info__quantify quantity">
+                                    {{-- <button class="quantify-down quantify__down quantify__btn">-</button> --}}
+                                    <input name="qty" type="number" min="1" max="{{$product->product_quantity}}" class="cart_product_qty_{{$product->product_id}}"  value="1" />
+                                    {{-- <button class="quantify-up quantify__up quantify__btn">+</button> --}}
+                                </div>
+                                @endif
                             </div>
                             <input name="productid_hidden" type="hidden"  value="{{$product->product_id}}" />
                             <!-- <p class="detail-info__phone">Gọi đặt hàng: <span>079 2345 8732</span> hoặc <span>089 1293 833</span></p> -->
-                            
+                            @if($product->product_quantity >= 5)
                             <div class="detail-info__btns">
                                 {{-- <a href="{{URL::to('/cart')}}" class="detail-info__btnlink"> --}}
                                     <button class="detail-info__btn" type="submit">Thêm vào giỏ hàng</button></a>
                                 {{-- <a href="{{URL::to('/payment')}}" class="detail-info__btnlink"> --}}
                                     {{-- <button class="detail-info__btn detail-info__btn--green">Thanh toán ngay</button></a> --}}
                             </div>
+                           @else 
+                            <div class="detail-info__btns">
+                                {{-- <a href="{{URL::to('/cart')}}" class="detail-info__btnlink"> --}}
+                                    <span><h2 class="detail-more__title" style="color: red">SẢN PHẨM ĐÃ HẾT HÀNG</h2></span>
+                                {{-- <a href="{{URL::to('/payment')}}" class="detail-info__btnlink"> --}}
+                                    {{-- <button class="detail-info__btn detail-info__btn--green">Thanh toán ngay</button></a> --}}
+                            </div>
+                            @endif
 
                             <div class="detail-info__desc">
                                 <span>Mô tả:</span>

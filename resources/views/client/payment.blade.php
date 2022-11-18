@@ -4,7 +4,8 @@
 
         <div class="app__container">            
         
-            <form id="form_payment" action="checkpayment" method="GET" class="form__pay">
+            <form id="form_payment" action="{{ URL::to('/save-checkout-customer') }}" method="POST" class="form__pay">
+                @csrf
                 <h3 class="pay__heading">Thông tin giao hàng</h3>
 
                 <div class="pay__group">
@@ -33,12 +34,12 @@
                 </div>
 
                 {{-- <a href="{{URL::to('/successpayment')}}" class="pay__buttonlink"> --}}
-                    <button class="pay__button">Giao đến địa chỉ này</button>
+                    <button type="submit" class="pay__button">Giao đến địa chỉ này</button>
                 {{-- </a> --}}
 
             </form>
         </div>
-        <script>
+        {{-- <script>
             Validator({
                 form: '#form_payment',
                 errorMes: '.pay-group__message',
@@ -51,5 +52,5 @@
                     Validator.isPhone('#phone'),
                 ]
             })
-        </script>
+        </script> --}}
 @endsection
