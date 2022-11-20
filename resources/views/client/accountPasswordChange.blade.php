@@ -10,13 +10,13 @@
                             <ul class="profile-sidebar__list">
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-solid fa-user"></i>
-                                    <a href="{{URL::to('/accountInfo')}}" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="profile-sidebar__link">
                                         Thông tin tài khoản
                                     </a>
                                 </li>
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-sharp fa-solid fa-rectangle-vertical-history"></i>
-                                    <a href="{{URL::to('/historyPayment')}}" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/historyOrder')}}/{{ auth('customer')->user()->customer_id }}" class="profile-sidebar__link">
                                         Lịch sử mua hàng
                                     </a>
                                 </li>
@@ -33,7 +33,7 @@
                                     <input type="hidden" value="{{$customer->customer_id}}" name="customer_id">
                                     <div class="account-info__group">
                                         <label for="oldpassword" class="account-info__label">Mật khẩu cũ</label>
-                                        <input id="oldpassword" name="password" type="text" class="account-info__input" value="{{$customer->password}}">
+                                        <input id="oldpassword" name="password" type="text" class="account-info__input" value="">
                                     </div>
 
                                     <div class="account-info__group">

@@ -1,29 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
 
-  
-            @if (Session::has('edit-success'))
-            <div class="alert alert-success">
-                    {!! Session::get('edit-success') !!}         
-            </div>
-            @elseif (Session::has('delete-success'))
-            <div class="alert alert-success">  
-                    {!! Session::get('delete-success') !!}
-            </div>
-            @endif
-
-            
-            <div class="toast" data-autohide="false">
-              <div class="toast-header">
-                  <strong class="mr-auto text-primary">Success</strong>
-                  <small class="text-muted">Just Now</small>
-                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-              </div>
-              <div class="toast-body">
-                  Thay đổi trạng thái thành công!!!
-              </div>
-            </div>
-
 
     <div class="body flex-grow-1 px-3">
         <div class="container-lg">
@@ -111,8 +88,7 @@
         </div>
         
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
 
       function changeStatus(customer_id){
@@ -148,10 +124,10 @@
     event.preventDefault();
     const url = $(this).attr('href');
     swal({
-        title: 'Are you sure?',
-        text: 'This record and it`s details will be permanantly deleted!',
+        title: 'Bạn có chắc?',
+        text: 'Dữ liệu sẽ bị xóa vĩnh viễn và không thể phục hồi!!!!',
         icon: 'warning',
-        buttons: ["Cancel", "Yes!"],
+        buttons: ["Không", "Có!"],
     }).then(function(value) {
         if (value) {
             window.location.href = url;

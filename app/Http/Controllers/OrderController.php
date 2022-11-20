@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Customer;
 use App\Models\Product;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderController extends Controller
 {
@@ -97,6 +99,7 @@ class OrderController extends Controller
         $attr = $request->toArray();
         $order->update($attr);
         // $order->save();
-        return redirect()->back()->with('success', 'Thêm vào thành công!');
+        Toastr::success('Success', 'Thay đổi trạng thái thành công');
+        return redirect()->back();
     }
 }

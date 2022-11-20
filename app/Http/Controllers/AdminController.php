@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Admin;
 
 
@@ -49,7 +51,8 @@ class AdminController extends Controller
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->route('admin.admin_login')->with('fail', 'Incorrect credentials');
+            Alert::error('error', 'email hoặc password sai');
+            return redirect()->route('admin.admin_login');
         }
         echo '123';
     }

@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 
+
 class ClientSellingController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $productASC6 = Product::orderBy('product_id', 'ASC')->limit(6)->get();
@@ -20,5 +22,4 @@ class ClientSellingController extends Controller
             'productASC6'
         ));
     }
-    
 }

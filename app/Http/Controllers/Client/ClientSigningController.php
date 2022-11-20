@@ -10,6 +10,8 @@ use DB;
 use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 session_start();
 class ClientSigningController extends Controller
@@ -49,12 +51,14 @@ class ClientSigningController extends Controller
 
         // if registration success then return with success message
         if (!is_null($customer)) {
-            return back()->with('success', 'Đăng ký thành công.');
+            Alert::success('Success', 'Đăng ký thành công.');
+            return back();
         }
 
         // else return with error message
         else {
-            return back()->with('error', 'Whoops! some error encountered. Please try again.');
+            Alert::error('Error', 'Đăng ký thất baị, kiểm tra lại thông tin.');
+            return back();
         }
     }
 
@@ -100,10 +104,12 @@ class ClientSigningController extends Controller
 
 
         if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 0])) {
+            Alert::success('Đăng nhập thành công', 'Bạn giờ đây có thể mua hàng.');
             return Redirect::to('/');
         } else {
 
-            return flash('error', 'email hoặc password sai');
+            Alert::error('Error', 'email hoặc password sai');
+            return back();
         }
     }
 

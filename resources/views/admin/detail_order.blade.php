@@ -135,11 +135,11 @@
                                             <p class="history-item__type">{{$details->product_sales_quantity}}</p>
                                         </div>
                                     </div>
-                                    <p class="history-item__total">{{number_format($details->product_price ,0,',','.')}}đ</p>
+                                    <p class="history-item__total">{{number_format($details->product_price*$details->product_sales_quantity ,0,',','.')}} đ</p>
                                      
                                 </div>
                                 
-                                
+                                f
                             </div>
                             @endforeach
                       </div>

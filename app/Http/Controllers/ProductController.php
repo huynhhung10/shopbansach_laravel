@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
-    public function add_product(){
+    public function add_product()
+    {
         $category = Category::latest()->get();
-        return view('admin.add_product', ['category'=>$category]);
+        return view('admin.add_product', ['category' => $category]);
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate(
             [
                 'product_name' => 'required|unique:category_name|max:255',
@@ -46,7 +50,8 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function index(){
+    public function index()
+    {
         return view('admin.all_product');
     }
 

@@ -2,7 +2,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+{!! Toastr::message() !!}
+    @include('sweetalert::alert')
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -18,11 +19,11 @@
           {{-- {{ csrf_field() }} --}}
           <h2>Login Admin</h2>
           {{-- @include('alert') --}}
-           @if (Session::get('fail'))
+           {{-- @if (Session::get('fail'))
                         <div class="alert alert-danger">
                             {{ Session::get('fail') }}
                         </div>
-                    @endif
+                    @endif --}}
                     @csrf
           <input type="email" id="login" class="fadeIn second" name="email" placeholder="Email" value="{{ old('email') }}">
           <span class="text-danger">@error('email'){{ $message }}@enderror</span>

@@ -94,9 +94,16 @@
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{URL::asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <link href= "{{asset('backend/css/toastr.css')}}" rel="stylesheet">
+    <script src="{{asset('backend/js/toastr.min.js')}}"></script>
     
 
     <!-- <script src="./frontend/css/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script> -->
+    {!! Toastr::message() !!}
+    @include('sweetalert::alert')
    
 </body>
 </html>

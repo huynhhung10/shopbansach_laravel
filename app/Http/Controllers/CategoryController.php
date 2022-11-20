@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate(
             [
                 'category_name' => 'required|unique:tbl_category|max:255',
-                
+
             ],
             [
                 'category_name.required' => 'Tên danh mục phải có nhé',
-                
+
             ]
         );
         $data = $request->all();
@@ -23,7 +26,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->category_name = $data['category_name'];
         //$category->status = $data['status'];
-        
+
         if ($category->status->status) {
             $category->status = 1;
         } else {
@@ -33,11 +36,13 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
-    public function index(){
+    public function index()
+    {
         return view('admin.all_category');
     }
 
-    public function add_category(){
+    public function add_category()
+    {
         return view('admin.add_category');
     }
 

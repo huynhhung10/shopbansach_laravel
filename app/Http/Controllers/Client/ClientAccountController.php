@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Customer;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientAccountController extends Controller
 {
@@ -30,9 +32,9 @@ class ClientAccountController extends Controller
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
-        
-        $cus = Customer::find($request->customer_id);
 
+        $cus = Customer::find($request->customer_id);
+        Toastr::success('Success', 'Thay đổi password thành công!');
         return view('client.accountPasswordChange', ['customer' => $cus])->with(compact(
             'categoryASC',
             'brandASC',
@@ -61,7 +63,7 @@ class ClientAccountController extends Controller
         //     $cus->status = 0;
         // }
         $cus->save();
-
-        return back()->with('edit-success', 'Lưu thành công!!!');
+        Toastr::success('Success', 'Chỉnh sửa thông tin thành công!');
+        return back();
     }
 }

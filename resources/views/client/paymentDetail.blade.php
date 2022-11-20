@@ -29,64 +29,86 @@
            
                         </div>
                     </div>
+                    
+                            
+                            
+                            
+                    
                     <div class="col-9">
+                        <table class="history__table">
+                            <tr class="history__heading history__tr">
+                               
+                                <th class="history-heading__title history__td">Tên người đặt</th>
+                                <th class="history-heading__title history__td">Email nhận hàng</th>
+                                <th class="history-heading__title history__td">Địa chỉ</th>
+                                <th class="history-heading__title history__td">	SĐT</th>
+                                
+                            </tr>
+                            {{-- @foreach($order as $key => $ord) --}}
+                            <tr class="history__item history__tr">
+                       
+                                <td class="history-item__content history__td">{{ $shipping->shipping_name}}</td>
+                                <td class="history-item__content history__td">{{ $shipping->shipping_email}}</td>
+                                <td class="history-item__content history__td">{{ $shipping->shipping_address}}</td>
+                                <td class="history-item__content history__td">{{ $shipping->shipping_phone}}</td>
+                               
+                            </tr>
+                            {{-- @endforeach --}}
+                            {{-- <tr class="history__item history__tr">
+                                <td class="history-item__content history__td">1</td>
+                                <td class="history-item__content history__td">madohang1</td>
+                                <td class="history-item__content history__td">129.000đ</td>
+                                <td class="history-item__content history__td">12/12/2012</td>
+                                <td class="history-item__content history__td">
+                                    <a href="{{URL::to('/detailPayment')}}" class="history-item__link">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr> --}}
+                          </table>
+
+
                         <div class="container__history">
                             
                             <div class="history__items history__box">
                                 <!-- <div class="history__showing"> -->
+                                    
                                     <div class="history__order">
+                                        @foreach($order_details as $key => $details)
                                         <div class="history__item history__showing ">
+                                            
                                             <div class="history-item__product history--flex4">
                                                 <div class="history-item__imgbox">
-                                                    <img class="history-item__img" src="{{('frontend/img/products/body-2-Cong-Ly-2574-1416197358.jpg')}}" alt="">
+                                                    <img class="history-item__img" src="{{asset('/backend/assets/img/avatars/')}}/{{$details->product_img}}" alt="">
                                                 </div>
         
                                                 <div class="history-item__info">
-                                                    <h2 class="history-item__title">Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long</h2>
+                                                    <h2 class="history-item__title">{{$details->product_name}}</h2>
                                                     <div class="history-item__box">
                                                         <span>Tác giả:</span>
-                                                        <p class="history-item__author">Hoàng Long</p>
+                                                        <p class="history-item__author">{{$details->product_author}}</p>
                                                     </div>
                                                     <div class="history-item__box">
                                                         <span>Số lượng:</span>
-                                                        <p class="history-item__type">2</p>
+                                                        <p class="history-item__type">{{$details->product_sales_quantity}}</p>
                                                     </div>
                                                 </div>
                                                 
                                             </div>
                                             
-                                            <p class="history-item__total">102,000 đ</p>
+                                            <p class="history-item__total">{{number_format($details->product_price*$details->product_sales_quantity ,0,',','.')}} đ</p>
+                                           
                                         </div>
-                                        <div class="history__item history__showing ">
-                                            <div class="history-item__product history--flex4">
-                                                <div class="history-item__imgbox">
-                                                    <img class="history-item__img" src="{{('frontend/img/products/body-2-Cong-Ly-2574-1416197358.jpg')}}" alt="">
-                                                </div>
-        
-                                                <div class="history-item__info">
-                                                    <h2 class="history-item__title">Muốn Nhanh Thì Phải Từ - Từ của Hoàng Long</h2>
-                                                    <div class="history-item__box">
-                                                        <span>Tác giả:</span>
-                                                        <p class="history-item__author">Hoàng Long</p>
-                                                    </div>
-                                                    <div class="history-item__box">
-                                                        <span>Số lượng:</span>
-                                                        <p class="history-item__type">2</p>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            
-                                            <p class="history-item__total">102,000 đ</p>
-                                        </div>
-                                        
+                                         @endforeach
+
+                                        @foreach($order as $key => $or)
                                         <div class="history-order__totalbox">
                                             <div class="history-order__total">
                                                 <span>Tổng số tiền:</span>
-                                                <p class="history-total__total">204,000 đ</p>
+                                                <p class="history-total__total">{{ $or->order_total }} đ</p>
                                             </div>
                                         </div>
-
+                                        @endforeach
                                     </div>
                                     
                                     

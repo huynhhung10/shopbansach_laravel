@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 use Session;
+use App\Models\Order;
+use App\Models\OrderDetails;
+use App\Models\Shipping;
+use App\Models\Customer;
 use Cart;
 use App\Models\Category;
 use App\Models\Product;
@@ -36,29 +43,59 @@ class ClientPaymentController extends Controller
         return view('client.successpayment');
     }
 
-    public function history()
+    // public function history()
+    // {
+    //     //header, home
+    //     $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+    //     $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+
+    //     return view('client.orderHistory')->with(compact(
+    //         'categoryASC',
+    //         'brandASC'
+    //     ));
+    // }
+
+    public function show_customer_order(Request $request)
     {
-        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+        $customer = Customer::find($request->customer_id);
 
-        return view('client.orderHistory')->with(compact(
-            'categoryASC',
-            'brandASC'
-        ));
+        $order = Order::join('tbl_customer', 'tbl_order.customer_id', '=', 'tbl_customer.customer_id')
+            ->select('tbl_order.*', 'tbl_customer.customer_name', 'tbl_customer.customer_id')
+            ->where('tbl_customer.customer_id', '=', auth('customer')->user()->customer_id)
+            ->orderby('order_status', 'ASC')->paginate(5);
+        return view('client.orderHistory')->with(compact('order', 'categoryASC', 'brandASC', 'customer'));
     }
 
-    public function detail()
+    public function show_customer_order_details($order_id)
     {
-        //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+        $order_details = OrderDetails::with('product')->where('order_id', $order_id)->get();
+        $order = Order::where('order_id', $order_id)->get();
+        foreach ($order as $key => $ord) {
+            $customer_id = $ord->customer_id;
+            $shipping_id = $ord->shipping_id;
+            $order_status = $ord->order_status;
+        }
+        $customer = Customer::where('customer_id', $customer_id)->first();
+        $shipping = Shipping::where('shipping_id', $shipping_id)->first();
 
-        return view('client.paymentDetail')->with(compact(
-            'categoryASC',
-            'brandASC'
-        ));
+
+        return view('client.paymentDetail')->with(compact('order_details', 'order', 'customer', 'shipping', 'order_status', 'categoryASC', 'brandASC'));
     }
+    // public function detail()
+    // {
+    //     //header, home
+    //     $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+    //     $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
+
+    //     return view('client.paymentDetail')->with(compact(
+    //         'categoryASC',
+    //         'brandASC'
+    //     ));
+    // }
 
     public function save_checkout_customer(Request $request)
     {
@@ -118,6 +155,7 @@ class ClientPaymentController extends Controller
 
             return view('client.successpayment');
         } else {
+            Toastr::error('Error', 'Hình thức thanh toán không hợp lệ!');
             return back();
         }
 

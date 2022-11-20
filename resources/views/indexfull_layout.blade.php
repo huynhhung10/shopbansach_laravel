@@ -68,7 +68,7 @@
                        {{-- <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li> --}}
                         <li class="navbar__item"><a href="{{URL::to('/logout-customer')}}" class="navbar__link">Đăng xuất</a></li>
                         <li class="navbar__item"><a href="{{URL::to('/accountInfo')}}/{{ auth('customer')->user()->customer_id }}" class="navbar__link">{{ auth('customer')->user()->customer_name }}</a></li>
-                        <li class="navbar__item"><a href="{{URL::to('/historyPayment')}}" class="navbar__link">Kiểm tra đơn hàng</a></li>
+                        <li class="navbar__item"><a href="{{URL::to('/historyOrder')}}/{{ auth('customer')->user()->customer_id }}" class="navbar__link">Kiểm tra đơn hàng</a></li>
 
     
                         {{-- <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li> --}}
@@ -381,8 +381,15 @@
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <link href= "{{asset('backend/css/toastr.css')}}" rel="stylesheet">
+    <script src="{{asset('backend/js/toastr.min.js')}}"></script>
 
     <!-- <script src="./frontend/css/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script> -->
+    {!! Toastr::message() !!}
+    @include('sweetalert::alert')
    
 </body>
 </html>

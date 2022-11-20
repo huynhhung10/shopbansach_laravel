@@ -22,7 +22,7 @@
                                 </li>
                                 <li class="profile-sidebar__item">
                                     <i class="profile-sidebar__icon fa-sharp fa-solid fa-rectangle-vertical-history"></i>
-                                    <a href="{{URL::to('/historyOrder')}}" class="profile-sidebar__link">
+                                    <a href="{{URL::to('/historyOrder')}}/{{ auth('customer')->user()->customer_id }}" class="profile-sidebar__link">
                                         Lịch sử mua hàng
                                     </a>
                                 </li>
@@ -57,7 +57,7 @@
                                     </div>
 
                                     <div class="account-info__group">
-                                        <label for="phone" class="account-info__label"><a href="{{URL::to('/accountPasswordChange')}}/<?php echo $customer_id?>" class="account-info__link">Đổi mật khẩu</a></label>
+                                        <label for="phone" class="account-info__label"><a href="{{URL::to('/accountPasswordChange')}}/{{ auth('customer')->user()->customer_id }}" class="account-info__link">Đổi mật khẩu</a></label>
                                         
                                     </div>
                                     <div class="account-info__group">
