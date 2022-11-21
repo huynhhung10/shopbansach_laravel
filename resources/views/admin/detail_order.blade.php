@@ -139,7 +139,7 @@
                                      
                                 </div>
                                 
-                                f
+                                
                             </div>
                             @endforeach
                       </div>

@@ -39,7 +39,7 @@
                                            
                                             <th class="history-heading__title history__td">Mã đơn hàng</th>
                                             <th class="history-heading__title history__td">Thành tiền</th>
-                                            <th class="history-heading__title history__td">STT</th>
+                                            
                                             <th class="history-heading__title history__td">Ngày đặt</th>
                                             <th class="history-heading__title history__td">Trạng thái</th>
                                             <th class="history-heading__title history__td"></th>
@@ -48,8 +48,8 @@
                                         <tr class="history__item history__tr">
                                             <td class="history-item__content history__td">{{ $ord->order_id }}</td>
                                             <td class="history-item__content history__td">{{ $ord->order_total }}</td>
-                                            <td class="history-item__content history__td"></td>
-                                            <td class="history-item__content history__td">{{ $ord->create_at }}</td>  
+                                            
+                                            <td class="history-item__content history__td">{{ $ord->created_at }}</td>  
                                             <td class="history-item__content history__td">
                                                 @if($ord->order_status==1)
                                                 <span style="color:darkcyan">Đơn hàng mới</span>

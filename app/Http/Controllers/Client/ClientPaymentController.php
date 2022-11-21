@@ -99,6 +99,14 @@ class ClientPaymentController extends Controller
 
     public function save_checkout_customer(Request $request)
     {
+        $request->validate([
+            'shipping_name' => 'required',
+            'shipping_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'shipping_email' => 'required|email',
+            'shipping_address' => 'required',
+
+        ]);
+
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_phone'] = $request->shipping_phone;

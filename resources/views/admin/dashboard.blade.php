@@ -8,7 +8,7 @@
           <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-primary text-white py-4 px-5 me-3">
               <svg class="icon icon-xl">
-                <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-settings"></use>
+                <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-people')}}"></use>
               </svg>
             </div>
             <div>
@@ -24,7 +24,7 @@
           <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-info text-white py-4 px-5 me-3">
               <svg class="icon icon-xl">
-                <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-laptop"></use>
+                <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-basket')}}"></use>
               </svg>
             </div>
             <div>
@@ -40,7 +40,7 @@
           <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-warning text-white py-4 px-5 me-3">
               <svg class="icon icon-xl">
-                <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-moon"></use>
+                <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-inbox')}}"></use>
               </svg>
             </div>
             <div>
@@ -56,7 +56,7 @@
           <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-danger text-white py-4 px-5 me-3">
               <svg class="icon icon-xl">
-                <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-bell"></use>
+                <use xlink:href="{{asset('backend/vendors/@coreui/icons/svg/free.svg#cil-book')}}"></use>
               </svg>
             </div>
             <div>

@@ -55,6 +55,15 @@ class CustomerController extends Controller
     }
     public function posteditcustomer(Request $request)
     {
+        $request->validate([
+            'customer_name' => 'required',
+            'customer_username' => 'required|unique:tbl_customer,customer_username',
+            'email' => 'required|email|unique:tbl_customer,email',
+            'password' => 'required|min:1',
+            'confirm_password' => 'required|same:customer_password',
+            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+        ]);
+
 
         $cus = Customer::find($request->customer_id);
         if ($request->file('avatar') != null) {
@@ -68,7 +77,8 @@ class CustomerController extends Controller
         $cus->customer_username = $request->customer_username;
 
         $cus->email = $request->email;
-        $cus->password = $request->password;
+        $cus->password = \Hash::make($request->password);
+
         $cus->customer_phone = $request->customer_phone;
         if ($request->status) {
             $cus->status = 1;
@@ -85,11 +95,11 @@ class CustomerController extends Controller
     {
         $request->validate([
             'customer_name' => 'required',
-            'customer_username' => 'required',
-            'email' => 'required|email',
+            'customer_username' => 'required|unique:tbl_customer,customer_username',
+            'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:1',
             'confirm_password' => 'required|same:customer_password',
-            'customer_phone' => 'required|max:10'
+            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
         ]);
 
         // $input = $request->all();
@@ -128,7 +138,7 @@ class CustomerController extends Controller
         $cus->customer_username = $request->customer_username;
 
         $cus->email = $request->email;
-        $cus->password = $request->password;
+        $cus->password = \Hash::make($request->password);
         $cus->customer_phone = $request->customer_phone;
         if ($request->status) {
             $cus->status = 1;
@@ -136,7 +146,7 @@ class CustomerController extends Controller
             $cus->status = 0;
         }
         $cus->save();
-        Toastr::success('Success', 'Thêm vào thành công!');
+        Toastr::success('Success', 'Thêm khách hàng thành công!');
         // @include('sweetalert::alert')
         return redirect('admin/all-customer');
     }

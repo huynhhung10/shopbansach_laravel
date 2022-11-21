@@ -11,6 +11,7 @@ use App\Models\Brand;
 use App\Models\Customer;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
+use Auth;
 
 class ClientAccountController extends Controller
 {
@@ -34,7 +35,7 @@ class ClientAccountController extends Controller
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         $cus = Customer::find($request->customer_id);
-        Toastr::success('Success', 'Thay đổi password thành công!');
+
         return view('client.accountPasswordChange', ['customer' => $cus])->with(compact(
             'categoryASC',
             'brandASC',
@@ -66,4 +67,32 @@ class ClientAccountController extends Controller
         Toastr::success('Success', 'Chỉnh sửa thông tin thành công!');
         return back();
     }
+    public function savechangepassword(Request $request)
+    {
+        $request->validate([
+
+            'new_password' => 'required',
+            'new_passwordConfirm' => 'required|same:new_password',
+
+        ]);
+
+        Alert::success('Đăng nhập thành công', 'Bạn giờ đây có thể mua hàng.');
+        $cus = Customer::find($request->customer_id);
+
+        $cus->password = \Hash::make($request->new_password);
+
+
+        $cus->save();
+
+        return back();
+    }
+
+
+
+    // $cus->save();
+    // // Alert::success('Success Title', 'Success Message');
+    // Toastr::success('Success', 'Chỉnh sửa thành công!');
+    // // @include('sweetalert::alert')
+    // return redirect('admin/all-customer');
+
 }

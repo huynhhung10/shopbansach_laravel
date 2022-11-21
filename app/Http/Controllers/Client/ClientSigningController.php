@@ -27,10 +27,10 @@ class ClientSigningController extends Controller
         $request->validate([
             'customer_name' => 'required',
             'customer_username' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:1',
             'confirm_password' => 'required|same:password',
-            'customer_phone' => 'required|max:10'
+            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
         ]);
 
 
@@ -40,7 +40,8 @@ class ClientSigningController extends Controller
             'customer_name' => $request->customer_name,
             'customer_username' => $request->customer_username,
             'email' => $request->email,
-            'password' => $request->password,
+
+            'password' => \Hash::make($request->password),
             'customer_phone' => $request->customer_phone
 
 
@@ -97,13 +98,13 @@ class ClientSigningController extends Controller
             'email' => 'required|email|exists:tbl_customer,email',
             'password' => 'required|min:1|max:30'
         ], [
-            'email.exists' => 'This email is not exists in admins table'
+            'email.exists' => 'Email naỳ không tồn taị'
         ]);
 
         $creds = $request->only('email', 'password');
 
 
-        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 0])) {
+        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => '0'])) {
             Alert::success('Đăng nhập thành công', 'Bạn giờ đây có thể mua hàng.');
             return Redirect::to('/');
         } else {

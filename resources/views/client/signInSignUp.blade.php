@@ -78,6 +78,7 @@
                     <form id="form_signin" action="{{URL::to('/login-customer')}}" method="POST" class="form__sign" enctype="multipart/form-data">
                         @csrf
                         <div class="sign__group">
+                          
                             <label for="username" class="sign-group__label">Tên tài khoản</label>
                             <input id="username" name="email" type="text" class="sign-group__input" placeholder="VD: hoanglong1234">
                             {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}

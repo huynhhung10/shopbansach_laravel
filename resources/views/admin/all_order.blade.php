@@ -101,7 +101,7 @@
                                   <div class="col-md-4">
                                    
                               <td>       <select id="inputState" name="order_status" class="form-select">
-                                          <option selected >chosse....</option>
+                                          <option value='0'>chosse....</option>
                                           <option value = '1'>đơn hàng mới</option>
                                           <option value = '2'>Chờ xử lý</option>
                                           <option value = '3'>Đã xử lý</option>
@@ -115,8 +115,7 @@
                                 <td>
                             
                                   <a href="{{URL::to('/admin/detail-order')}}/{{$ord->order_id}}" class="btn btn-primary active" aria-pressed="true" style="background-color: #5DADE2;border: black ">chi tiết</a>
-                                  |
-                                  <a href="#" class="btn btn-primary active" aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
+                                 
                                 </td>
                             </tr>
                             @endforeach

@@ -86,7 +86,7 @@
                                                     <h2 class="history-item__title">{{$details->product_name}}</h2>
                                                     <div class="history-item__box">
                                                         <span>Tác giả:</span>
-                                                        <p class="history-item__author">{{$details->product_author}}</p>
+                                                        <p class="history-item__author">{{$details->product->product_author}}</p>
                                                     </div>
                                                     <div class="history-item__box">
                                                         <span>Số lượng:</span>

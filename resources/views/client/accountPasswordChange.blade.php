@@ -27,23 +27,26 @@
                     <div class="col-9">
                         <div class="container__account">
                             <h2 class="account__title">Đổi mật khẩu</h2>
-                            <form action="" class="account__form">
+                            <form action="{{ URL::to('/savechangepassword') }}" method="post" class="account__form">
                                 @csrf
                                 <div class="account__info">
                                     <input type="hidden" value="{{$customer->customer_id}}" name="customer_id">
-                                    <div class="account-info__group">
+                                    {{-- <div class="account-info__group">
                                         <label for="oldpassword" class="account-info__label">Mật khẩu cũ</label>
-                                        <input id="oldpassword" name="password" type="text" class="account-info__input" value="">
-                                    </div>
+                                        <input id="oldpassword" name="password" type="password" class="account-info__input" value="">
+                                        {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
+                                    </div> --}}
 
                                     <div class="account-info__group">
                                         <label for="password" class="account-info__label">Mật khẩu mới</label>
                                         <input id="password" name="new_password" type="password" class="account-info__input" value="">
+                                        {!! $errors->first('new_password', '<small class="text-danger">:message</small>') !!}
                                     </div>
-
+                                    
                                     <div class="account-info__group">
                                         <label for="passwordConfirm" class="account-info__label">Nhập lại mật khẩu mới</label>
                                         <input id="passwordConfirm" name="new_passwordConfirm" type="password" class="account-info__input" value="">
+                                        {!! $errors->first('new_passwordConfirm', '<small class="text-danger">:message</small>') !!}
                                     </div>
                                     
                                     <div class="account-info__group">
