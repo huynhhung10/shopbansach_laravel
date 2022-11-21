@@ -7,13 +7,27 @@
           <div class="card mb-4">
             <div class="card-header"><strong>Danh sách</strong><span class="small ms-1">Danh mục</span></div>
             <div class="card-body">
-            <a href="{{URL::to('/add-category')}}" class="btn btn-primary active" aria-pressed="true" style="background-color: green; float:right">Thêm danh mục</a>
-            <div class="col-md-4">  
+            <a href="{{URL::to('/admin/add-category')}}" class="btn btn-primary active"  style="background-color: green; float:right">Thêm danh mục</a>
+            
+            
+            {{-- <div class="col-md-4">  
                 <input type="text" class="form-control" id="inputZip" placeholder="Tìm kiếm">
-            </div>
+            </div> --}}
 
-          
+            <form action="{{ route('admin.web.findcategory') }}" method="GET">
+              {{ csrf_field() }}
+            {{-- <div class="col-md-4">   --}}
+                {{-- <input type="search" name="search_query"  class="form-control" id="inputZip" placeholder="Tìm kiếm" value="{{ request()->input('search_query') }}"><button type="submit" class="btn btn-primary">Search</button> --}}
+            {{-- </div> --}}
+            <div class="input-group mb-3" style="width: 450px">
+              <input type="search" name="search_query" class="form-control" placeholder="Tìm kiếm" >
+              <button class="btn btn-outline-secondary" type = "submit" style="background-color:#5DADE2;color:black" id="button-addon2">Search</button>
+            </div>
+            {{-- value="{{$search}}" --}}
+            
+            </form>
                 
+            
               <div class="example">
              
                 <div class="tab-content rounded-bottom">
@@ -29,9 +43,13 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @php
+                        $id = 1;
+                      @endphp
+                      @foreach ($category as $key => $cate)
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
+                          <th scope="row">{{$id++}}</th>
+                          <td>{{ $cate->category_name }}</td>
                           
                           
                           <td>
@@ -41,12 +59,12 @@
                             </div>
                           </td>
                           <td>
-                          <a href="#" class="btn btn-primary active" role="button" data-coreui-toggle="button" aria-pressed="true" style="background-color: #5DADE2;border: black ">sửa</a>
+                          <a href="{{URL::to('/admin/edit-category')}}/{{$cate->category_id}}" class="btn btn-primary active"   aria-pressed="true" style="background-color: #5DADE2;border: black ">sửa</a>
                             |
-                            <a href="#" class="btn btn-primary active" role="button" data-coreui-toggle="button" aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
+                            <a href="{{URL::to('/admin/delete-category')}}/{{$cate->category_id}}" class="btn btn-primary active" role="button" aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
                           </td>
                         </tr>
-                       
+                        @endforeach
                        
                       </tbody>
                     </table>

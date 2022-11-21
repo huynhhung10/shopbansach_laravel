@@ -22,9 +22,9 @@ return new class extends Migration
                 $table->double('product_price');
                 $table->string('product_author');
                 $table->string('product_img');
-                $table->integer('product_quantity');
+                $table->integer('product_quantity');               
+                $table->boolean('product_featured');
                 $table->boolean('status');
-                //$table->boolean('product_featured');
                 $table->timestamps();
 
                 $table->foreign('brand_id')->references('brand_id')->on('tbl_brand')->onDelete('cascade');

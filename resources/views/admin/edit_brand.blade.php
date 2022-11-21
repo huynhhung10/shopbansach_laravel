@@ -6,7 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header"><strong>Thêm</strong><span class="small ms-1">Nhà xuất bản</span></div>
                     <div class="card-body">
-                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{ route('admin.add_brand') }}">
+                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{URL::to('/admin/posteditbrand')}}">
                             <div class="col-md-12">
                                 <label for="inputEmail4" class="form-label">Tên NXB</label>
                                 <input type="text" name="brand_name" class="form-control" id="inputAddress">
@@ -27,7 +27,7 @@
                             
                     
                                 <div class="form-check">
-                                    <input class="form-check-input" name="status" type="checkbox" id="gridCheck">
+                                    <input class="form-check-input" type="checkbox" name="status" id="gridCheck">
                                     <label class="form-check-label" for="gridCheck">
                                         Hiển thị
                                      </label>
