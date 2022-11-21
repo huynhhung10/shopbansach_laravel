@@ -26,7 +26,7 @@ class ClientController extends Controller
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         //home
-        $productASC4 = Product::with('category')->orderBy('product_id', 'ASC')->limit(4)->get();
+        $productASC4 = Product::with('category')->orderBy('created_at', 'ASC')->limit(4)->get();
         $productDESC4 = Product::with('category')->orderBy('product_id', 'DESC')->limit(4)->get();
         $productASC8 = Product::with('category')->orderBy('product_id', 'ASC')->limit(8)->get();
 

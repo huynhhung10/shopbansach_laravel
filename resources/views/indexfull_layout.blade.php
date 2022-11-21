@@ -94,8 +94,10 @@
                         <form class="header-mid__search-box" action="search" method="GET">
                             <select class="header-mid__select header-mid__search-box__input" name="search-option" id="searchSelect">
                                 <option value="0" class="header-mid__option">Tất cả</option>
-                                @foreach ($categoryASC as $key => $value) 
+                                @foreach ($categoryASC as $key => $value)
+                                @if ($value->status == 1) 
                                     <option value="{{$value->category_id}}" class="header-mid__option">{{$value->category_name}}</option>
+                                @endif
                                 @endforeach      
                             </select>
                             <div class="header-mid__search-group">
@@ -152,6 +154,7 @@
                                     <ul class="header-dropdown__list">
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
                                         @foreach ($categoryASC as $key => $value)
+                                        @if ($value->status == 1)
                                             <li class="header-dropdown__item">
                                                 <a href="{{url('category/' . $value->category_id)}}" class="header-dropdown__link">
                                                     <div class="header-dropdown__link-box">
@@ -163,7 +166,8 @@
                                                     <i class="header-dropdown__link-icon fa-solid fa-caret-right"></i>
                                                 </a>
                                                
-                                            </li>   
+                                            </li>  
+                                            @endif 
                                         @endforeach 
                                         
                                         
@@ -203,6 +207,7 @@
                                     <ul class="header-dropdown__list">
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
                                         @foreach ($brandASC as $key => $value)
+                                        @if ($value->status == 1)
                                             <li class="header-dropdown__item">
                                                 <a href="{{url('brand/' . $value->brand_id)}}" class="header-dropdown__link">
                                                     <div class="header-dropdown__link-box">
@@ -215,6 +220,7 @@
                                                 </a>
                                                
                                             </li>   
+                                            @endif
                                         @endforeach 
                                         
                                         

@@ -11,9 +11,11 @@
                                 <ul class="sidebar__list">
                                     <a href="{{url('categorySelling/')}}" class="sidebar__link">Tất cả</a>
                                     @foreach ($categoryASC as $key => $value) 
+                                    @if ($value->status == 1)
                                         <li class="sidebar__item">
                                             <a href="{{url('category/' . $value->category_id)}}" class="sidebar__link">{{$value->category_name}}</a>
                                         </li>
+                                        @endif
                                     @endforeach
                                     
                                 </ul>
@@ -37,6 +39,9 @@
                                         </div>
                                     @else 
                                         @foreach ($productASC6 as $key => $value) 
+                                        @if ($value->status == 1)
+                                            
+                                        
                                             <div class="col-4">
                                                 <!-- 1 sản phẩm (trong div classify__product) -->
                                                 <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
@@ -57,6 +62,7 @@
                                                     </div>
                                                 </a>
                                             </div>
+                                            @endif
                                         @endforeach
                                     @endif
                        
