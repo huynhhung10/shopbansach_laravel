@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Customer extends Authenticatable
 {
     use HasFactory;
-    public $timestamps = false; //set time to false
+    public $timestamps = true; //set time to false
     protected $fillable = [
         'customer_id', 'customer_avatar', 'customer_name', 'customer_username', 'email', 'password', 'customer_phone', 'status'
     ];

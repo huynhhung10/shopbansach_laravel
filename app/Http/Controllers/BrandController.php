@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Product;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BrandController extends Controller
 {
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate(
             [
                 'brand_name' => 'required|unique:category_name|max:255',

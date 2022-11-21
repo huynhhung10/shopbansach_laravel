@@ -80,9 +80,7 @@ Route::post('/save-checkout-customer', [ClientPaymentController::class, 'save_ch
 Route::get('/checkpayment', [ClientPaymentController::class, 'checkpayment']);
 Route::post('/order_save', [ClientPaymentController::class, 'order_save']);
 
-//Lịch sử thanh toán
-Route::get('/historyOrder', [ClientPaymentController::class, 'history']);
-Route::get('/detailPayment', [ClientPaymentController::class, 'detail']);
+
 
 //Đăng nhập / đăng ký
 
@@ -108,6 +106,10 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/accountInfo/{customer_id}', [ClientAccountController::class, 'index']);
     Route::get('/savechange', [ClientAccountController::class, 'savechange']);
     Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
+    Route::post('/savechangepassword', [ClientAccountController::class, 'savechangepassword']);
+    //Lịch sử thanh toán
+    Route::get('/historyOrder/{customer_id}', [ClientPaymentController::class, 'show_customer_order']);
+    Route::get('/detailPayment/{order_id}', [ClientPaymentController::class, 'show_customer_order_details']);
 });
 
 

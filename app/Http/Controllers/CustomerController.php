@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use DB;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
 {
@@ -17,7 +19,7 @@ class CustomerController extends Controller
         // if($search != ""){
         //     $customers = Customer::where('')
         // }
-        $customers = Customer::paginate(2); //instead SQL select * from categories
+        $customers = Customer::paginate(5); //instead SQL select * from categories
         return view('admin.all_customer')->with('customers', $customers);
 
 
@@ -48,10 +50,20 @@ class CustomerController extends Controller
     {
         $cus = Customer::find($customer_id);
         $cus->delete();
-        return redirect('admin/all-customer')->with('delete-success', 'Xóa thành công!!!');
+        Toastr::success('Success', 'X thành công!');
+        return redirect('admin/all-customer');
     }
     public function posteditcustomer(Request $request)
     {
+        $request->validate([
+            'customer_name' => 'required',
+            'customer_username' => 'required|unique:tbl_customer,customer_username',
+            'email' => 'required|email|unique:tbl_customer,email',
+            'password' => 'required|min:1',
+            'confirm_password' => 'required|same:customer_password',
+            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+        ]);
+
 
         $cus = Customer::find($request->customer_id);
         if ($request->file('avatar') != null) {
@@ -65,7 +77,8 @@ class CustomerController extends Controller
         $cus->customer_username = $request->customer_username;
 
         $cus->email = $request->email;
-        $cus->password = $request->password;
+        $cus->password = \Hash::make($request->password);
+
         $cus->customer_phone = $request->customer_phone;
         if ($request->status) {
             $cus->status = 1;
@@ -73,18 +86,20 @@ class CustomerController extends Controller
             $cus->status = 0;
         }
         $cus->save();
-
-        return redirect('admin/all-customer')->with('edit-success', 'Sửa thành công!!!');
+        // Alert::success('Success Title', 'Success Message');
+        Toastr::success('Success', 'Chỉnh sửa thành công!');
+        // @include('sweetalert::alert')
+        return redirect('admin/all-customer');
     }
     public function add_customer_button(Request $request)
     {
         $request->validate([
             'customer_name' => 'required',
-            'customer_username' => 'required',
-            'email' => 'required|email',
+            'customer_username' => 'required|unique:tbl_customer,customer_username',
+            'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:1',
             'confirm_password' => 'required|same:customer_password',
-            'customer_phone' => 'required|max:10'
+            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
         ]);
 
         // $input = $request->all();
@@ -123,7 +138,7 @@ class CustomerController extends Controller
         $cus->customer_username = $request->customer_username;
 
         $cus->email = $request->email;
-        $cus->password = $request->password;
+        $cus->password = \Hash::make($request->password);
         $cus->customer_phone = $request->customer_phone;
         if ($request->status) {
             $cus->status = 1;
@@ -131,7 +146,9 @@ class CustomerController extends Controller
             $cus->status = 0;
         }
         $cus->save();
-        return redirect()->back()->with('success', 'Thêm vào thành công!');
+        Toastr::success('Success', 'Thêm khách hàng thành công!');
+        // @include('sweetalert::alert')
+        return redirect('admin/all-customer');
     }
     public function changeStatus($customer_id, $status)
     {
@@ -160,7 +177,7 @@ class CustomerController extends Controller
         if ($search != '') {
             $customers = Customer::where(function ($query) use ($search) {
                 $query->where('customer_username', 'like', '%' . $search . '%');
-            })->paginate(2);
+            })->paginate(5);
             $customers->appends(['search_query' => $search]);
         } else {
             $customers = Customer::paginate(2);

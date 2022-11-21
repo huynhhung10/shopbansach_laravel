@@ -7,7 +7,7 @@
 
     class Brand extends Model{
         use HasFactory;
-        public $timestamps = false;
+        public $timestamps = true;
         protected $fillable = [
             'brand_name',
             'brand_content',
@@ -21,4 +21,3 @@
             return $this->hasMany('App\Models\Product');
         }
     }
-?>

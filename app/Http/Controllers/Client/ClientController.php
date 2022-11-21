@@ -7,16 +7,20 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
+
 use PhpParser\Node\Expr\Cast;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientController extends Controller
 {
 
-    public function __construct(){
-
+    public function __construct()
+    {
     }
 
-    public function index(){
+    public function index()
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
@@ -25,18 +29,19 @@ class ClientController extends Controller
         $productASC4 = Product::with('category')->orderBy('product_id', 'ASC')->limit(4)->get();
         $productDESC4 = Product::with('category')->orderBy('product_id', 'DESC')->limit(4)->get();
         $productASC8 = Product::with('category')->orderBy('product_id', 'ASC')->limit(8)->get();
-        
+
 
         return view('client.home')->with(compact(
             'categoryASC',
-            'productASC4', 
+            'productASC4',
             'productDESC4',
             'productASC8',
             'brandASC',
         ));
     }
 
-    public function viewAllProduct(){
+    public function viewAllProduct()
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
@@ -51,14 +56,15 @@ class ClientController extends Controller
         ));
     }
 
-    public function viewOnCategory($category_id){
+    public function viewOnCategory($category_id)
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('category_id', $category_id)->paginate(6);
         $cateName = 'search';
-        if($category_id != 'search'){
+        if ($category_id != 'search') {
             $cateName = $categoryASC->where('category_id', $category_id)->first()->category_name;
             return view('client.selling')->with(compact(
                 'categoryASC',
@@ -68,10 +74,10 @@ class ClientController extends Controller
             ));
         }
         return $this->search();
-        
     }
 
-    public function viewProduct($product_id){
+    public function viewProduct($product_id)
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
@@ -85,17 +91,18 @@ class ClientController extends Controller
         ));
     }
 
-    public function search(){
+    public function search()
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         $tukhoa = $_GET['tukhoa'];
         $option = $_GET['search-option'];
-        if($option == 0){
-            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('product_name', 'LIKE', '%'.$tukhoa.'%')->take(6)->get();
-        }else{
-            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('category_id', $option)->where('product_name', 'LIKE', '%'.$tukhoa.'%')->take(6)->get();
+        if ($option == 0) {
+            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('product_name', 'LIKE', '%' . $tukhoa . '%')->take(6)->get();
+        } else {
+            $productASC6 = Product::with('category')->orderBy('product_id', 'ASC')->where('category_id', $option)->where('product_name', 'LIKE', '%' . $tukhoa . '%')->take(6)->get();
         }
         $cateName = $tukhoa;
 
@@ -110,14 +117,15 @@ class ClientController extends Controller
     }
 
 
-    public function viewOnBrand($brand_id){
+    public function viewOnBrand($brand_id)
+    {
         //header, home
         $categoryASC = Category::orderBy('category_id', 'ASC')->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         $productASC6 = Product::with('brand')->orderBy('product_id', 'ASC')->where('brand_id', $brand_id)->paginate(6);
         $cateName = 'search';
-        if($brand_id != 'search'){
+        if ($brand_id != 'search') {
             $cateName = $brandASC->where('brand_id', $brand_id)->first()->brand_name;
             return view('client.selling')->with(compact(
                 'categoryASC',
@@ -127,7 +135,5 @@ class ClientController extends Controller
             ));
         }
         return $this->search();
-        
     }
-    
 }

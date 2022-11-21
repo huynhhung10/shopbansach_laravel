@@ -11,7 +11,8 @@ use App\Models\Customer;
 
 class ProductController extends Controller
 {
-    public function add_product(){
+    public function add_product()
+    {
         $category = Category::latest()->get();
         $brand = Brand::latest()->get();
         return view('admin.add_product', ['category'=>$category],  ['brand'=>$brand]);

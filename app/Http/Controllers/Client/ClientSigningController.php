@@ -10,6 +10,8 @@ use DB;
 use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 session_start();
 class ClientSigningController extends Controller
@@ -25,10 +27,10 @@ class ClientSigningController extends Controller
         $request->validate([
             'customer_name' => 'required',
             'customer_username' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:1',
             'confirm_password' => 'required|same:password',
-            'customer_phone' => 'required|max:10'
+            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
         ]);
 
 
@@ -38,7 +40,8 @@ class ClientSigningController extends Controller
             'customer_name' => $request->customer_name,
             'customer_username' => $request->customer_username,
             'email' => $request->email,
-            'password' => $request->password,
+
+            'password' => \Hash::make($request->password),
             'customer_phone' => $request->customer_phone
 
 
@@ -49,12 +52,14 @@ class ClientSigningController extends Controller
 
         // if registration success then return with success message
         if (!is_null($customer)) {
-            return back()->with('success', 'Đăng ký thành công.');
+            Alert::success('Success', 'Đăng ký thành công.');
+            return back();
         }
 
         // else return with error message
         else {
-            return back()->with('error', 'Whoops! some error encountered. Please try again.');
+            Alert::error('Error', 'Đăng ký thất baị, kiểm tra lại thông tin.');
+            return back();
         }
     }
 
@@ -93,17 +98,19 @@ class ClientSigningController extends Controller
             'email' => 'required|email|exists:tbl_customer,email',
             'password' => 'required|min:1|max:30'
         ], [
-            'email.exists' => 'This email is not exists in admins table'
+            'email.exists' => 'Email naỳ không tồn taị'
         ]);
 
         $creds = $request->only('email', 'password');
 
 
-        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 0])) {
+        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => '0'])) {
+            Alert::success('Đăng nhập thành công', 'Bạn giờ đây có thể mua hàng.');
             return Redirect::to('/');
         } else {
 
-            return flash('error', 'email hoặc password sai');
+            Alert::error('Error', 'email hoặc password sai');
+            return back();
         }
     }
 

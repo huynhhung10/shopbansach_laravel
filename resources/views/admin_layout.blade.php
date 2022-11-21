@@ -33,16 +33,16 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    
-    
+
+
     <link rel="stylesheet" href="{{asset('frontend/css/sell.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/detail.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/css/historyPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/detailPayment.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/historyOrder.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/payment.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/cart.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/signInSignUp.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/accountInfo.css')}}">
-    
     <link rel="stylesheet" href="{{ asset('frontend/css/all.css') }}">
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />   --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
@@ -58,12 +58,10 @@
     <meta name="msapplication-TileImage" content="{{asset('backend/assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendors styles-->
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
     <link rel="stylesheet" href="{{asset('backend/vendors/simplebar/css/simplebar.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/vendors/simplebar.css')}}">
-    <link href= "{{asset('backend/css/toastr.css')}}" rel="stylesheet">
-    <script src="{{asset('backend/js/toastr.min.js')}}"></script>
+   
 
     <!-- Main styles for this application-->
     <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
@@ -72,6 +70,8 @@
     <link href="{{asset('backend/css/examples.css')}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <link href= "{{asset('backend/css/toastr.css')}}" rel="stylesheet">
+    <script src="{{asset('backend/js/toastr.min.js')}}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
 
@@ -85,10 +85,11 @@
       gtag('config', 'UA-118965717-5');
     </script>
     <link href="{{asset('backend/vendors/@coreui/chartjs/css/coreui-chartjs.css')}}" rel="stylesheet">
+
   </head>
 
 
-
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <body>
     <!-- thuong hieu -->
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -289,9 +290,15 @@
         
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
     </script>
-
+    {!! Toastr::message() !!}
+    @include('sweetalert::alert')
   </body>
 </html>

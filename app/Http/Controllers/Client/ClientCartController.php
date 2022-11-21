@@ -12,6 +12,8 @@ use Cart;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 session_start();
 
@@ -29,109 +31,7 @@ class ClientCartController extends Controller
         ));;
     }
 
-    public function gio_hang(Request $request)
-    {
-        //seo 
-        //slide
-        $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status', '1')->take(4)->get();
 
-        $meta_desc = "Giỏ hàng của bạn";
-        $meta_keywords = "Giỏ hàng Ajax";
-        $meta_title = "Giỏ hàng Ajax";
-        $url_canonical = $request->url();
-        //--seo
-        $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get();
-        $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
-
-        return view('pages.cart.cart_ajax')->with('category', $cate_product)->with('brand', $brand_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('slider', $slider);
-    }
-    public function add_cart_ajax(Request $request)
-    {
-        // Session::forget('cart');
-        $data = $request->all();
-        $session_id = substr(md5(microtime()), rand(0, 26), 5);
-        $cart = Session::get('cart');
-        if ($cart == true) {
-            $is_avaiable = 0;
-            foreach ($cart as $key => $val) {
-                if ($val['product_id'] == $data['cart_product_id']) {
-                    $is_avaiable++;
-                }
-            }
-            if ($is_avaiable == 0) {
-                $cart[] = array(
-                    'session_id' => $session_id,
-                    'product_name' => $data['cart_product_name'],
-                    'product_id' => $data['cart_product_id'],
-                    'product_image' => $data['cart_product_image'],
-                    'product_quantity' => $data['cart_product_quantity'],
-                    'product_qty' => $data['cart_product_qty'],
-                    'product_price' => $data['cart_product_price'],
-                );
-                Session::put('cart', $cart);
-            }
-        } else {
-            $cart[] = array(
-                'session_id' => $session_id,
-                'product_name' => $data['cart_product_name'],
-                'product_id' => $data['cart_product_id'],
-                'product_image' => $data['cart_product_image'],
-                'product_quantity' => $data['cart_product_quantity'],
-                'product_qty' => $data['cart_product_qty'],
-                'product_price' => $data['cart_product_price'],
-
-            );
-            Session::put('cart', $cart);
-        }
-
-        Session::save();
-    }
-    public function delete_product($session_id)
-    {
-        $cart = Session::get('cart');
-        // echo '<pre>';
-        // print_r($cart);
-        // echo '</pre>';
-        if ($cart == true) {
-            foreach ($cart as $key => $val) {
-                if ($val['session_id'] == $session_id) {
-                    unset($cart[$key]);
-                }
-            }
-            Session::put('cart', $cart);
-            return redirect()->back()->with('message', 'Xóa sản phẩm thành công');
-        } else {
-            return redirect()->back()->with('message', 'Xóa sản phẩm thất bại');
-        }
-    }
-    public function update_cart(Request $request)
-    {
-        $data = $request->all();
-        $cart = Session::get('cart');
-        if ($cart == true) {
-            $message = '';
-
-            foreach ($data['cart_qty'] as $key => $qty) {
-                $i = 0;
-                foreach ($cart as $session => $val) {
-                    $i++;
-
-                    if ($val['session_id'] == $key && $qty < $cart[$session]['product_quantity']) {
-
-                        $cart[$session]['product_qty'] = $qty;
-                        $message .= '<p style="color:blue">' . $i . ') Cập nhật số lượng :' . $cart[$session]['product_name'] . ' thành công</p>';
-                    } elseif ($val['session_id'] == $key && $qty > $cart[$session]['product_quantity']) {
-                        $message .= '<p style="color:red">' . $i . ') Cập nhật số lượng :' . $cart[$session]['product_name'] . ' thất bại</p>';
-                    }
-                }
-            }
-
-            Session::put('cart', $cart);
-            return redirect()->back()->with('message', $message);
-        } else {
-            return redirect()->back()->with('message', 'Cập nhật số lượng thất bại');
-        }
-    }
     public function delete_all_product()
     {
         $cart = Session::get('cart');
@@ -161,8 +61,10 @@ class ClientCartController extends Controller
 
         if (Cart::count($data) < 15) {
             Cart::add($data);
-            return Redirect::to('/show-cart')->with('categoryASC', $cate_product)->with('brand', $brand_product);;
+            Toastr::success('Success', 'bạn vừa thêm vào sản phẩm giỏ hàng!');
+            return back()->with('categoryASC', $cate_product)->with('brand', $brand_product);;
         }
+        Toastr::error('Error', 'Không thể mua thêm nữa!');
         return back();
     }
     public function show_cart()
@@ -171,12 +73,13 @@ class ClientCartController extends Controller
         $cate_product = DB::table('tbl_category')->where('status', '1')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
         return view('client.cart')->with('categoryASC', $cate_product)
-        ->with('brand', $brand_product)
-        ->with('brandASC', $brand_product);
+            ->with('brand', $brand_product)
+            ->with('brandASC', $brand_product);
     }
     public function delete_to_cart($rowId)
     {
         Cart::update($rowId, 0);
+        Toastr::success('Success', 'Xóa sản phẩm trong giỏ thành công!');
         return Redirect::to('/show-cart');
     }
     public function update_cart_quantity(Request $request)
@@ -184,6 +87,7 @@ class ClientCartController extends Controller
         $rowId = $request->rowId_cart;
         $qty = $request->cart_quantity;
         Cart::update($rowId, $qty);
+        Toastr::success('Success', 'Thay đổi số lượng thành công!');
         return Redirect::to('/show-cart');
     }
 }
