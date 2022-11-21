@@ -124,21 +124,37 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
 
         Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+        //Route::get('/dashboard',  [ProductController::class, 'countdashboard']);
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
         //QL sản phẩm
         Route::get('/all-product', [ProductController::class, 'index']);
         Route::get('/add-product', [ProductController::class, 'add_product']);
+        Route::post('/addproduct', [ProductController::class, 'store'])->name('store');
+        Route::get('/edit-product/{product_id}', [ProductController::class, 'geteditproduct']);
+        Route::post('posteditproduct', [ProductController::class, 'posteditproduct']);
+        Route::get('/delete-product/{product_id}', [ProductController::class, 'deleteproduct']);
+        Route::get('/findproduct', [ProductController::class, 'findproduct'])->name('web.findproduct');
+
 
         //QL NXB
         Route::get('/all-brand', [BrandController::class, 'index']);
-        Route::get('/add-brand', [BrandController::class, 'add_brand']);
+        Route::get('/add-brand', [BrandController::class, 'add_brand'])->name('add_brand');
+
+        Route::get('/edit-brand/{brand_id}', [BrandController::class, 'geteditbrand']);
+        Route::post('posteditbrand', [BrandController::class, 'posteditbrand']);
+        Route::get('/delete-brand/{brand_id}', [BrandController::class, 'deletebrand']);
+        Route::get('/findbrand', [BrandController::class, 'findbrand'])->name('web.findbrand');
+   
 
         //QL loại sản phẩm
         Route::get('/all-category', [CategoryController::class, 'index']);
         Route::get('/add-category', [CategoryController::class, 'add_category']);
-
-        //QL khách hàng
+        Route::get('/edit-category/{category_id}', [CategoryController::class, 'geteditcategory']);
+        Route::post('posteditcategory', [CategoryController::class, 'posteditcategory']);
+        Route::get('/delete-category/{category_id}', [CategoryController::class, 'deletecategory']);
+        Route::get('/findcategory', [CategoryController::class, 'findcategory'])->name('web.findcategory');
+        //QL khách hàng =========================
         Route::get('/all-customer', [CustomerController::class, 'index']);
         Route::get('/add-customer', [CustomerController::class, 'add_customer']);
         Route::post('/addcustomer', [CustomerController::class, 'add_customer_button'])->name('checkaddcustomer');
@@ -194,6 +210,6 @@ Auth::routes();
 
 Route::resource('/category', App\Http\Controllers\CategoryController::class);
 
-Auth::routes();
+// Auth::routes();
 
-Route::resource('/product', App\Http\Controllers\ProductController::class);
+// Route::resource('/product', App\Http\Controllers\ProductController::class);
