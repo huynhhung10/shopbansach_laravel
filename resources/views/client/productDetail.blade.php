@@ -100,7 +100,7 @@
                             <span>Danh mục</span> <p class="detail-more__info">Sách gì đó đó</p>
                         </li>
                         <li class="detail-more__item">
-                            <span>Danh mục</span> <p class="detail-more__info">Sách gì đó đó</p>
+                            <span>Nhà xuấ bản</span> <p class="detail-more__info">Sách gì đó đó</p>
                         </li>
                         <li class="detail-more__item">
                             <span>Danh mục</span> <p class="detail-more__info">Sách gì đó đó</p>

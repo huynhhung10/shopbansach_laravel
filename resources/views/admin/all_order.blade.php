@@ -101,7 +101,7 @@
                                   <div class="col-md-4">
                                    
                               <td>       <select id="inputState" name="order_status" class="form-select">
-                                          <option value='0'>chosse....</option>
+                                          <option value= '3'>chosse....</option>
                                           <option value = '1'>đơn hàng mới</option>
                                           <option value = '2'>Chờ xử lý</option>
                                           <option value = '3'>Đã xử lý</option>
