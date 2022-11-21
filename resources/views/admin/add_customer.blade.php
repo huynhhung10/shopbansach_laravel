@@ -43,11 +43,7 @@
                                 <input type="password" class="form-control" name="password" id="inputAddress">
                                 {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
                             </div>
-                            <div class="col-md-4">
-                                <label for="inputPassword4" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="confirm_password" id="inputAddress">
-                                {!! $errors->first('confirm_password', '<small class="text-danger">:message</small>') !!}
-                            </div>
+                           
                             <label for="inputAddress" class="form-label">Avatar</label>
                             <div class="input-group mb-3">
 

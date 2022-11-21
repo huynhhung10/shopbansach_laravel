@@ -45,7 +45,7 @@
                                         @php
                                             $id = 1;
                                         @endphp
-                                        @foreach ($product as $key => $product)
+                                        @foreach ($products as $key => $product)
                                             <tr>
                                                 <th scope="row">{{ $id++ }}</th>
                                                 <td>{{ $product->product_name }}</td>
@@ -93,21 +93,9 @@
 
             </div>
             <nav aria-label="Page navigation example" style="float:right">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
+                <div>
+                    {{$products->links()}}
+                </div>
             </nav>
 
         </div>

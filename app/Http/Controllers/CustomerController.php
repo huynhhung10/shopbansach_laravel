@@ -60,7 +60,7 @@ class CustomerController extends Controller
             'customer_username' => 'required|unique:tbl_customer,customer_username',
             'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:1',
-            'confirm_password' => 'required|same:customer_password',
+
             'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
         ]);
 
@@ -98,7 +98,7 @@ class CustomerController extends Controller
             'customer_username' => 'required|unique:tbl_customer,customer_username',
             'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:1',
-            'confirm_password' => 'required|same:customer_password',
+
             'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
         ]);
 

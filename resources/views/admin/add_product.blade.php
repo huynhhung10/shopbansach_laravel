@@ -11,55 +11,65 @@
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Tên sản phảm</label>
                                 <input type="text" class="form-control" name="product_name" id="inputAddress">
+                                {!! $errors->first('product_name', '<small class="text-danger">:message</small>') !!}
                             </div>
+                            
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label">Tên tác giả</label>
                                 <input type="text" class="form-control" name="product_author" id="inputAddress">
+                                {!! $errors->first('product_author', '<small class="text-danger">:message</small>') !!}
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">Mô tả</label>
                                 <textarea style="resize: none"  rows="8" class="form-control" name="product_content" id="ckeditor1" placeholder="Mô tả sản phẩm"></textarea>
+                                {!! $errors->first('product_content', '<small class="text-danger">:message</small>') !!}
                             </div>
-                            <label for="inputAddress" class="form-label">Hình Ảnh</label>
+
+                            <label for="inputAddress" class="form-label">Hình ảnh</label>
                             <div class="input-group mb-3">
-                                
-                                <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                                <input type="file" class="form-control-file" name="image" id="inputGroupFile01">
+
+                                <input type="file" class="form-control" name="product_img" id="avatar">
                             </div>
+                        
+                           
                         
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label">NXB</label>
                                 <select id="inputState" name="product_brand" class="form-select">
-                                <option selected>Choose...</option>
+                               
                                 @foreach ($brand as $key => $brand)                                    
                                 
                                 <option  value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
                                 @endforeach
                                 </select>
+                               
                             </div>
-
+                            {!! $errors->first('product_brand', '<small class="text-danger">:message</small>') !!}
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label">Thể loại</label>
                                 <select id="inputState" name="product_category" class="form-select">
-                                <option selected>Choose...</option>
+                                
                                 @foreach ($category as $key => $cate)                                    
                                 
                                 <option  value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                                 @endforeach
                                 
                                 </select>
+                               
                             </div>
 
-                            
+                             {!! $errors->first('product_category', '<small class="text-danger">:message</small>') !!}
 
                             <div class="col-md-2">
                                 <label for="inputCity" class="form-label">Số lượng</label>
                                 <input type="number"  data-validation="number" name="product_quantity" class="form-control" id="inputCity">
+                                {!! $errors->first('product_quantity', '<small class="text-danger">:message</small>') !!}
                             </div>
                             
                             <div class="col-md-2">
                                 <label for="inputZip" class="form-label">Giá</label>
                                 <input type="number" class="form-control" name="product_price" id="inputZip" placeholder="vnđ">
+                                {!! $errors->first('product_price', '<small class="text-danger">:message</small>') !!}
                             </div>
                             <div class="col-12">
                                 <div class="form-check">

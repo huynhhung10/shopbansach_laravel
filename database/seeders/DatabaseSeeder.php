@@ -99,7 +99,9 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Hoàng Long',
                 'product_img' => './frontend/img/products/1 (3).jpg',
                 'product_quantity' => 10,
+                'product_featured' => 1,
                 'status' => 1,
+
             ],
             [
                 'product_name' => 'Sự tích bánh chưng bánh giày - Nhựt khánh',
@@ -110,7 +112,9 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Nhựt Khánh',
                 'product_img' => './frontend/img/products/bia-sach2-9886.jpg',
                 'product_quantity' => 10,
+                'product_featured' => 1,
                 'status' => 1,
+
             ],
             [
                 'product_name' => 'Ai từng là con nít',
@@ -121,6 +125,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Nhiều tác giả',
                 'product_img' => './frontend/img/products/aitunglaconnitjpg.jpg',
                 'product_quantity' => 14,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -132,6 +137,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Dr.bob',
                 'product_img' => './frontend/img/products/artistic.png',
                 'product_quantity' => 29,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -143,6 +149,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Anh ba xe ôm',
                 'product_img' => './frontend/img/products/bia-sach-hoc-vien-thiet-ke-viettamduc02.jpg',
                 'product_quantity' => 8,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -154,6 +161,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Tạ Huy Long',
                 'product_img' => './frontend/img/products/bia-sach2-9886.jpg',
                 'product_quantity' => 30,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -165,6 +173,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Nhà xuất bản Lao động - Xã hội',
                 'product_img' => './frontend/img/products/body-2-Cong-Ly-2574-1416197358.jpg',
                 'product_quantity' => 30,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -176,6 +185,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Nhà xuất bản văn hóa Thông tin',
                 'product_img' => './frontend/img/products/demen.jpg',
                 'product_quantity' => 23,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -187,6 +197,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'VEE',
                 'product_img' => './frontend/img/products/latenighthough.jpg',
                 'product_quantity' => 6,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -198,6 +209,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Terry Crosby',
                 'product_img' => './frontend/img/products/lunarstorm.jpeg',
                 'product_quantity' => 9,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -209,6 +221,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Nhà xuất bản đại học Quốc gia Hà Nội',
                 'product_img' => './frontend/img/products/sach_Tan_Nhat_Minh-669x1024.png',
                 'product_quantity' => 40,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -220,6 +233,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Samantha Donald',
                 'product_img' => './frontend/img/products/thebeautyWithin.jpg',
                 'product_quantity' => 11,
+                'product_featured' => 1,
                 'status' => 1,
             ],
             [
@@ -231,6 +245,7 @@ class DatabaseSeeder extends Seeder
                 'product_author' => 'Nhuận Ngọc',
                 'product_img' => './frontend/img/products/vanhoathanglong.png',
                 'product_quantity' => 19,
+                'product_featured' => 1,
                 'status' => 1,
             ],
         ]);
