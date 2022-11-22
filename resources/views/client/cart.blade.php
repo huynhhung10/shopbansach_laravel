@@ -33,7 +33,7 @@
                                        
                                         <div class="cart-item__product cart--flex4">
                                             <div class="cart-item__imgbox">
-                                                <img class="cart-item__img" src="{{URL::to('./'.$v_content->options->image)}}" alt="" width="60">
+                                                <img class="cart-item__img" src="{{URL::to('./frontend/img/products/'.$v_content->options->image)}}" alt="" width="60">
                                             </div>
     
                                             <div class="cart-item__info">

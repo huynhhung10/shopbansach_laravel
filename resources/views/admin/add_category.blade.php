@@ -15,7 +15,7 @@
                             
                                 <div class="form-check">
                                     
-                                    <input name="status" class="form-check-input" type="checkbox" value="0" id="gridCheck">
+                                    <input name="status" class="form-check-input" type="checkbox" id="gridCheck">
                                     
                                     <label class="form-check-label" for="gridCheck">
                                         Hiển thị

@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-5">
                         <div class="detail__imgbox">
-                            <img class="detail__img" src="{{asset($product->product_img)}}" alt="">
+                            <img class="detail__img" src="{{asset('/frontend/img/products')}}/{{$product->product_img}}" alt="">
                             <input type="hidden" value="{{$product->product_img}}">
                         </div>
                     </div>
@@ -39,7 +39,12 @@
                             </div>
                             <div class="detail-info__box">
                                 <span>Tình trạng:</span>
-                                <p class="detail-info__status">{{$product->product_status}}</p>
+                                @if( $product->status == 1 )
+                                <p class="detail-info__status">Còn hàng</p>
+                                
+                                @else
+                                <p class="detail-info__status">Hết hàng</p>
+                                @endif
                             </div>
 
                             <div class="detail-info__quantitybox">
@@ -48,7 +53,7 @@
                                 @if($product->product_quantity >= 5)
                                 <div class="detail-info__quantify quantity">
                                     {{-- <button class="quantify-down quantify__down quantify__btn">-</button> --}}
-                                    <input name="qty" type="number" min="1" class="quantify__num cart_product_qty_{{$product->product_id}}"  value="1" />
+                                    <input name="qty" type="number" min="1" max="5" class="quantify__num cart_product_qty_{{$product->product_id}}"  value="1" />
                                     {{-- <button class="quantify-up quantify__up quantify__btn">+</button> --}}
                                 </div>
                                 @else
@@ -61,7 +66,7 @@
                             </div>
                             <input name="productid_hidden" type="hidden"  value="{{$product->product_id}}" />
                             <!-- <p class="detail-info__phone">Gọi đặt hàng: <span>079 2345 8732</span> hoặc <span>089 1293 833</span></p> -->
-                            @if($product->product_quantity >= 5)
+                            @if($product->status == 1)
                             <div class="detail-info__btns">
                                 {{-- <a href="{{URL::to('/cart')}}" class="detail-info__btnlink"> --}}
                                     <button class="detail-info__btn" type="submit">Thêm vào giỏ hàng</button></a>
@@ -97,13 +102,10 @@
                     <h2 class="detail-more__title">THÔNG TIN CHI TIẾT</h2>
                     <ul class="detail-more__list">
                         <li class="detail-more__item">
-                            <span>Danh mục</span> <p class="detail-more__info">Sách gì đó đó</p>
+                            <span>Danh mục</span> <p class="detail-more__info">{{$product->category->category_name}}</p>
                         </li>
                         <li class="detail-more__item">
-                            <span>Nhà xuấ bản</span> <p class="detail-more__info">Sách gì đó đó</p>
-                        </li>
-                        <li class="detail-more__item">
-                            <span>Danh mục</span> <p class="detail-more__info">Sách gì đó đó</p>
+                            <span>Nhà xuất bản</span> <p class="detail-more__info">{{$product->brand->brand_name}}</p>
                         </li>
                         
                     </ul>

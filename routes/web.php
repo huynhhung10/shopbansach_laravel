@@ -73,12 +73,7 @@ Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_c
 // Route::get('/del-product/{session_id}', [ClientCartController::class], 'delete_product');
 // Route::get('/del-all-product', [ClientCartController::class], 'delete_all_product');
 
-//Thanh toán
-Route::get('/payment', [ClientPaymentController::class, 'index']);
-Route::get('/show-cart/checkpayment', [ClientPaymentController::class, 'check']);
-Route::post('/save-checkout-customer', [ClientPaymentController::class, 'save_checkout_customer']);
-Route::get('/checkpayment', [ClientPaymentController::class, 'checkpayment']);
-Route::post('/order_save', [ClientPaymentController::class, 'order_save']);
+
 
 
 
@@ -102,6 +97,13 @@ Route::middleware(['guest:customer'])->group(function () {
 });
 Route::middleware(['auth:customer'])->group(function () {
 
+    //Thanh toán
+    Route::get('/payment', [ClientPaymentController::class, 'index']);
+    Route::get('/show-cart/checkpayment', [ClientPaymentController::class, 'check']);
+    Route::post('/save-checkout-customer', [ClientPaymentController::class, 'save_checkout_customer']);
+    Route::get('/checkpayment', [ClientPaymentController::class, 'checkpayment']);
+    Route::post('/order_save', [ClientPaymentController::class, 'order_save']);
+
     Route::get('/accountPasswordChange/{customer_id}', [ClientAccountController::class, 'passwordChange']);
     Route::get('/accountInfo/{customer_id}', [ClientAccountController::class, 'index']);
     Route::get('/savechange', [ClientAccountController::class, 'savechange']);
@@ -124,7 +126,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
 
         //Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
-        Route::get('/dashboard',  [AdminController::class, 'countdashboard']);
+        //Route::get('/dashboard',  [AdminController::class, 'countdashboard']);
+        Route::view('/dashboard', 'admin.dashboard');
+        Route::get('/viewdashboard', [AdminController::class, 'index1'])->name('dashboard');
         //Route::get('/dashboard',  [ProductController::class, 'countdashboard']);
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
@@ -136,17 +140,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('posteditproduct', [ProductController::class, 'posteditproduct']);
         Route::get('/delete-product/{product_id}', [ProductController::class, 'deleteproduct']);
         Route::get('/findproduct', [ProductController::class, 'findproduct'])->name('web.findproduct');
+        Route::get('/change-status-product/product_id={product_id}&status={status}', [ProductController::class, 'changeStatus']);
 
 
         //QL NXB
         Route::get('/all-brand', [BrandController::class, 'index']);
         Route::get('/add-brand', [BrandController::class, 'add_brand'])->name('add_brand');
-
         Route::get('/edit-brand/{brand_id}', [BrandController::class, 'geteditbrand']);
         Route::post('posteditbrand', [BrandController::class, 'posteditbrand']);
         Route::get('/delete-brand/{brand_id}', [BrandController::class, 'deletebrand']);
         Route::get('/findbrand', [BrandController::class, 'findbrand'])->name('web.findbrand');
-   
+        Route::get('/change-status-brand/brand_id={brand_id}&brand_status={brand_status}', [BrandController::class, 'changeStatus']);
+
 
         //QL loại sản phẩm
         Route::get('/all-category', [CategoryController::class, 'index']);
@@ -155,6 +160,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('posteditcategory', [CategoryController::class, 'posteditcategory']);
         Route::get('/delete-category/{category_id}', [CategoryController::class, 'deletecategory']);
         Route::get('/findcategory', [CategoryController::class, 'findcategory'])->name('web.findcategory');
+        Route::get('/change-status-category/category_id={category_id}&status={status}', [CategoryController::class, 'changeStatus']);
+
+
         //QL khách hàng =========================
         Route::get('/all-customer', [CustomerController::class, 'index']);
         Route::get('/add-customer', [CustomerController::class, 'add_customer']);
@@ -210,6 +218,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::resource('/category', App\Http\Controllers\CategoryController::class);
+Route::resource('/brand', App\Http\Controllers\BrandController::class);
 
 // Auth::routes();
 

@@ -15,15 +15,13 @@
                             </div>
                             
                                 <div class="form-check">
-                                    
-                                    <input name="status" class="form-check-input" type="checkbox" value="0" id="gridCheck">
-                                    
+                                    <input class="form-check-input" type="checkbox" @if($cate->status == 1) checked  @endif id="gridCheck" name="status">
                                     <label class="form-check-label" for="gridCheck">
                                         Hiển thị
                                     </label>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="themdanhmuc" class="btn btn-primary" style="background-color: green; float: right">Thêm danh mục</button>
+                                    <button type="submit" name="themdanhmuc" class="btn btn-primary" style="background-color: green; float: right">Sửa danh mục</button>
                                 </div>
                             </div>
                             

@@ -11,7 +11,7 @@
                                 <ul class="sidebar__list">
                                     <a href="{{url('categorySelling/')}}" class="sidebar__link">Tất cả</a>
                                     @foreach ($categoryASC as $key => $value) 
-                                    @if ($value->status == 1)
+                                    @if ($value->status == 1 )
                                         <li class="sidebar__item">
                                             <a href="{{url('category/' . $value->category_id)}}" class="sidebar__link">{{$value->category_name}}</a>
                                         </li>
@@ -39,7 +39,7 @@
                                         </div>
                                     @else 
                                         @foreach ($productASC6 as $key => $value) 
-                                        @if ($value->status == 1)
+                                        @if ($value->status == 1 && $value->category->status == 1 && $value->brand->brand_status == 1)
                                             
                                         
                                             <div class="col-4">
@@ -47,7 +47,7 @@
                                                 <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                                     <div class="classify__product">
                                                         <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                                            <img src="{{asset($value->product_img)}}" alt="" class="classify-product__img">
+                                                            <img src="{{asset('/frontend/img/products')}}/{{$value->product_img}}" alt="" class="classify-product__img">
                                                             <div class="classify-product__discount">-15%</div>
                                                         </div>
                                                         <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->

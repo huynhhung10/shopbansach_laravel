@@ -8,6 +8,8 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Customer;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -68,6 +70,7 @@ class ProductController extends Controller
             $filename = $file->getClientOriginalName('product_img');
             $file->move('frontend/img/products', $filename);
             $product->product_img = './frontend/img/products/' . $filename;
+            //$product->product_img =  $filename;
         }
 
         $product->product_quantity = $data['product_quantity'];
@@ -75,21 +78,23 @@ class ProductController extends Controller
         //$product->status = $data['status'];
 
         $product->save();
-
-        return redirect()->back()->with('success', 'Thêm vào thành công!');
+        Toastr::success('Success', 'Thêm sản phẩm thành công!');
+        return redirect('admin/all-product');
     }
 
     public function index()
     {
-        $products = Product::paginate(5);
+        //$products = Product::paginate(5);
+        $products = Product::orderBy('created_at', 'DESC')->paginate(5);
 
         return view('admin.all_product', ['products' => $products]);
         //return view('admin.all_product');
     }
-    public function edit_product()
-    {
-        return view('admin.edit_product');
-    }
+    // public function edit_product()
+    // {
+
+    //     return view('admin.edit_product');
+    // }
     public function geteditproduct($product_id)
     {
         $category = Category::latest()->get();
@@ -98,45 +103,37 @@ class ProductController extends Controller
         // $brandName = $brand->where('brand_id', $brand_id)->first()->brand_name;
         //, ['category' => $category], ['brand' => $brand]
 
-        $product = Product::find($product_id);
-        // $brand1 =  Brand::find($product->brand_id);
-        // $brandName = $brand1->brand_name;
+        // $product = Product::find($product_id);
+        // // $brand1 =  Brand::find($product->brand_id);
+        // // $brandName = $brand1->brand_name;
 
-        return view(
-            'admin.edit_product',
-            ['product' => $product],
-            ['brand' => $brand],
-            ['category' => $category]
-        );
+        // return view(
+        //     'admin.edit_product',
+        //     ['product' => $product],
+        //     ['brand' => $brand],
+        //     ['category' => $category]
+        // );
         //['brand1' => $brand1]);
+        $product = Product::with('brand')->with('category')->find($product_id);
+        return view('admin.edit_product')->with('product', $product)->with('brand', $brand)->with('category', $category);
     }
     public function deleteproduct($product_id)
     {
         $product = Product::find($product_id);
         $product->delete();
-        return redirect('admin/all-product')->with('delete-success', 'Xóa thành công!!!');
+        Toastr::success('Success', 'Xóa thành công!');
+        return redirect('admin/all-product');
     }
     public function posteditproduct(Request $request)
     {
-        $request->validate([
-            'product_name' => 'required',
-            'product_content' => 'required',
-            'product_price' => 'required',
-            'product_author' => 'required',
-            'product_author' => 'required',
-            'product_img' => 'required',
-            'product_quantity' => 'required',
-            'product_brand' => 'required',
-            'product_category' => 'required',
-        ]);
 
         $product = Product::find($request->product_id);
-        $product->product_name = $data['product_name'];
-        $product->product_content = $data['product_content'];
-        $product->product_price = $data['product_price'];
-        $product->product_author = $data['product_author'];
-        $product->brand_id = $data['product_brand'];
-        $product->category_id = $data['product_category'];
+        $product->product_name = $request->product_name;
+        $product->product_content = $request->product_content;
+        $product->product_price = $request->product_price;
+        $product->product_author = $request->product_author;
+        $product->brand_id =  $request->product_brand;
+        $product->category_id = $request->product_category;
 
         // them sach truyen
         // $get_image = $data['image'];
@@ -157,7 +154,7 @@ class ProductController extends Controller
         }
 
 
-        $product->product_quantity = $data['product_quantity'];
+        $product->product_quantity =  $request->product_quantity;
         //$product->product_featured = $data['product_featured'];
         //$product->status = $data['status'];
         if ($request->product_featured) {
@@ -170,10 +167,10 @@ class ProductController extends Controller
         } else {
             $product->status = 0;
         }
-
+        Toastr::success('Success', 'Chỉnh sửa thành công!');
         $product->save();
 
-        return redirect('admin/all-product')->with('edit-success', 'Sửa thành công!!!');
+        return redirect('admin/all-product');
     }
     public function changeStatus($product_id, $status)
     {
@@ -192,7 +189,7 @@ class ProductController extends Controller
             })->paginate(5);
             $products->appends(['search_query' => $search]);
         } else {
-            $products = Product::paginate(2);
+            $products = Product::orderBy('created_at', 'DESC')->paginate(5);
         }
         return view('admin.all_product')->with('products', $products);
     }
@@ -224,4 +221,5 @@ class ProductController extends Controller
             
     //     );
     // }
+
 }

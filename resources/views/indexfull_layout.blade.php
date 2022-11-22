@@ -207,7 +207,7 @@
                                     <ul class="header-dropdown__list">
                                         <!-- 1 loại danh mục nằm trong thẻ li -->
                                         @foreach ($brandASC as $key => $value)
-                                        @if ($value->status == 1)
+                                        @if ($value->brand_status == 1)
                                             <li class="header-dropdown__item">
                                                 <a href="{{url('brand/' . $value->brand_id)}}" class="header-dropdown__link">
                                                     <div class="header-dropdown__link-box">

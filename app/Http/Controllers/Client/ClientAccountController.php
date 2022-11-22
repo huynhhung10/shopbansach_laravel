@@ -71,7 +71,7 @@ class ClientAccountController extends Controller
     {
         $request->validate([
 
-            'new_password' => 'required',
+            'new_password' => 'required|min:8|max:32',
             'new_passwordConfirm' => 'required|same:new_password',
 
         ]);

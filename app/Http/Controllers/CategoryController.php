@@ -17,25 +17,23 @@ class CategoryController extends Controller
                 'category_name' => 'required|unique:tbl_category|max:255',
 
             ],
-            [
-                'category_name.required' => 'Tên danh mục phải có nhé',
 
-            ]
         );
         $data = $request->all();
 
         $category = new Category();
         $category->category_name = $data['category_name'];
         //$category->status = $data['status'];
-        
-        if ( $request->status) {
-            $request->status = 1;
+
+        if ($request->status) {
+            $category->status = 1;
         } else {
-            $request->status = 0;
+            $category->status = 0;
         }
-        $category->status = $data['status'];
+
         $category->save();
-        return redirect()->back();
+        Toastr::success('Success', 'Thêm danh mục thành công!');
+        return redirect('admin/all-category');
     }
 
     public function edit_category()
@@ -47,19 +45,20 @@ class CategoryController extends Controller
     {
         $cate = Category::find($category_id);
         return view('admin.edit_category', ['cate' => $cate]);
-        
     }
     public function deletecategory($category_id)
     {
         $cate = Category::find($category_id);
         $cate->delete();
-        return redirect('admin/all-category')->with('delete-success', 'Xóa thành công!!!');
+        Toastr::success('Success', 'Xóa thành công!');
+        return redirect('admin/all-category');
     }
 
-    public function index(){
-        $category = Category::latest()->get();
-       
-        return view('admin.all_category', ['category'=>$category]);
+    public function index()
+    {
+        $category = Category::orderBy('created_at', 'DESC')->paginate(5);
+
+        return view('admin.all_category', ['category' => $category]);
         //return view('admin.all_category');
     }
 
@@ -72,15 +71,16 @@ class CategoryController extends Controller
 
         $cate = Category::find($request->category_id);
         $cate->category_name = $request->category_name;
-    
+
         if ($request->status) {
             $cate->status = 1;
         } else {
             $cate->status = 0;
         }
         $cate->save();
+        Toastr::success('Success', 'Chỉnh sửa thành công!');
 
-        return redirect('admin/all-category')->with('edit-success', 'Sửa thành công!!!');
+        return redirect('admin/all-category');
     }
     public function changeStatus($category_id, $status)
     {
@@ -91,17 +91,16 @@ class CategoryController extends Controller
     }
     function findcategory(Request $request)
     {
-       
+
         $search = $request->get('search_query');
         if ($search != '') {
             $category = Category::where(function ($query) use ($search) {
                 $query->where('category_name', 'like', '%' . $search . '%');
-            })->paginate(2);
+            })->paginate(5);
             $category->appends(['search_query' => $search]);
         } else {
-            $category = Category::paginate(2);
+            $category = Category::orderBy('created_at', 'DESC')->paginate(5);
         }
         return view('admin.all_category')->with('category', $category);
     }
-
 }

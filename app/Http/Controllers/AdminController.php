@@ -8,11 +8,14 @@ use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Admin;
-use App\Models\Brand;
-use App\Models\Product;
 use App\Models\Order;
+use App\Models\OrderDetails;
+use App\Models\Shipping;
 use App\Models\Customer;
-
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Brand;
+use PHPOpenSourceSaver\JWTAuth\Claims\Custom;
 
 class AdminController extends Controller
 {
@@ -21,10 +24,15 @@ class AdminController extends Controller
     // {
     //     return view('admin_login');
     // }
-    // public function show_dashboard()
-    // {
-    //     return view('admin.dashboard');
-    // }
+    public function index1()
+
+    {
+        $products = Product::count();
+        $order = Order::count();
+        $customers = Customer::count();
+        $orderstatus = Product::sum('product_quantity');
+        return view('admin.dashboard')->with(compact('products', 'order', 'customers', 'orderstatus'));
+    }
 
 
     // public function __construct()
@@ -41,6 +49,7 @@ class AdminController extends Controller
     //     return view('admin_layout');
     // }
 
+
     function checklogin(Request $request)
     {
         $request->validate([
@@ -49,11 +58,12 @@ class AdminController extends Controller
         ], [
             'email.exists' => 'This email is not exists in admins table'
         ]);
+        $products = Product::count();
 
         $creds = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('admin.dashboard');
+            return redirect('admin/viewdashboard');
         } else {
             Alert::error('error', 'email hoặc password sai');
             return redirect()->route('admin.admin_login');
