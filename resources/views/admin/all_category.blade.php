@@ -54,14 +54,14 @@
                           
                           <td>
                             <div class="form-check form-switch">
-                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                              <input class="form-check-input" type="checkbox" role="switch" name="changeStatus" onclick="changeStatus({{$cate->category_id}},{{$cate->status}})" value="{{$cate->status}}" id="flexSwitchCheckChecked" @if($cate->status == 1) checked  @endif>
                               <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                             </div>
                           </td>
                           <td>
-                          <a href="{{URL::to('/admin/edit-category')}}/{{$cate->category_id}}" class="btn btn-primary active"   aria-pressed="true" style="background-color: #5DADE2;border: black ">sửa</a>
+                            <a href="{{URL::to('/admin/edit-category')}}/{{$cate->category_id}}" class="btn btn-primary active"   aria-pressed="true" style="background-color: #5DADE2;border: black ">sửa</a>
                             |
-                            <a href="{{URL::to('/admin/delete-category')}}/{{$cate->category_id}}" class="btn btn-primary active" role="button" aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
+                            <a href="{{URL::to('/admin/delete-category')}}/{{$cate->category_id}}" class="btn btn-danger" role="button" aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
                           </td>
                         </tr>
                         @endforeach
@@ -79,26 +79,60 @@
             
           </div>
           <nav aria-label="Page navigation example" style="float:right">
-            <ul class="pagination">
-               <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-            </ul>
-          </nav>
+            <div>
+                {{$category->links()}}
+            </div>
+        </nav>
           
         </div>
         
     </div>
 
-    
+    <script>
+
+      function changeStatus(category_id){
+          console.log(category_id);
+          var status = 0;
+          if(document.getElementById('flexSwitchCheckChecked').checked){
+              status = 1;
+          }
+          else{
+              status = 0;
+          }
+          var myurl = "/admin/change-status-category/category_id="+category_id+"&status="+status+"/";
+          $.ajax({
+              url :myurl ,
+              type: "GET",
+              dataType: "json",
+              success: function(data)
+              {
+                  if(data.status == "success") {
+                      toastr.success('Thay đổi trạng thái thành công!', "success");
+                  }
+                  else{
+                      toastr.warning("Xảy ra lỗi!!!","Fail");
+                  }
+                  
+              }
+          });
+      }
+
+
+
+  $('.btn-danger').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Bạn có chắc?',
+        text: 'Dữ liệu sẽ bị xóa vĩnh viễn và không thể phục hồi!!!!',
+        icon: 'warning',
+        buttons: ["Không", "Có!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+  
+</script>
 @endsection

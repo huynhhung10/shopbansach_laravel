@@ -77,6 +77,7 @@ class ClientPaymentController extends Controller
         foreach ($order as $key => $ord) {
             $customer_id = $ord->customer_id;
             $shipping_id = $ord->shipping_id;
+            $shipping_name = $ord->shipping_name;
             $order_status = $ord->order_status;
         }
         $customer = Customer::where('customer_id', $customer_id)->first();
@@ -124,7 +125,8 @@ class ClientPaymentController extends Controller
         $cate_product = DB::table('tbl_category')->where('status', '0')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
 
-        return view('client.checkpayment')->with('categoryASC', $cate_product)->with('brand', $brand_product);
+
+        return view('client.checkpayment')->with('categoryASC', $cate_product)->with('brandASC', $brand_product);
     }
     public function order_save(Request $request)
     {

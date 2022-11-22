@@ -19,7 +19,7 @@ class CustomerController extends Controller
         // if($search != ""){
         //     $customers = Customer::where('')
         // }
-        $customers = Customer::paginate(5); //instead SQL select * from categories
+        $customers = Customer::orderBy('created_at', 'DESC')->paginate(5); //instead SQL select * from categories
         return view('admin.all_customer')->with('customers', $customers);
 
 
@@ -50,19 +50,11 @@ class CustomerController extends Controller
     {
         $cus = Customer::find($customer_id);
         $cus->delete();
-        Toastr::success('Success', 'X thành công!');
+        Toastr::success('Success', 'Xóa thành công!');
         return redirect('admin/all-customer');
     }
     public function posteditcustomer(Request $request)
     {
-        $request->validate([
-            'customer_name' => 'required',
-            'customer_username' => 'required|unique:tbl_customer,customer_username',
-            'email' => 'required|email|unique:tbl_customer,email',
-            'password' => 'required|min:1',
-
-            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
-        ]);
 
 
         $cus = Customer::find($request->customer_id);
@@ -97,8 +89,8 @@ class CustomerController extends Controller
             'customer_name' => 'required',
             'customer_username' => 'required|unique:tbl_customer,customer_username',
             'email' => 'required|email|unique:tbl_customer,email',
-            'password' => 'required|min:1',
-
+            'password' => 'required|min:8|max:32',
+            'avatar' => 'required',
             'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
         ]);
 
@@ -180,7 +172,7 @@ class CustomerController extends Controller
             })->paginate(5);
             $customers->appends(['search_query' => $search]);
         } else {
-            $customers = Customer::paginate(2);
+            $customers = Customer::orderBy('created_at', 'DESC')->paginate(5);
         }
         return view('admin.all_customer')->with('customers', $customers);
     }

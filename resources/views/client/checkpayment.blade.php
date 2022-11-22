@@ -33,7 +33,7 @@
                                        
                                         <div class="cart-item__product cart--flex4">
                                             <div class="cart-item__imgbox">
-                                                <img class="cart-item__img" src="{{URL::to('./'.$v_content->options->image)}}" alt="" width="60">
+                                                <img class="cart-item__img" src="{{URL::to('./frontend/img/products/'.$v_content->options->image)}}" alt="" width="60">
                                             </div>
     
                                             <div class="cart-item__info">
@@ -55,17 +55,16 @@
                                                 {{-- <p class="cart-item__lastprice">102,000 đ</p>
                                                 <p class="cart-item__originprice">120,000 đ</p> --}}
                                             </div>
-                                        <form action="{{URL::to('/update-cart-quantity')}}" method="POST">
-                                            @csrf
+                                   
                                             <div class="cart-item__quantity cart--flex2 quantity">
                                                 <input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
                                             
                                                 {{-- <button class="quantify-down cart-item__down cart-item__btn">-</button> --}}
-                                                <input class="cart_quantity_input" type="number" max="5" min="1" name="cart_quantity" value="{{$v_content->qty}}"  >
+                                                <input class="cart_quantity_input" type="number" max="5" min="1" name="cart_quantity" value="{{$v_content->qty}}"  disabled>
                                                 {{-- <button class="quantify-up cart-item__up cart-item__btn">cập nhật</button> --}}
-                                                <input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+                                              
                                             </div> 
-                                        </form>
+                                      
                                             <p class="cart-item__total cart--flex2"><?php
                                                 $subtotal = $v_content->price * $v_content->qty;
                                                 echo number_format($subtotal).' '.'vnđ';
@@ -80,7 +79,7 @@
                             </div>
                             @endforeach
                         
-                            <div class="cart__items cart__box payment-check__container">
+                            {{-- <div class="cart__items cart__box payment-check__container">
                                 @php
                                     // $fullname = $_GET['shipping_name'];
                                     // $email = $_GET['shipping_email'];
@@ -91,18 +90,26 @@
                                     $email = "";
                                     $addr = "";
                                     $phone = "";
+                                    
                                 @endphp
+                                @php
+                                  $shipping_id = Session::get('shipping_id');
+                                  $shipping_name = Session::get('shipping_name');
+                                  $shipping_email = Session::get('shipping_email');
+                                  $shipping_address = Session::get('shipping_address');
+                                  $shipping_phone = Session::get('shipping_phone');
+                                 @endphp
                                 <h3 class="pay__heading payment-check__heading">Thông tin giao hàng</h3>
                 
                                 <div class="pay__group payment-check__group">
                                     <label for="fullname" class="pay-group__label">Họ tên</label>
-                                    <p class="pay-group__input ">{{$fullname}}</p>
+                                    <p class="pay-group__input ">{{ $shipping_name }}</p>
                                 </div>
                 
                                                 
                                 <div class="pay__group payment-check__group">
                                     <label for="email" class="pay-group__label">Email nhận hàng</label>
-                                    <p class="pay-group__input">{{$email}}</p>
+                                    <p class="pay-group__input"> $shipping_email</p>
                                 </div>
                 
                                 <div class="pay__group payment-check__group">
@@ -114,7 +121,8 @@
                                     <label for="phone" class="pay-group__label">Số điện thoại</label>
                                     <p  class="pay-group__input" >{{$phone}}</p>
                                 </div>
-                            </div>
+                           
+                            </div> --}}
                             
                         </div>
                     </div>
@@ -141,17 +149,17 @@
                                     <h2 class="cart-promotion__title payment-method__title">Phương thức thanh toán</h2>
                                     <div class="cart-promotion__box">
                                         <div class="promotion__group">
-                                            <input type="radio" id="vat" name="payment_method" value="1">
+                                            <input type="radio" id="vat" name="payment_method" value="1" checked>
                                             <label for="vat">Thanh toán khi nhận hàng</label>
                                         </div>
-                                        <div class="promotion__group">
+                                        {{-- <div class="promotion__group">
                                             <input type="radio" id="card" name="payment_method" value="2">
                                             <label for="card">Thanh toán bằng thẻ</label>
                                         </div>
                                         <div class="promotion__group">
                                             <input type="radio" id="digi" name="payment_method" value="3">
                                             <label for="digi">Thanh toán bằng ví điện tử</label>
-                                        </div>
+                                        </div> --}}
                                         
                                         
                                         

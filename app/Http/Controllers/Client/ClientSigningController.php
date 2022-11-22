@@ -26,9 +26,9 @@ class ClientSigningController extends Controller
         // validate form fields
         $request->validate([
             'customer_name' => 'required',
-            'customer_username' => 'required',
+            'customer_username' => 'required|unique:tbl_customer,customer_username',
             'email' => 'required|email|unique:tbl_customer,email',
-            'password' => 'required|min:1',
+            'password' => 'required|min:8|max:32',
             'confirm_password' => 'required|same:password',
             'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
         ]);
@@ -96,7 +96,7 @@ class ClientSigningController extends Controller
 
         $request->validate([
             'email' => 'required|email|exists:tbl_customer,email',
-            'password' => 'required|min:1|max:30'
+            'password' => 'required|min:8|max:32'
         ], [
             'email.exists' => 'Email naỳ không tồn taị'
         ]);

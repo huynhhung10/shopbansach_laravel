@@ -6,11 +6,12 @@
             <div class="card mb-4">
                 <div class="card-header"><strong>Thêm</strong><span class="small ms-1">sản phẩm</span></div>
                     <div class="card-body">
-                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{route('admin.store')}}" enctype="multipart/form-data">
+                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{URL::to('/admin/posteditproduct')}}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" value="{{$product->product_id}}" name="product_id">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Tên sản phảm</label>
-                                <input type="text" class="form-control" name="product_name" value="{{$product->product_name}}" id="inputAddress">
+                                <input type="text" class="form-control" value="{{$product->product_name}}" name="product_name" id="inputAddress">
                                 {!! $errors->first('product_name', '<small class="text-danger">:message</small>') !!}
                             </div>
                             
@@ -21,7 +22,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">Mô tả</label>
-                                <textarea style="resize: none"  rows="8" class="form-control" name="product_content" value="{{$product->product_content}}" id="ckeditor1" placeholder="Mô tả sản phẩm"></textarea>
+                                <textarea style="resize: none"  rows="8" class="form-control" name="product_content" value="" id="ckeditor1" placeholder="Mô tả sản phẩm">{{$product->product_content}}</textarea>
                                 {!! $errors->first('product_content', '<small class="text-danger">:message</small>') !!}
                             </div>
 
@@ -56,7 +57,7 @@
                                 
                                     <option  value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                                 @endforeach
-                                
+                          
                                 </select>
                                
                             </div>
@@ -83,7 +84,7 @@
                                 </div>
 
                                 <div class="form-check">
-                                <input class="form-check-input" type="checkbox" @if($product->status == 1) @endif id="gridCheck" name="status"  >
+                                <input class="form-check-input" type="checkbox" @if($product->status == 1) checked @endif id="gridCheck" name="status"  >
                                 <label class="form-check-label" for="gridCheck">
                                     Hiển thị
                                 </label>

@@ -34,10 +34,11 @@
                                         <tr>
                                             <th>Stt</th>
                                             <th>Tên sản phẩm</th>
+                                            <th>Tác giả</th>
                                             <th>Hình sản phẩm</th>
                                             <th>Số lượng</th>
                                             <th>Giá</th>
-                                            <th>Hiển thị</th>
+                                           
                                             <th style="float: center; padding: 7px 35px">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -49,6 +50,7 @@
                                             <tr>
                                                 <th scope="row">{{ $id++ }}</th>
                                                 <td>{{ $product->product_name }}</td>
+                                                <td>{{ $product->product_author }}</td>
                                                 <td>
                                                     <div class="history-item__imgbox"><img src="{{asset('/frontend/img/products')}}/{{$product->product_img}}"class="history-item__img"alt="{{ $product->product_img }}"></div>
            
@@ -57,21 +59,13 @@
                                                 <td>{{ $product->product_price }}</td>
 
                                                 <td>
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch"
-                                                            id="flexSwitchCheckChecked" checked>
-                                                        <label class="form-check-label"
-                                                            for="flexSwitchCheckChecked"></label>
-                                                    </div>
-                                                </td>
-                                                <td>
 
                                                     <a href="{{URL::to('/admin/edit-product')}}/{{$product->product_id}}" class="btn btn-primary active" 
                                                          aria-pressed="true"
                                                         style="background-color: #5DADE2;border: black ">sửa</a>
                                                     |
-                                                    <a href="{{URL::to('/admin/delete-product')}}/{{$product->product_id}}" class="btn btn-primary active" role="button"
-                                                        data-toggle="tooltip" aria-pressed="true"
+                                                    <a href="{{URL::to('/admin/delete-product')}}/{{$product->product_id}}" class="btn btn-danger" role="button"
+                                                         aria-pressed="true"
                                                         style="background-color: #E74C3C; border: black">xóa</a>
                                                 </td>
                                                 </td>
@@ -99,4 +93,51 @@
         </div>
 
     </div>
+    <script>
+
+        function changeStatus(product_id){
+            console.log(product_id);
+            var status = 0;
+            if(document.getElementById('flexSwitchCheckChecked').checked){
+                status = 1;
+            }
+            else{
+                status = 0;
+            }
+            var myurl = "/admin/change-status-product/product_id="+product_id+"&status="+status+"/";
+            $.ajax({
+                url :myurl ,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    if(data.status == "success") {
+                        toastr.success('Thay đổi trạng thái thành công!', "success");
+                    }
+                    else{
+                        toastr.warning("Xảy ra lỗi!!!","Fail");
+                    }
+                    
+                }
+            });
+        }
+    
+    
+    
+    $('.btn-danger').on('click', function (event) {
+      event.preventDefault();
+      const url = $(this).attr('href');
+      swal({
+          title: 'Bạn có chắc?',
+          text: 'Dữ liệu sẽ bị xóa vĩnh viễn và không thể phục hồi!!!!',
+          icon: 'warning',
+          buttons: ["Không", "Có!"],
+      }).then(function(value) {
+          if (value) {
+              window.location.href = url;
+          }
+      });
+    });
+    
+    </script>
 @endsection

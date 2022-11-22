@@ -49,7 +49,7 @@
                                 mỗi div col-3 chứa 1 sản phẩm
                                 muốn có nhiều sản phẩm thì copy col-3 -->
                             @foreach ($productASC4 as $key => $value)
-                            @if ($value->status == 1) 
+                            @if ($value->status == 1 && $value->category->status == 1 && $value->brand->brand_status == 1) 
                                 <div class="col-3">
                                     <!-- 1 sản phẩm (trong div classify__product) -->
                                     <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
@@ -92,7 +92,7 @@
                                 mỗi div col-3 chứa 1 sản phẩm
                                 muốn có nhiều sản phẩm thì copy col-3 -->
                             @foreach ($productDESC4 as $key => $value) 
-                            @if ($value->status == 1 && $value->product_featured==1)
+                            @if ($value->status == 1 && $value->product_featured==1 && $value->category->status == 1 && $value->brand->brand_status == 1)
                                 
                            
                             <div class="col-3">
@@ -129,7 +129,7 @@
                 <div class="classify">
                     <h2 class="classify__title">
                         <p>Tất cả</p>
-                        <a href="{{url('/category/')}}" class="">Xem thêm >></a>
+                        <a href="{{url('/category')}}" class="">Xem thêm >></a>
                     </h2>
                     <div class="classify__products">
                         <div class="row">
@@ -137,7 +137,7 @@
                                 mỗi div col-3 chứa 1 sản phẩm
                                 muốn có nhiều sản phẩm thì copy col-3 -->
                             @foreach ($productASC8 as $key => $value) 
-                            @if ($value->status == 1)
+                            @if ($value->status == 1 && $value->category->status == 1 && $value->brand->brand_status == 1)
                                 <div class="col-3">
                                     <!-- 1 sản phẩm (trong div classify__product) -->
                                     <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">

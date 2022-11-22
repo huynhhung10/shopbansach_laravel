@@ -35,7 +35,7 @@
                         <tr>
                           <th>Stt</th>
                           <th>Tên NXB</th>
-                          <th>Logo</th>
+                          {{-- <th>Logo</th> --}}
                           <th>Mô tả</th>
                       
                           <th>Hiển thị</th>
@@ -46,17 +46,17 @@
                         @php
                           $id = 1;
                         @endphp
-                        @foreach ($brand as $key => $brand)
+                        @foreach ($brands as $key => $brand)
                         <tr>
                           <th scope="row">{{$id++}}</th>
                           <td>{{ $brand->brand_name }}</td>
-                          <td><div class="avatar avatar-md"><img class="avatar-img" src="{{asset($brand->brand_logo)}}" class="rounded mx-auto d-block" alt="{{$brand->brand_logo}}"></div></td>
-                         
+                          {{-- <td><div class="avatar avatar-md"><img class="avatar-img" src="{{asset('/frontend/img/products')}}/{{ $brand->brand_logo }}" class="rounded mx-auto d-block" alt="{{$brand->brand_logo}}"></div></td>
+                          --}}
                           <td>{{ $brand->brand_content }}</td>
                           
                           <td>
                             <div class="form-check form-switch">
-                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                              <input class="form-check-input" type="checkbox" role="switch" name="changeStatus" onclick="changeStatus({{$brand->brand_id}},{{$brand->brand_status}})" value="{{$brand->brand_status}}" id="flexSwitchCheckChecked" @if($brand->brand_status == 1) checked  @endif>
                               <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                             </div>
                           </td>
@@ -64,7 +64,7 @@
                           <td>
                             <a href="{{URL::to('/admin/edit-brand')}}/{{$brand->brand_id}}" class="btn btn-primary active"  aria-pressed="true" style="background-color: #5DADE2;border: black ">sửa</a>
                             |
-                            <a href="{{URL::to('/admin/delete-brand')}}/{{$brand->brand_id}}" class="btn btn-primary active" role="button"  aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
+                            <a href="{{URL::to('/admin/delete-brand')}}/{{$brand->brand_id}}" class="btn btn-danger" role="button"  aria-pressed="true" style="background-color: #E74C3C; border: black">xóa</a>
                           </td>
                           </td>
                         </tr>
@@ -83,26 +83,60 @@
             
           </div>
           <nav aria-label="Page navigation example" style="float:right">
-            <ul class="pagination">
-               <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-            </ul>
-          </nav>
+            <div>
+                {{$brands->links()}}
+            </div>
+        </nav>
           
         </div>
         
     </div>
+    <script>
 
+      function changeStatus(brand_id){
+          console.log(brand_id);
+          var brand_status = 0;
+          if(document.getElementById('flexSwitchCheckChecked').checked){
+            brand_status = 1;
+          }
+          else{
+            brand_status = 0;
+          }
+          var myurl = "/admin/change-status-brand/brand_id="+brand_id+"&brand_status="+brand_status+"/";
+          $.ajax({
+              url :myurl ,
+              type: "GET",
+              dataType: "json",
+              success: function(data)
+              {
+                  if(data.status == "success") {
+                      toastr.success('Thay đổi trạng thái thành công!', "success");
+                  }
+                  else{
+                      toastr.warning("Xảy ra lỗi!!!","Fail");
+                  }
+                  
+              }
+          });
+      }
+
+
+
+  $('.btn-danger').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Bạn có chắc?',
+        text: 'Dữ liệu sẽ bị xóa vĩnh viễn và không thể phục hồi!!!!',
+        icon: 'warning',
+        buttons: ["Không", "Có!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+  
+</script>
     
 @endsection

@@ -8,6 +8,8 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Customer;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -26,7 +28,7 @@ class ProductController extends Controller
     {
         $data = $request->validate(
             [
-                'product_name' => 'required|unique:product_name|max:255',
+                'product_name' => 'required|unique:tbl_product|max:255',
                 'product_author' => 'required|max:255',
                 'product_content' => 'required|max:255',
                 //'image' => 'required   |image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100&dimensions=min_height=100,max_width=1000,max_height=1000',
@@ -54,7 +56,8 @@ class ProductController extends Controller
             $product->status = 0;
         }
 
-        $product->product_name = $request->product_name;
+        //$product->product_name = $request->product_name;
+        $product->product_name = $data['product_name'];
         $product->product_content = $data['product_content'];
         $product->product_price = $data['product_price'];
         $product->product_author = $data['product_author'];
@@ -66,7 +69,7 @@ class ProductController extends Controller
             $file = $request->file('product_img');
             $filename = $file->getClientOriginalName('product_img');
             $file->move('frontend/img/products', $filename);
-            $product->product_img = $filename;
+            $product->product_img =  $filename;
         }
 
         $product->product_quantity = $data['product_quantity'];
@@ -74,13 +77,13 @@ class ProductController extends Controller
         //$product->status = $data['status'];
 
         $product->save();
-
-        return redirect()->back()->with('success', 'Thêm vào thành công!');
+        Toastr::success('Success', 'Thêm sản phẩm thành công!');
+        return redirect('admin/all-product');
     }
 
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::orderBy('created_at', 'DESC')->paginate(5);
 
         return view('admin.all_product', ['products' => $products]);
         //return view('admin.all_product');
@@ -95,6 +98,9 @@ class ProductController extends Controller
         $category = Category::latest()->get();
         $brand = Brand::latest()->get();
 
+        // $brandName = $brand->where('brand_id', $brand_id)->first()->brand_name;
+        //, ['category' => $category], ['brand' => $brand]
+
         $product = Product::with('brand')->with('category')->find($product_id);
         return view('admin.edit_product')->with('product', $product)->with('brand', $brand)->with('category', $category);
     }
@@ -102,29 +108,19 @@ class ProductController extends Controller
     {
         $product = Product::find($product_id);
         $product->delete();
-        return redirect('admin/all-product')->with('delete-success', 'Xóa thành công!!!');
+        Toastr::success('Success', 'Xóa thành công!');
+        return redirect('admin/all-product');
     }
     public function posteditproduct(Request $request)
     {
-        $request->validate([
-            'product_name' => 'required',
-            'product_content' => 'required',
-            'product_price' => 'required',
-            'product_author' => 'required',
-            'product_author' => 'required',
-            'product_img' => 'required',
-            'product_quantity' => 'required',
-            'product_brand' => 'required',
-            'product_category' => 'required',
-        ]);
 
         $product = Product::find($request->product_id);
-        $product->product_name = $data['product_name'];
-        $product->product_content = $data['product_content'];
-        $product->product_price = $data['product_price'];
-        $product->product_author = $data['product_author'];
-        $product->brand_id = $data['product_brand'];
-        $product->category_id = $data['product_category'];
+        $product->product_name = $request->product_name;
+        $product->product_content = $request->product_content;
+        $product->product_price = $request->product_price;
+        $product->product_author = $request->product_author;
+        $product->brand_id =  $request->product_brand;
+        $product->category_id = $request->product_category;
 
         // them sach truyen
         // $get_image = $data['image'];
@@ -145,7 +141,7 @@ class ProductController extends Controller
         }
 
 
-        $product->product_quantity = $data['product_quantity'];
+        $product->product_quantity =  $request->product_quantity;
         //$product->product_featured = $data['product_featured'];
         //$product->status = $data['status'];
         if ($request->product_featured) {
@@ -158,10 +154,10 @@ class ProductController extends Controller
         } else {
             $product->status = 0;
         }
-
+        Toastr::success('Success', 'Chỉnh sửa thành công!');
         $product->save();
 
-        return redirect('admin/all-product')->with('edit-success', 'Sửa thành công!!!');
+        return redirect('admin/all-product');
     }
     public function changeStatus($product_id, $status)
     {
@@ -175,14 +171,14 @@ class ProductController extends Controller
 
         $search = $request->get('search_query');
         if ($search != '') {
-            $product = Product::where(function ($query) use ($search) {
+            $products = Product::where(function ($query) use ($search) {
                 $query->where('product_name', 'like', '%' . $search . '%');
             })->paginate(5);
-            $product->appends(['search_query' => $search]);
+            $products->appends(['search_query' => $search]);
         } else {
-            $product = Product::paginate(2);
+            $products = Product::orderBy('created_at', 'DESC')->paginate(5);
         }
-        return view('admin.all_product')->with('product', $product);
+        return view('admin.all_product')->with('products', $products);
     }
 
 
@@ -205,4 +201,5 @@ class ProductController extends Controller
 
     //     return view('admin.dashboard', ['product' => $product],  ['order' => $order],  ['customer' => $customer]);
     // }
+
 }
