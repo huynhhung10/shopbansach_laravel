@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Admin;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Order;
+use App\Models\Customer;
 
 
 class AdminController extends Controller
@@ -96,5 +100,20 @@ class AdminController extends Controller
     {
         Auth::guard('admin')->logout();
         return redirect('/admin/admin_login');
+    }
+
+
+    public function countdashboard()
+    {
+
+        $product = Product::all()->count();
+        $order = Order::all()->count();
+        $brand = Brand::all()->count();
+        $customers = Customer::all()->count();
+        
+        return view(
+            'admin.dashboard',           
+        )->with(compact('product', 'order', 'brand','customers'));
+
     }
 }

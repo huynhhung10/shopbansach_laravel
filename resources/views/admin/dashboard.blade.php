@@ -1,6 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
-    <div class="tab-content rounded-bottom">
+    {{-- <div class="tab-content rounded-bottom">
         <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-691">
             <div class="row">
                 <div class="col-6 col-lg-3">
@@ -11,24 +11,11 @@
                                     <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-settings"></use>
                                 </svg>
                             </div>
-                            {{-- @php
-                                $c1 = 0;
-                                $c2 = 0;
-                                $c3 = 0;
-                            @endphp
-                            @foreach ($customer as $key => $cus)
-                                $c1++;
-                            @endforeach
-                            @foreach ($order as $key => $or)
-                                $c2++;
-                            @endforeach
-                            @foreach ($product as $key => $pro)
-                                $c3++;
-                            @endforeach --}}
+                           
 
 
                             <div>
-                                <div class="fs-6 fw-semibold text-primary">@php{{ $c1++ }}@endphp 111</div>
+                                <div class="fs-6 fw-semibold text-primary"> 111</div>
                                 <div class="text-medium-emphasis text-uppercase fw-semibold small">Customer</div>
                             </div>
                         </div>
@@ -61,7 +48,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <div class="fs-6 fw-semibold text-warning">$1.999,50</div>
+                               
+                                <div class="fs-6 fw-semibold text-warning">@php echo $product @endphp</div>
                                 <div class="text-medium-emphasis text-uppercase fw-semibold small">Products</div>
                             </div>
                         </div>
@@ -86,7 +74,10 @@
                 <!-- /.col-->
             </div>
         </div>
-    </div>
+    </div> --}}
+
+
+
     <div class="tab-content rounded-bottom">
       <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-691">
           <div class="row">
@@ -101,6 +92,10 @@
                               </svg>
                           </div>
                           <!-- /.row-->
+                          <div>
+                            <div class="fs-6 fw-semibold text-primary"> <?php echo $customers ?> </div>
+                            <div class="text-medium-emphasis text-uppercase fw-semibold small">Customer</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -116,7 +111,7 @@
                                   </svg>
                               </div>
                               <div>
-                                  <div class="fs-6 fw-semibold text-info">$1.999,50</div>
+                                  <div class="fs-6 fw-semibold text-info">@php echo $order @endphp</div>
                                   <div class="text-medium-emphasis text-uppercase fw-semibold small">Order
                                   </div>
                               </div>
@@ -135,7 +130,7 @@
                                   </svg>
                               </div>
                               <div>
-                                  <div class="fs-6 fw-semibold text-warning">$1.999,50</div>
+                                  <div class="fs-6 fw-semibold text-warning">@php echo $product @endphp</div>
                                   <div class="text-medium-emphasis text-uppercase fw-semibold small">Products
                                   </div>
                               </div>
@@ -154,9 +149,8 @@
                                   </svg>
                               </div>
                               <div>
-                                  <div class="fs-6 fw-semibold text-danger">$1.999,50</div>
-                                  <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget
-                                      title</div>
+                                  <div class="fs-6 fw-semibold text-danger">@php echo $brand @endphp</div>
+                                  <div class="text-medium-emphasis text-uppercase fw-semibold small">Brand</div>
                               </div>
                           </div>
                       </div>

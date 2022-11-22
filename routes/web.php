@@ -123,7 +123,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
     Route::middleware(['auth:admin'])->group(function () {
 
-        Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+        //Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+        Route::get('/dashboard',  [AdminController::class, 'countdashboard']);
         //Route::get('/dashboard',  [ProductController::class, 'countdashboard']);
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 

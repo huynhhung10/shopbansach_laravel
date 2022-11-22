@@ -67,7 +67,7 @@ class ProductController extends Controller
             $file = $request->file('product_img');
             $filename = $file->getClientOriginalName('product_img');
             $file->move('frontend/img/products', $filename);
-            $product->product_img = './frontend/img/products/'.$filename;
+            $product->product_img = './frontend/img/products/' . $filename;
         }
 
         $product->product_quantity = $data['product_quantity'];
@@ -82,7 +82,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(5);
-        
+
         return view('admin.all_product', ['products' => $products]);
         //return view('admin.all_product');
     }
@@ -94,7 +94,7 @@ class ProductController extends Controller
     {
         $category = Category::latest()->get();
         $brand = Brand::latest()->get();
-        
+
         // $brandName = $brand->where('brand_id', $brand_id)->first()->brand_name;
         //, ['category' => $category], ['brand' => $brand]
 
@@ -102,10 +102,12 @@ class ProductController extends Controller
         // $brand1 =  Brand::find($product->brand_id);
         // $brandName = $brand1->brand_name;
 
-        return view('admin.edit_product', 
-        ['product' => $product], 
-        ['brand' => $brand], 
-        ['category' => $category]);
+        return view(
+            'admin.edit_product',
+            ['product' => $product],
+            ['brand' => $brand],
+            ['category' => $category]
+        );
         //['brand1' => $brand1]);
     }
     public function deleteproduct($product_id)
@@ -170,7 +172,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        
+
         return redirect('admin/all-product')->with('edit-success', 'Sửa thành công!!!');
     }
     public function changeStatus($product_id, $status)
@@ -202,17 +204,24 @@ class ProductController extends Controller
     // public function countdashboard()
     // {
 
-    //     $product = Product::latest()->get();
-    //     $order = Order::latest()->get();
-    //     //$customer = Customer::latest()->get();
-    //     $customer = Customer::paginate(2);
+    //     $product = Product::all()->count();
+    //     $order = Order::all()->count();
+    //     $brand = Brand::all()->count();
+    //     $customers = Customer::all()->count();
+    //     //$customer = Customer::paginate(2);
     //     //$c_pro=0;
     //     // foreach($products as $key => $product)
     //     // $c_pro++;
     //     // endforeach
 
-
-
-    //     return view('admin.dashboard', ['product' => $product],  ['order' => $order],  ['customer' => $customer]);
+    //     return view(
+    //         'admin.dashboard',
+    //         ['brand' => $brand],
+    //         ['order' => $order],
+    //         ['product' => $product],
+           
+    //         ['customers' => $customers]
+            
+    //     );
     // }
 }
