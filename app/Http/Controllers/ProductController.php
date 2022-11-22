@@ -85,17 +85,18 @@ class ProductController extends Controller
         return view('admin.all_product', ['products' => $products]);
         //return view('admin.all_product');
     }
-    public function edit_product()
-    {
-        return view('admin.edit_product');
-    }
+    // public function edit_product()
+    // {
+
+    //     return view('admin.edit_product');
+    // }
     public function geteditproduct($product_id)
     {
         $category = Category::latest()->get();
         $brand = Brand::latest()->get();
 
-        $product = Product::find($product_id);
-        return view('admin.edit_product', ['product' => $product], ['category' => $category], ['brand' => $brand]);
+        $product = Product::with('brand')->with('category')->find($product_id);
+        return view('admin.edit_product')->with('product', $product)->with('brand', $brand)->with('category', $category);
     }
     public function deleteproduct($product_id)
     {

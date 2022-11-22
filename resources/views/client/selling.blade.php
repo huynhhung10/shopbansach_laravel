@@ -47,7 +47,7 @@
                                                 <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                                     <div class="classify__product">
                                                         <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                                            <img src="{{asset($value->product_img)}}" alt="" class="classify-product__img">
+                                                            <img src="{{asset('/frontend/img/products')}}/{{$value->product_img}}" alt="" class="classify-product__img">
                                                             <div class="classify-product__discount">-15%</div>
                                                         </div>
                                                         <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->

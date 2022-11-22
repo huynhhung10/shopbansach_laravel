@@ -50,10 +50,8 @@
                                                 <th scope="row">{{ $id++ }}</th>
                                                 <td>{{ $product->product_name }}</td>
                                                 <td>
-                                                    <div class="avatar avatar-md"><img
-                                                            src="{{ asset($product->product_img) }}"
-                                                            class="avatar-img rounded mx-auto d-block"
-                                                            alt="{{ $product->product_img }}"></div>
+                                                    <div class="history-item__imgbox"><img src="{{asset('/frontend/img/products')}}/{{$product->product_img}}"class="history-item__img"alt="{{ $product->product_img }}"></div>
+           
                                                 </td>
                                                 <td>{{ $product->product_quantity }}</td>
                                                 <td>{{ $product->product_price }}</td>

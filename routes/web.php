@@ -145,7 +145,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('posteditbrand', [BrandController::class, 'posteditbrand']);
         Route::get('/delete-brand/{brand_id}', [BrandController::class, 'deletebrand']);
         Route::get('/findbrand', [BrandController::class, 'findbrand'])->name('web.findbrand');
-   
+
 
         //QL loại sản phẩm
         Route::get('/all-category', [CategoryController::class, 'index']);

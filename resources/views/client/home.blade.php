@@ -55,7 +55,7 @@
                                     <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                                <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                                <img src="{{asset('/frontend/img/products')}}/{{$value->product_img}}" alt="" class="classify-product__img">
                                             </div>
                                             <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
                                                 <p class="classify-product__title">{{$value->product_name}}</p>
@@ -92,7 +92,7 @@
                                 mỗi div col-3 chứa 1 sản phẩm
                                 muốn có nhiều sản phẩm thì copy col-3 -->
                             @foreach ($productDESC4 as $key => $value) 
-                            @if ($value->status == 1)
+                            @if ($value->status == 1 && $value->product_featured==1)
                                 
                            
                             <div class="col-3">
@@ -100,7 +100,7 @@
                                 <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                     <div class="classify__product">
                                         <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                            <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                            <img src="{{asset('/frontend/img/products')}}/{{$value->product_img}}" alt="" class="classify-product__img">
                                         </div>
                                         <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
                                             <p class="classify-product__title">{{$value->product_name}}</p>
@@ -143,7 +143,7 @@
                                     <a href="{{url('pDetail/' . $value->product_id)}}" class="classify__linkproduct">
                                         <div class="classify__product">
                                             <div class="classify-product__box"> <!-- chứa các thẻ hình -->
-                                                <img src="{{$value->product_img}}" alt="" class="classify-product__img">
+                                                <img src="{{asset('/frontend/img/products')}}/{{$value->product_img}}" alt="" class="classify-product__img">
                                             </div>
                                             <div class="classify-product__info"> <!-- chứa các thẻ thông tin -->
                                                 <p class="classify-product__title">{{$value->product_name}}</p>

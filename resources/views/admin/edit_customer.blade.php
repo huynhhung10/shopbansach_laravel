@@ -32,7 +32,7 @@
                                 <input type="password" name="password" value="{{$customer->password}}" class="form-control" id="Pass">
                             </div>
                             <label for="inputAddress" class="form-label">Avatar</label>
-                            <img src="{{asset('/backend/assets/img/avatars/')}}/{{$customer->customer_avatar}}" alt="{{$customer->customer_avatar}} class="rounded mx-auto d-block" style="width: 70px"  alt="{{$customer->customer_avatar}}">
+                            <img src="{{asset('/backend/assets/img/avatars/')}}/{{$customer->customer_avatar}}" alt="{{$customer->customer_avatar}}" class="avatar-img" style="width: 70px">
                             <div class="input-group mb-3">
                                 
                                
