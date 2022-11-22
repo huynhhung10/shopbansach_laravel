@@ -26,7 +26,7 @@ class ProductController extends Controller
     {
         $data = $request->validate(
             [
-                'product_name' => 'required|unique:product_name|max:255',
+                'product_name' => 'required|unique:tbl_product|max:255',
                 'product_author' => 'required|max:255',
                 'product_content' => 'required|max:255',
                 //'image' => 'required   |image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100&dimensions=min_height=100,max_width=1000,max_height=1000',
@@ -54,7 +54,8 @@ class ProductController extends Controller
             $product->status = 0;
         }
 
-        $product->product_name = $request->product_name;
+        //$product->product_name = $request->product_name;
+        $product->product_name = $data['product_name'];
         $product->product_content = $data['product_content'];
         $product->product_price = $data['product_price'];
         $product->product_author = $data['product_author'];
@@ -66,7 +67,7 @@ class ProductController extends Controller
             $file = $request->file('product_img');
             $filename = $file->getClientOriginalName('product_img');
             $file->move('frontend/img/products', $filename);
-            $product->product_img = $filename;
+            $product->product_img = './frontend/img/products/'.$filename;
         }
 
         $product->product_quantity = $data['product_quantity'];
@@ -81,7 +82,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(5);
-
+        
         return view('admin.all_product', ['products' => $products]);
         //return view('admin.all_product');
     }
@@ -93,9 +94,19 @@ class ProductController extends Controller
     {
         $category = Category::latest()->get();
         $brand = Brand::latest()->get();
+        
+        // $brandName = $brand->where('brand_id', $brand_id)->first()->brand_name;
+        //, ['category' => $category], ['brand' => $brand]
 
         $product = Product::find($product_id);
-        return view('admin.edit_product', ['product' => $product], ['category' => $category], ['brand' => $brand]);
+        // $brand1 =  Brand::find($product->brand_id);
+        // $brandName = $brand1->brand_name;
+
+        return view('admin.edit_product', 
+        ['product' => $product], 
+        ['brand' => $brand], 
+        ['category' => $category]);
+        //['brand1' => $brand1]);
     }
     public function deleteproduct($product_id)
     {
@@ -159,7 +170,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-
+        
         return redirect('admin/all-product')->with('edit-success', 'Sửa thành công!!!');
     }
     public function changeStatus($product_id, $status)
@@ -174,14 +185,14 @@ class ProductController extends Controller
 
         $search = $request->get('search_query');
         if ($search != '') {
-            $product = Product::where(function ($query) use ($search) {
+            $products = Product::where(function ($query) use ($search) {
                 $query->where('product_name', 'like', '%' . $search . '%');
             })->paginate(5);
-            $product->appends(['search_query' => $search]);
+            $products->appends(['search_query' => $search]);
         } else {
-            $product = Product::paginate(2);
+            $products = Product::paginate(2);
         }
-        return view('admin.all_product')->with('product', $product);
+        return view('admin.all_product')->with('products', $products);
     }
 
 

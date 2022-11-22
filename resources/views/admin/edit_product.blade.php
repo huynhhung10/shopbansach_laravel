@@ -6,22 +6,22 @@
             <div class="card mb-4">
                 <div class="card-header"><strong>Thêm</strong><span class="small ms-1">sản phẩm</span></div>
                     <div class="card-body">
-                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{route('admin.store')}}" enctype="multipart/form-data">
+                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{URL::to('/admin/posteditproduct')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Tên sản phảm</label>
-                                <input type="text" class="form-control" name="product_name" id="inputAddress">
+                                <input type="text" class="form-control" value="{{$product->product_name}}" name="product_name" id="inputAddress">
                                 {!! $errors->first('product_name', '<small class="text-danger">:message</small>') !!}
                             </div>
                             
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label">Tên tác giả</label>
-                                <input type="text" class="form-control" name="product_author" id="inputAddress">
+                                <input type="text" class="form-control" value="{{$product->product_name}}" name="product_author" id="inputAddress">
                                 {!! $errors->first('product_author', '<small class="text-danger">:message</small>') !!}
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">Mô tả</label>
-                                <textarea style="resize: none"  rows="8" class="form-control" name="product_content" id="ckeditor1" placeholder="Mô tả sản phẩm"></textarea>
+                                <textarea style="resize: none"  rows="8" class="form-control"  name="product_content" id="ckeditor1" placeholder="Mô tả sản phẩm">{{$product->product_name}}</textarea>
                                 {!! $errors->first('product_content', '<small class="text-danger">:message</small>') !!}
                             </div>
 
@@ -36,7 +36,11 @@
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label">NXB</label>
                                 <select id="inputState" name="product_brand" class="form-select">
-                               
+                                    @php
+                                         $brand1 =  $brand->find($product->brand_id);
+                                            $brandName = $brand1->brand_name;
+                                    @endphp 
+                                <option  value="{{$product->brand_id}}">{{$brandName}}</option>
                                 @foreach ($brand as $key => $brand)                                    
                                 
                                 <option  value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
@@ -49,11 +53,11 @@
                                 <label for="inputState" class="form-label">Thể loại</label>
                                 <select id="inputState" name="product_category" class="form-select">
                                 
-                                @foreach ($category as $key => $cate)                                    
+                                {{-- @foreach ($category as $key => $cate)                                    
                                 
                                 <option  value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                                 @endforeach
-                                
+                                 --}}
                                 </select>
                                
                             </div>

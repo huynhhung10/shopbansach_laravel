@@ -29,9 +29,9 @@ class CategoryController extends Controller
         //$category->status = $data['status'];
         
         if ( $request->status) {
-            $request->status = 0;
-        } else {
             $request->status = 1;
+        } else {
+            $request->status = 0;
         }
         $category->status = $data['status'];
         $category->save();
