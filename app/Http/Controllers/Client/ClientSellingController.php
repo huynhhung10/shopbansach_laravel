@@ -14,7 +14,7 @@ class ClientSellingController extends Controller
     public function index()
     {
         //header, home
-        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $categoryASC = Category::orderBy('category_id', 'ASC')->where('status', 1)->get();
         $productASC6 = Product::orderBy('product_id', 'ASC')->limit(6)->get();
 
         return view('client.selling')->with(compact(

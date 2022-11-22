@@ -14,7 +14,7 @@ class ClientProductDetailController extends Controller
 {
     public function index()
     {
-        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $categoryASC = Category::orderBy('category_id', 'ASC')->where('status', 1)->get();
 
 
         return view('client.productDetail')->with(compact(

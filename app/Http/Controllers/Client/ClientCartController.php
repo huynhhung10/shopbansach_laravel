@@ -22,7 +22,7 @@ class ClientCartController extends Controller
     public function index()
     {
         //header, home
-        $categoryASC = Category::orderBy('category_id', 'ASC')->get();
+        $categoryASC = Category::orderBy('category_id', 'ASC')->where('status', 1)->get();
         $brandASC = Brand::orderBy('brand_id', 'ASC')->get();
 
         return view('client.cart')->with(compact(
