@@ -11,6 +11,7 @@
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Tên danh mục</label>
                                 <input type="text" class="form-control" name="category_name" id="inputAddress">
+                                {!! $errors->first('category_name', '<small class="text-danger">:message</small>') !!}
                             </div>
                             
                                 <div class="form-check">
