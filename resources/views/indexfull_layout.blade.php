@@ -42,9 +42,9 @@
                 <!-- Grid để nội dung nằm giữa page | width = 1200px -->
                 <div class="grid"> 
                     <ul class="navbar__list">
-                        <li class="navbar__item"><a href="#" class="navbar__link"><i class="navbar__link-icon fa-regular fa-circle-info"></i>Trợ giúp</a></li>
+                        {{-- <li class="navbar__item"><a href="#" class="navbar__link"><i class="navbar__link-icon fa-regular fa-circle-info"></i>Trợ giúp</a></li>
                         <li class="navbar__item"><a href="#" class="navbar__link">Tin tức</a></li>
-                        <li class="navbar__item"><a href="#" class="navbar__link">Khuyến mãi</a></li>
+                        <li class="navbar__item"><a href="#" class="navbar__link">Khuyến mãi</a></li> --}}
                     </ul>
                     <?php
                      $shipping_id = Session::get('shipping_id');

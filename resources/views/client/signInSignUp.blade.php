@@ -7,8 +7,8 @@
                 
 
                 <div class="form__header">
-                    <h3 id="header_signup" class="sign__heading">Đăng ký</h3>
-                    <h3 id="header_signin" class="sign__heading">Đăng nhập</h3> 
+                    <h3 id="header_signup" class="sign__heading">Đăng nhập</h3>
+                    <h3 id="header_signin" class="sign__heading">Đăng ký</h3> 
                     <div class="form-header__underline"></div>   
                 </div>  
                 @if(Session::has('success'))
@@ -21,6 +21,33 @@
                 @endif
                 <div class="form__group">
                     
+                    <form id="form_signin" action="{{URL::to('/login-customer')}}" method="POST" class="form__sign" enctype="multipart/form-data">
+                        @csrf
+                        <div class="sign__group">
+                          
+                            <label for="username" class="sign-group__label">Tên tài khoản</label>
+                            <input id="username" name="email" type="text" class="sign-group__input" placeholder="VD: hoanglong1234">
+                            {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
+                            <span class="sign-group__message"></span>
+                        </div>
+        
+                                        
+                        <div class="sign__group">
+                            <label for="password" class="sign-group__label">Mật khẩu</label>
+                            <input id="password" name="password" type="password" class="sign-group__input" placeholder="VD: Long1234">
+                            {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
+                            <span class="sign-group__message"></span>
+                        </div>
+                        
+                        <div class="sign__box">
+                            <input id="remember_password" name="remember_password" class="sign-group__checkbox" type="checkbox">
+                            <span class="sign-group__message sign-box__message">Ghi nhớ mật khẩu</span>
+                        </div>
+        
+                        <button class="sign__button">Đăng nhập</button>
+        
+                    </form>
+
                     <form id="form_signup" action="{{ route('checkregis') }}" method="POST" class="form__sign" enctype="multipart/form-data">          
                         @csrf
                         <div class="sign__group">
@@ -72,33 +99,6 @@
                         </div>
         
                         <button class="sign__button">Đăng ký</button>
-        
-                    </form>
-        
-                    <form id="form_signin" action="{{URL::to('/login-customer')}}" method="POST" class="form__sign" enctype="multipart/form-data">
-                        @csrf
-                        <div class="sign__group">
-                          
-                            <label for="username" class="sign-group__label">Tên tài khoản</label>
-                            <input id="username" name="email" type="text" class="sign-group__input" placeholder="VD: hoanglong1234">
-                            {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
-                            <span class="sign-group__message"></span>
-                        </div>
-        
-                                        
-                        <div class="sign__group">
-                            <label for="password" class="sign-group__label">Mật khẩu</label>
-                            <input id="password" name="password" type="password" class="sign-group__input" placeholder="VD: Long1234">
-                            {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
-                            <span class="sign-group__message"></span>
-                        </div>
-                        
-                        <div class="sign__box">
-                            <input id="remember_password" name="remember_password" class="sign-group__checkbox" type="checkbox">
-                            <span class="sign-group__message sign-box__message">Ghi nhớ mật khẩu</span>
-                        </div>
-        
-                        <button class="sign__button">Đăng nhập</button>
         
                     </form>
                 </div>        

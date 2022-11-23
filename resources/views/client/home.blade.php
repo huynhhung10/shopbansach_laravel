@@ -129,7 +129,7 @@
                 <div class="classify">
                     <h2 class="classify__title">
                         <p>Tất cả</p>
-                        <a href="{{url('/category')}}" class="">Xem thêm >> </a>
+                        <a href="{{url('/categorySelling')}}" class="">Xem thêm >> </a>
                     </h2>
                     <div class="classify__products">
                         <div class="row">
