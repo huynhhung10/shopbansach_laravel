@@ -6,7 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header"><strong>Thêm</strong><span class="small ms-1">Nhà xuất bản</span></div>
                     <div class="card-body">
-                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{route('brand.store')}}">
+                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{route('admin.brand.store')}}">
                             @csrf
                             <div class="col-md-12">
                                 <label for="inputEmail4" class="form-label">Tên NXB</label>

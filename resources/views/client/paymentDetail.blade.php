@@ -79,7 +79,7 @@
                                             
                                             <div class="history-item__product history--flex4">
                                                 <div class="history-item__imgbox">
-                                                    <img class="history-item__img" src="{{asset('/fronrtend/img/products/')}}/{{$details->product_img}}" alt="">
+                                                    <img class="history-item__img" src="{{asset('/frontend/img/products/')}}/{{$details->product->product_img}}" alt="">
                                                 </div>
         
                                                 <div class="history-item__info">

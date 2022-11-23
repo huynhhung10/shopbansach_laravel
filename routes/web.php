@@ -81,9 +81,6 @@ Route::get('/delete-to-cart/{rowId}', [ClientCartController::class, 'delete_to_c
 
 
 
-//Thông báo thanh toán thành công
-Route::get('/successpayment', [ClientPaymentController::class, 'success']);
-Route::get('/checkpayment', [ClientPaymentController::class, 'check']);
 
 //Đổi mật khẩu
 
@@ -109,6 +106,10 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/savechange', [ClientAccountController::class, 'savechange']);
     Route::get('/logout-customer', [ClientSigningController::class, 'logoutcustomer']);
     Route::post('/savechangepassword', [ClientAccountController::class, 'savechangepassword']);
+    //Thông báo thanh toán thành công
+    Route::get('/successpayment', [ClientPaymentController::class, 'success']);
+    Route::get('/checkpayment', [ClientPaymentController::class, 'check']);
+
     //Lịch sử thanh toán
     Route::get('/historyOrder/{customer_id}', [ClientPaymentController::class, 'show_customer_order']);
     Route::get('/detailPayment/{order_id}', [ClientPaymentController::class, 'show_customer_order_details']);
@@ -183,6 +184,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/findorder', [OrderController::class, 'findorder'])->name('web.findorder');
         Route::get('/detail-order/{order_id}', [OrderController::class, 'show_order']);
         Route::post('/change-status-order/{order_id}', [OrderController::class, 'changeStatus']);
+        Route::resource('/category', App\Http\Controllers\CategoryController::class);
+        Route::resource('/brand', App\Http\Controllers\BrandController::class);
     });
 });
 
@@ -217,8 +220,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::resource('/category', App\Http\Controllers\CategoryController::class);
-Route::resource('/brand', App\Http\Controllers\BrandController::class);
+
 
 // Auth::routes();
 

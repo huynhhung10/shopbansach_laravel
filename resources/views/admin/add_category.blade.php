@@ -6,7 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header"><strong>Thêm</strong><span class="small ms-1">danh mục</span></div>
                     <div class="card-body">
-                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{route('category.store')}}">
+                        <form class="row g-3" style="padding:20px 20px;" method="POST" action="{{route('admin.category.store')}}">
                             @csrf
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Tên danh mục</label>

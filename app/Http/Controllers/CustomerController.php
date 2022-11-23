@@ -137,6 +137,7 @@ class CustomerController extends Controller
         } else {
             $cus->status = 0;
         }
+
         $cus->save();
         Toastr::success('Success', 'Thêm khách hàng thành công!');
         // @include('sweetalert::alert')
@@ -146,6 +147,7 @@ class CustomerController extends Controller
     {
         $cus = Customer::find($customer_id);
         $cus->status = $status;
+
         $cus->save();
         return response()->json(['status' => 'success', 'trangthai' => $cus->status]);
     }

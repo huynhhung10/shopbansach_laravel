@@ -56,7 +56,7 @@
                           <td style="float: center">
                             <div class="form-check form-switch">
                               <input class="form-check-input" type="checkbox" role="switch" name="changeStatus" onclick="changeStatus({{$customer->customer_id}},{{$customer->status}})" value="{{$customer->status}}" id="flexSwitchCheckChecked" @if($customer->status == 1) checked  @endif>
-                              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                           
                             </div>
                           </td>
                           <td>
