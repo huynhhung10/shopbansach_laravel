@@ -91,7 +91,7 @@ class CustomerController extends Controller
             'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:8|max:32',
             'avatar' => 'required',
-            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+            'customer_phone' => 'required|numeric|digits:10|regex:/^(09[0-9\s\-\+\(\)]*)$/'
         ]);
 
         // $input = $request->all();

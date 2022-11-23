@@ -30,7 +30,7 @@ class ClientSigningController extends Controller
             'email' => 'required|email|unique:tbl_customer,email',
             'password' => 'required|min:8|max:32',
             'confirm_password' => 'required|same:password',
-            'customer_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
+            'customer_phone' => 'required|numeric|digits:10|regex:/^(09[0-9\s\-\+\(\)]*)$/'
         ]);
 
 

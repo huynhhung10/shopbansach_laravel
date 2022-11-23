@@ -91,7 +91,7 @@
 
     <script>
 
-      function changeStatus(customer_id){
+      function changeStatus(customer_id, status){
           console.log(customer_id);
           var status = 0;
           if(document.getElementById('flexSwitchCheckChecked').checked){

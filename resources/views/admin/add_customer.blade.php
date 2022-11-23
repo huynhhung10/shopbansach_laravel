@@ -29,7 +29,7 @@
 
                             <div class="col-md-4">
                                 <label for="inputPassword4" class="form-label">SĐT</label>
-                                <input type="text" class="form-control" name="customer_phone" id="inputAddress">
+                                <input type="number" class="form-control" name="customer_phone" id="inputAddress">
                                 {!! $errors->first('customer_phone', '<small class="text-danger">:message</small>') !!}
                             </div>
 
